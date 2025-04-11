@@ -60,6 +60,8 @@ public class MainMenuUI : MonoBehaviour
     {
         // Ganti ke scene gameplay
         Debug.Log("PlayPressed");
+        SceneLoader.LoadScene(SceneLoader.Scene.LevelSelect);
+
     }
 
     public void OpenSettings()
