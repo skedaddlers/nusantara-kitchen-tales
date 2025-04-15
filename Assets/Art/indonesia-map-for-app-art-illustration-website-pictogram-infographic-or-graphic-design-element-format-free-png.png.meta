@@ -1,0 +1,329 @@
+fileFormatVersion: 2
+guid: c686ecf9ec7ab524ca1c8b283c6db77d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5458820133680268283
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_0
+  - first:
+      213: -3605443371337057584
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_1
+  - first:
+      213: -758052721699468632
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_2
+  - first:
+      213: 2326803600731304942
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_3
+  - first:
+      213: 7014284476804336590
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_4
+  - first:
+      213: -3461349275838276816
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_5
+  - first:
+      213: 4033309764052892809
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_6
+  - first:
+      213: -2026442696269383129
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_7
+  - first:
+      213: 5140278772096995676
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_8
+  - first:
+      213: -8781583840129356245
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_9
+  - first:
+      213: 7807079256075153213
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_10
+  - first:
+      213: -8775740320243667066
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_11
+  - first:
+      213: -984616806027268123
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_12
+  - first:
+      213: 4994512283997955159
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_13
+  - first:
+      213: -4580600667152802164
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_14
+  - first:
+      213: -6397439754563647214
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_15
+  - first:
+      213: -1310954340276793253
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_16
+  - first:
+      213: -8748621817855705638
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_17
+  - first:
+      213: 5798868677255176611
+    second: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 56
+        width: 136
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf343c05dff91cb40800000000000000
+      internalID: 5458820133680268283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 75
+        width: 121
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dafaa13b54e6fdc0800000000000000
+      internalID: -3605443371337057584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_6
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 49
+        width: 79
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98cbc7b6cd139f730800000000000000
+      internalID: 4033309764052892809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_8
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 25
+        width: 116
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5192511f40f55740800000000000000
+      internalID: 5140278772096995676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 18
+        width: 110
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8e907856ff6e60c0800000000000000
+      internalID: -4580600667152802164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9a966f777bdc1aa49b586a3de11aaaa5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_0: 5458820133680268283
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_1: -3605443371337057584
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_10: 7807079256075153213
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_11: -8775740320243667066
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_12: -984616806027268123
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_13: 4994512283997955159
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_14: -4580600667152802164
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_15: -6397439754563647214
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_16: -1310954340276793253
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_17: -8748621817855705638
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_18: 5798868677255176611
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_2: -758052721699468632
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_3: 2326803600731304942
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_4: 7014284476804336590
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_5: -3461349275838276816
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_6: 4033309764052892809
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_7: -2026442696269383129
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_8: 5140278772096995676
+      indonesia-map-for-app-art-illustration-website-pictogram-infographic-or-graphic-design-element-format-free-png_9: -8781583840129356245
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

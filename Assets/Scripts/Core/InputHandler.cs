@@ -6,6 +6,7 @@ public class InputHandler : MonoBehaviour
     private GameInputActions InputActions;
     public static InputHandler Instance { get; private set; }
 
+    public event System.Action<Vector2> OnTouchPerformed;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,6 +38,8 @@ public class InputHandler : MonoBehaviour
         Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
         Debug.Log("Touch at: " + position);
         // Misalnya spawn efek atau trigger game event
+    
+        OnTouchPerformed?.Invoke(position);
     }
 
     private void OnDestroy()
