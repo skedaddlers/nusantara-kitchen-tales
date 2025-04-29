@@ -7,6 +7,7 @@ public class UIRaycaster : MonoBehaviour
 {
     public GraphicRaycaster raycaster;
     public EventSystem eventSystem;
+    private PulauSelector currentPulauSelector = null;
 
     public void RaycastUI(Vector2 screenPosition)
     {
@@ -23,7 +24,15 @@ public class UIRaycaster : MonoBehaviour
             PulauSelector selector = result.gameObject.GetComponent<PulauSelector>();
             if (selector != null)
             {
-                selector.OnPulauSelected();
+                if (currentPulauSelector == null || currentPulauSelector != selector)
+                {
+                    selector.OnPulauSelected();
+                    currentPulauSelector = selector;
+                }                
+            }
+            else if (currentPulauSelector != null)
+            {
+                currentPulauSelector = null;
             }
         }
         if (results.Count == 0)

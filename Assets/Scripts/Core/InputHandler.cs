@@ -30,6 +30,7 @@ public class InputHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        InputActions.Gameplay.TouchPress.performed -= OnTouchPressed;
         InputActions.Disable();
     }
 

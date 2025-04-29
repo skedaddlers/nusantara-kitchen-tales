@@ -10,9 +10,9 @@ public static class SceneLoader
         Settings
     }
 
-    public static void LoadScene(Scene scene)
+    public static void LoadScene(string scene)
     {
-        SceneManager.LoadScene(scene.ToString());
+        SceneManager.LoadScene(scene);
     }
 
     public static void ReloadCurrentScene()

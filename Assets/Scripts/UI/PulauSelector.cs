@@ -25,13 +25,7 @@ public class PulauSelector : MonoBehaviour
             .OnComplete(() => transform.DOScale(originalScale, 0.3f).SetDelay(0.2f));
 
         UIPulauSelect.Instance.ShowInfoPanel(namaPulau, deskripsiPulau);
-    }
 
-
-    void MasukPulau()
-    {
-        Debug.Log("Masuk ke pulau: " + namaPulau);
-        // Ganti scene sesuai pulau:
-        // SceneLoader.LoadScene(SceneLoader.Scene.Jawa);
+        UIPulauSelect.Instance.ZoomToPulau(transform.position);
     }
 }
