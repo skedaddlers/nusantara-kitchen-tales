@@ -7,8 +7,6 @@ public class PulauDataSO : ScriptableObject
 
     [TextArea]
     public string deskripsiPulau;
-    public Sprite[] ikonResep;
-    public string[] daftarResep;
-
+     public ResepDataSO[] resepList; 
 
 }

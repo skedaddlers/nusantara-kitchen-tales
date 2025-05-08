@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d897bc6fe56150d408314d24279bca2e, type: 3}
+  m_Name: LontongBalap
+  m_EditorClassIdentifier: 
+  namaResep: 
+  ikonResep: {fileID: -8632645249084310720, guid: c6e6416cff0cc914885396423afa368c, type: 3}
+  storyData: {fileID: 11400000, guid: c4aedfa247a7ad64dace664186eb609c, type: 2}
+  estimasiDurasi: 0
+  bahan: []

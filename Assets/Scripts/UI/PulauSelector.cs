@@ -27,5 +27,8 @@ public class PulauSelector : MonoBehaviour
         UIPulauSelect.Instance.ShowInfoPanel(namaPulau, deskripsiPulau);
 
         UIPulauSelect.Instance.ZoomToPulau(transform.position);
+
+        // Remove listeners to prevent multiple clicks
+        
     }
 }

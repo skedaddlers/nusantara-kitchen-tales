@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d897bc6fe56150d408314d24279bca2e, type: 3}
+  m_Name: Pecel
+  m_EditorClassIdentifier: 
+  namaResep: 
+  ikonResep: {fileID: 7204091866225645644, guid: d27b6d6cde009a9438f47bfaf2babc08, type: 3}
+  storyData: {fileID: 11400000, guid: b593216b48e4ddb409471a0d6df52be0, type: 2}
+  estimasiDurasi: 0
+  bahan: []

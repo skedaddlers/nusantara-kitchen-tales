@@ -24,12 +24,12 @@ public class StageSelect : MonoBehaviour
 
     void GenerateStageCards(PulauDataSO pulau)
     {
-        for (int i = 0; i < pulau.daftarResep.Length; i++)
+        for (int i = 0; i < pulau.resepList.Length; i++)
         {
             var card = Instantiate(stageCardPrefab, cardContainer);
             var ui = card.GetComponent<StageCardUI>();
-            Debug.Log("Membuat kartu stage untuk: " + pulau.daftarResep[i]);
-            ui.Init(pulau.daftarResep[i], pulau.ikonResep[i]);
+            Debug.Log("Membuat kartu stage untuk: " + pulau.resepList[i].namaResep);
+            ui.Init(pulau.resepList[i], pulau.resepList[i].namaResep, pulau.resepList[i].ikonResep);
 
             var rect = card.GetComponent<RectTransform>();
             var canvasGroup = card.GetComponent<CanvasGroup>();

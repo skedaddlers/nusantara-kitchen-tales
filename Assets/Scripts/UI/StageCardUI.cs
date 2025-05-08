@@ -10,7 +10,7 @@ public class StageCardUI : MonoBehaviour
     public TextMeshProUGUI status;
     public Button button;
 
-    public void Init(string namaResep, Sprite iconResep)
+    public void Init(ResepDataSO resep, string namaResep, Sprite iconResep)
     {
         icon.sprite = iconResep;
         Debug.Log("Inisialisasi kartu stage: " + namaResep);
@@ -23,7 +23,10 @@ public class StageCardUI : MonoBehaviour
             transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
                 Debug.Log("Mulai masak: " + namaResep);
-                // Simpan nama stage, dan Load scene gameplay
+                // Simpan nama stage, dan Load scene gameplay'
+
+                GameData.ResepDipilih = resep;
+                SceneLoader.LoadScene("Story"); // Ganti dengan nama scene gameplay kamu
             });
         });
     }
