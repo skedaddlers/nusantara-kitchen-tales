@@ -12,8 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d897bc6fe56150d408314d24279bca2e, type: 3}
   m_Name: Pecel
   m_EditorClassIdentifier: 
-  namaResep: 
+  namaResep: Nasi Pecel
   ikonResep: {fileID: 7204091866225645644, guid: d27b6d6cde009a9438f47bfaf2babc08, type: 3}
   storyData: {fileID: 11400000, guid: b593216b48e4ddb409471a0d6df52be0, type: 2}
   estimasiDurasi: 0
-  bahan: []
+  langkahMasak:
+  - deskripsi: Menyangrai
+    jenisStep: 0
+    ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 77714fcf2d72aed44bd168da5331ef25, type: 3}
+    - {fileID: 5491858519558499118, guid: d9f53b2cbb08d054badd1df7bca4da25, type: 3}
+    - {fileID: 5491858519558499118, guid: e8895968d753e074c9c676fd38b3edf3, type: 3}
+    - {fileID: 5491858519558499118, guid: 8f0e991b8993ed147a08f1da36f7456e, type: 3}
+    - {fileID: 5491858519558499118, guid: 165b5228dfbc8c9438f8c76ea531dad1, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 1a5fc3abdbf8ce14d95e1acba662785e, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
+    addToExisting: 0
+  - deskripsi: Spin
+    jenisStep: 5
+    ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
+    bahanDiperlukan: []
+    alatDiperlukan: []
+    prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
+    addToExisting: 1

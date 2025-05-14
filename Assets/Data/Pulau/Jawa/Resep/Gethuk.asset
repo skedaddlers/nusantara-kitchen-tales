@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d897bc6fe56150d408314d24279bca2e, type: 3}
   m_Name: Gethuk
   m_EditorClassIdentifier: 
-  namaResep: 
+  namaResep: Gethuk
   ikonResep: {fileID: -4307632236167514295, guid: f2aafc9d43fba2444b80169a95f0281c, type: 3}
   storyData: {fileID: 11400000, guid: 619f75179745ac643bf7b6e66b8da4ca, type: 2}
   estimasiDurasi: 0

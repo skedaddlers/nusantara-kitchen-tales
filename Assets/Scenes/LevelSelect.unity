@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc0d1de0f8551d43b613d9e0cb405c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulauData: {fileID: 11400000, guid: f68d102550a142e43b79790ecd053ad2, type: 2}
   namaPulau: Jawa
   deskripsiPulau: Jawa adalah koentji
   highlightScale: {x: 1.2, y: 1.2, z: 1}
@@ -888,6 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc0d1de0f8551d43b613d9e0cb405c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulauData: {fileID: 11400000, guid: 80767ceaa9b6db84bad5415dc3e1a82b, type: 2}
   namaPulau: Kalimantan
   deskripsiPulau: info sate banjar
   highlightScale: {x: 1.2, y: 1.2, z: 1}
@@ -1157,6 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc0d1de0f8551d43b613d9e0cb405c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulauData: {fileID: 11400000, guid: 60614fffda041ab4b8a5051a6ac706cd, type: 2}
   namaPulau: Sumatera
   deskripsiPulau: Sumaaa
   highlightScale: {x: 1.2, y: 1.2, z: 1}
@@ -1305,6 +1308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc0d1de0f8551d43b613d9e0cb405c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulauData: {fileID: 11400000, guid: a2c8e093ae25d0145b237cf2aa677dfa, type: 2}
   namaPulau: Papua
   deskripsiPulau: Bjir nos
   highlightScale: {x: 1.2, y: 1.2, z: 1}
@@ -1452,6 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc0d1de0f8551d43b613d9e0cb405c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulauData: {fileID: 11400000, guid: 0c8ba8d6d000d1d468ba6421b9a0e7ac, type: 2}
   namaPulau: Sulawesi
   deskripsiPulau: Wesi kh
   highlightScale: {x: 1.2, y: 1.2, z: 1}

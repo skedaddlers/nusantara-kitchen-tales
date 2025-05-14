@@ -31,7 +31,7 @@ public class UIPulauSelect : MonoBehaviour
         infoPanel.blocksRaycasts = false;
     }
 
-    public void ShowInfoPanel(string namaPulau, string deskripsiPulau)
+    public void ShowInfoPanel(string namaPulau, string deskripsiPulau, PulauDataSO pulauData)
     {
         namaPulauText.text = namaPulau;
         deskripsiText.text = deskripsiPulau;
@@ -41,7 +41,7 @@ public class UIPulauSelect : MonoBehaviour
         infoPanel.blocksRaycasts = true;
 
         // tombolMasuk.onClick.RemoveAllListeners();
-        tombolMasuk.onClick.AddListener(() => MasukPulau(namaPulau));
+        tombolMasuk.onClick.AddListener(() => MasukPulau(namaPulau, pulauData));
     }
 
     public void ZoomToPulau(Vector3 targetPosition)
@@ -83,10 +83,10 @@ public class UIPulauSelect : MonoBehaviour
         });
     }
 
-    void MasukPulau(string namaPulau)
+    void MasukPulau(string namaPulau, PulauDataSO pulauData)
     {
         Debug.Log("Masuk ke pulau: " + namaPulau);
-        GameData.PulauDipilih = namaPulau;
+        GameData.PulauDipilih = pulauData;
         SceneLoader.LoadScene("StageSelect");
     }
 }

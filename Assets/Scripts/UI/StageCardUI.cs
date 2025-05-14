@@ -10,11 +10,11 @@ public class StageCardUI : MonoBehaviour
     public TextMeshProUGUI status;
     public Button button;
 
-    public void Init(ResepDataSO resep, string namaResep, Sprite iconResep)
+    public void Init(ResepDataSO resep)
     {
-        icon.sprite = iconResep;
-        Debug.Log("Inisialisasi kartu stage: " + namaResep);
-        title.text = namaResep;
+        icon.sprite = resep.ikonResep;
+        Debug.Log("Inisialisasi kartu stage: " + resep.namaResep);
+        title.text = resep.namaResep;
         status.text = "Belum Dimulai";
 
         button.onClick.AddListener(() =>
@@ -22,11 +22,11 @@ public class StageCardUI : MonoBehaviour
             // Animasi efek klik
             transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
-                Debug.Log("Mulai masak: " + namaResep);
+                Debug.Log("Mulai masak: " + title.text);
                 // Simpan nama stage, dan Load scene gameplay'
 
                 GameData.ResepDipilih = resep;
-                SceneLoader.LoadScene("Story"); // Ganti dengan nama scene gameplay kamu
+                SceneLoader.LoadScene("Story");
             });
         });
     }

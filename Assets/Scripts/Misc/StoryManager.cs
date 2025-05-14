@@ -6,24 +6,16 @@ using System.Collections;
 
 public class StoryManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class StorySlide
-    {
-        public Sprite image;
-        [TextArea] public string text;
-    }
-
     public Image slideImage;
     public TextMeshProUGUI storyText;
     public Button nextButton;
-
-    public StorySlide[] slides;
-
+    public StoryDataSO storyData;
     private int currentSlide = 0;
     private Coroutine typingCoroutine;
 
     void Start()
     {
+        storyData = GameData.ResepDipilih.storyData;
         nextButton.onClick.AddListener(NextSlide);
         ShowSlide(currentSlide);
     }
@@ -31,12 +23,12 @@ public class StoryManager : MonoBehaviour
     void ShowSlide(int index)
     {
         storyText.text = "";
-        slideImage.sprite = slides[index].image;
+        slideImage.sprite = storyData.slides[index].image;
 
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeText(slides[index].text));
+        typingCoroutine = StartCoroutine(TypeText(storyData.slides[index].text));
     }
 
     IEnumerator TypeText(string fullText)
@@ -52,7 +44,7 @@ public class StoryManager : MonoBehaviour
     void NextSlide()
     {
         currentSlide++;
-        if (currentSlide >= slides.Length)
+        if (currentSlide >= storyData.slides.Length)
         {
             // Cerita selesai, masuk ke gameplay
             SceneLoader.LoadScene("Gameplay"); // ganti sesuai scene kamu
@@ -62,4 +54,6 @@ public class StoryManager : MonoBehaviour
             ShowSlide(currentSlide);
         }
     }
+
+    
 }

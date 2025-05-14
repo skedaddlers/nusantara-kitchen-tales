@@ -6,6 +6,7 @@ using TMPro;
 public class PulauSelector : MonoBehaviour
 {
     [Header("Data Pulau")]
+    public PulauDataSO pulauData;
     public string namaPulau;
     [TextArea]
     public string deskripsiPulau;
@@ -24,7 +25,7 @@ public class PulauSelector : MonoBehaviour
         transform.DOScale(highlightScale, 0.3f).SetEase(Ease.OutBack)
             .OnComplete(() => transform.DOScale(originalScale, 0.3f).SetDelay(0.2f));
 
-        UIPulauSelect.Instance.ShowInfoPanel(namaPulau, deskripsiPulau);
+        UIPulauSelect.Instance.ShowInfoPanel(namaPulau, deskripsiPulau, pulauData);
 
         UIPulauSelect.Instance.ZoomToPulau(transform.position);
 

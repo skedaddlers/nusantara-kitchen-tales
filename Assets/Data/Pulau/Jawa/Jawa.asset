@@ -14,15 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaPulau: Jawa
   deskripsiPulau: Jawa adalah koentji
-  ikonResep:
-  - {fileID: 7204091866225645644, guid: d27b6d6cde009a9438f47bfaf2babc08, type: 3}
-  - {fileID: 3219219685781749312, guid: 261acd60ac6cbff4094d5cc6c92a5e69, type: 3}
-  - {fileID: -4307632236167514295, guid: f2aafc9d43fba2444b80169a95f0281c, type: 3}
-  - {fileID: 6628404196070710950, guid: 850e02224b0678f4497a03fa11d3fc8e, type: 3}
-  - {fileID: -8632645249084310720, guid: c6e6416cff0cc914885396423afa368c, type: 3}
-  daftarResep:
-  - Nasi Pecel
-  - Gudeg
-  - Gethuk
-  - Tahu Gejrot
-  - Lontong Balap
+  resepList:
+  - {fileID: 11400000, guid: 9484f9338db4ace419d7e4ddc071b5f3, type: 2}
+  - {fileID: 11400000, guid: d97eaea13fe17514896f2d7f11e97be4, type: 2}
+  - {fileID: 11400000, guid: f7edcf5799c09ca45b3c8201bd62127d, type: 2}
+  - {fileID: 11400000, guid: 477514d915215154bba680b6c36aa612, type: 2}
+  - {fileID: 11400000, guid: f2c4d77065b6328418f5229c2b832617, type: 2}
