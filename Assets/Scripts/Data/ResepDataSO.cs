@@ -32,6 +32,10 @@ public class ResepDataSO : ScriptableObject
         Tap,
         MeterControl,
         Spin,
+        Peel,
+        Flip,
+        Pound,
+        Cut,
         // Tambahkan jenis langkah lainnya jika perlu
     }
 }

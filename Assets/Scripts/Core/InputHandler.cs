@@ -36,6 +36,13 @@ public class InputHandler : MonoBehaviour
 
     }
 
+    public Vector2 GetTouchPosition()
+    {
+        return InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
+    }
+
+
+
     private void OnEnable()
     {
         InputActions.Enable();
@@ -55,7 +62,7 @@ public class InputHandler : MonoBehaviour
     private void OnTouchStart(InputAction.CallbackContext ctx)
     {
         Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch started at: " + position);
+        // Debug.Log("Touch started at: " + position);
         // Misalnya spawn efek atau trigger game event
 
         OnTouchStarted?.Invoke(position);
@@ -64,7 +71,7 @@ public class InputHandler : MonoBehaviour
     private void OnTouchCancel(InputAction.CallbackContext ctx)
     {
         Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch canceled at: " + position);
+        // Debug.Log("Touch canceled at: " + position);
         // Misalnya spawn efek atau trigger game event
 
         OnTouchCanceled?.Invoke(position);
@@ -73,7 +80,7 @@ public class InputHandler : MonoBehaviour
     private void OnTouchPressed(InputAction.CallbackContext ctx)
     {
         Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch at: " + position);
+        // Debug.Log("Touch at: " + position);
         // Misalnya spawn efek atau trigger game event
     
         OnTouchPerformed?.Invoke(position);

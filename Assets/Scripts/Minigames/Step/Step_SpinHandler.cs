@@ -46,14 +46,14 @@ public class Step_SpinGestureHandler : MonoBehaviour
 
     private void StartDrag(Vector2 position)
     {
-        Debug.Log("Drag started at: " + position);
+        // Debug.Log("Drag started at: " + position);
         isDragging = true;
         lastPos = position;
     }
 
     private void EndDrag(Vector2 position)
     {
-        Debug.Log("Drag ended at: " + position);
+        // Debug.Log("Drag ended at: " + position);
         isDragging = false;
         spinProgress = 0f; // Reset progress after drag ends
     }
@@ -61,23 +61,37 @@ public class Step_SpinGestureHandler : MonoBehaviour
     private void ContinueDrag(Vector2 position)
     {
         if (!isDragging) return;
-        Debug.Log("Dragging at: " + position);
-        Vector2 delta = position - lastPos;
-        float angle = Vector3.Cross(delta.normalized, Vector2.up).z;
-        float spinAmount = delta.magnitude * angle;
 
-        spinProgress += spinAmount;
+        // Debug.Log("Dragging at: " + position);
+
+        float centerX = Screen.width / 2;
+        float centerY = Screen.height / 2;
+
+        Vector2 center = new Vector2(centerX, centerY);
+        // Get previous and current direction from center to touch position
+        Vector2 prevDir = lastPos - center;
+        Vector2 currDir = position - center;
+
+        // Calculate signed angle between the two directions
+        float angle = Vector2.SignedAngle(prevDir, currDir);
+
+        // Add to spin progress
+        spinProgress += angle;
         lastPos = position;
 
-        visualIndicator.transform.Rotate(0, 0, -spinAmount);
-        Debug.Log("Spin progress: " + spinProgress);
+        // Rotate the visual indicator
+        visualIndicator.transform.Rotate(0, 0, angle); // negative if you want clockwise
+
+        // Debug.Log("Spin progress: " + spinProgress);
+
         if (Mathf.Abs(spinProgress) >= requiredSpin)
         {
-            Debug.Log("Spin selesai!");
+            // Debug.Log("Spin selesai!");
             GameplayManager.Instance.NextStep();
             EndDrag(position);
         }
     }
+
 
 
 }
