@@ -7,7 +7,6 @@ public class StageCardUI : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI title;
-    public TextMeshProUGUI status;
     public Button button;
 
     public void Init(ResepDataSO resep)
@@ -15,7 +14,6 @@ public class StageCardUI : MonoBehaviour
         icon.sprite = resep.ikonResep;
         Debug.Log("Inisialisasi kartu stage: " + resep.namaResep);
         title.text = resep.namaResep;
-        status.text = "Belum Dimulai";
 
         button.onClick.AddListener(() =>
         {

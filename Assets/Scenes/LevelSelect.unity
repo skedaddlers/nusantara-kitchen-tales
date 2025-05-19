@@ -145,15 +145,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60069003}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7012055}
-  m_LocalScale: {x: 0.5054687, y: 0.5054687, z: 0.5054687}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1636291736}
+  m_Father: {fileID: 666561299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646, y: 185}
+  m_AnchoredPosition: {x: 25.718628, y: 261.14374}
   m_SizeDelta: {x: 618.3088, y: 78.0672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60069005
@@ -178,15 +178,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nama Pulau
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
+  m_sharedMaterial: {fileID: -3404529690970300817, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -203,15 +203,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -312,10 +312,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Masuk Pulau
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
+  m_sharedMaterial: {fileID: -3404529690970300817, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulauData: {fileID: 11400000, guid: f68d102550a142e43b79790ecd053ad2, type: 2}
   namaPulau: Jawa
-  deskripsiPulau: Jawa adalah koentji
+  deskripsiPulau: Pulau terpadat ini menyajikan ragam kuliner dari yang manis seperti
+    gudeg Yogyakarta hingga pedas gurih seperti Pecel Madiiun.
   highlightScale: {x: 1.2, y: 1.2, z: 1}
 --- !u!1 &666561298
 GameObject:
@@ -575,13 +576,16 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 1.7012055}
   m_LocalScale: {x: 0.5054687, y: 0.5054687, z: 0.5054687}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 60069004}
+  - {fileID: 2026287135}
+  - {fileID: 1234855960}
   m_Father: {fileID: 1636291736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -652.8494, y: 33.105625}
-  m_SizeDelta: {x: 726.4186, y: 1022.9293}
+  m_AnchoredPosition: {x: -640, y: 56}
+  m_SizeDelta: {x: 1183.8044, y: 1022.9293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &666561300
 MonoBehaviour:
@@ -596,15 +600,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7479185519646748045, guid: 99cd96cbde0d30242822c0a950dfc881, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -891,7 +895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulauData: {fileID: 11400000, guid: 80767ceaa9b6db84bad5415dc3e1a82b, type: 2}
   namaPulau: Kalimantan
-  deskripsiPulau: info sate banjar
+  deskripsiPulau: Dikenal dengan kuliner berbahan hasil hutan dan sungai, seperti
+    ikan baung asam pedas dan Soto Banjar.
   highlightScale: {x: 1.2, y: 1.2, z: 1}
 --- !u!1 &1234855959
 GameObject:
@@ -920,17 +925,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234855959}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7012055}
-  m_LocalScale: {x: 0.5054687, y: 0.5054687, z: 0.5054687}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 343796384}
-  m_Father: {fileID: 1636291736}
+  m_Father: {fileID: 666561299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -652.84784, y: -77.085754}
-  m_SizeDelta: {x: 412.043, y: 203.0879}
+  m_AnchoredPosition: {x: 21.02, y: -182}
+  m_SizeDelta: {x: 608.911, y: 203.088}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234855961
 MonoBehaviour:
@@ -996,8 +1001,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5201407055009538060, guid: bf6054723904c0e4dac9087914c5f2e4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1161,7 +1166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulauData: {fileID: 11400000, guid: 60614fffda041ab4b8a5051a6ac706cd, type: 2}
   namaPulau: Sumatera
-  deskripsiPulau: Sumaaa
+  deskripsiPulau: Dikenal dengan cita rasa pedas dan kaya rempah, makanan khas seperti
+    rendang dan gulai menjadi ikon kuliner Minangkabau.
   highlightScale: {x: 1.2, y: 1.2, z: 1}
 --- !u!1 &1386711092
 GameObject:
@@ -1310,7 +1316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulauData: {fileID: 11400000, guid: a2c8e093ae25d0145b237cf2aa677dfa, type: 2}
   namaPulau: Papua
-  deskripsiPulau: Bjir nos
+  deskripsiPulau: Kuliner tradisionalnya unik dengan penggunaan bahan lokal seperti
+    sagu dan ikan bakar, serta papeda sebagai makanan pokok khas.
   highlightScale: {x: 1.2, y: 1.2, z: 1}
 --- !u!1 &1581231065
 GameObject:
@@ -1458,7 +1465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulauData: {fileID: 11400000, guid: 0c8ba8d6d000d1d468ba6421b9a0e7ac, type: 2}
   namaPulau: Sulawesi
-  deskripsiPulau: Wesi kh
+  deskripsiPulau: Sajian laut yang melimpah seperti coto Makassar dan bubur Manado
+    mencerminkan kekayaan alam dan budaya maritimnya.
   highlightScale: {x: 1.2, y: 1.2, z: 1}
 --- !u!1 &1636291735
 GameObject:
@@ -1490,10 +1498,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 60069004}
-  - {fileID: 2026287135}
   - {fileID: 666561299}
-  - {fileID: 1234855960}
   m_Father: {fileID: 1841744862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!225 &1636291737
@@ -1680,8 +1685,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1636291736}
   - {fileID: 693382642}
+  - {fileID: 1636291736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1852,15 +1857,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026287134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7012055}
-  m_LocalScale: {x: 0.5054687, y: 0.5054687, z: 0.5054687}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1636291736}
+  m_Father: {fileID: 666561299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646.00024, y: 127.387634}
+  m_AnchoredPosition: {x: 25.719, y: 119}
   m_SizeDelta: {x: 618.3088, y: 78.0672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026287136
@@ -1885,15 +1890,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: DEsc
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
+  m_sharedMaterial: {fileID: -3404529690970300817, guid: 7c4c440503001c94798a68a4cca2e035, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1910,15 +1915,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

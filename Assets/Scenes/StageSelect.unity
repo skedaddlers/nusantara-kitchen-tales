@@ -451,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2770
+      value: 2510
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2155
+      value: 1960
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1540
+      value: 1410
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1098,15 +1098,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.64705884}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 3375022622098858669, guid: 18e9a7fe44a1d2745a58ea4f3e58f369, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1376,8 +1376,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 3375022622098858669, guid: 18e9a7fe44a1d2745a58ea4f3e58f369, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1574,7 +1574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 925
+      value: 860
       objectReference: {fileID: 0}
     - target: {fileID: 7809983890559383519, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
       propertyPath: m_AnchoredPosition.y

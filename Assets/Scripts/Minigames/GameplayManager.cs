@@ -11,11 +11,14 @@ public class GameplayManager : MonoBehaviour
     public Transform stepParent;
     public TextMeshProUGUI stepText;
     public Image stepImage;
+    public Button pauseButton;
+    public GameObject pauseMenu;
 
     private ResepDataSO resep;
     private int currentStep = 0;
     public int CurrentStep => currentStep;
     private List<GameObject> activeHandlers = new List<GameObject>();  
+
 
     void Awake() => Instance = this;
 
