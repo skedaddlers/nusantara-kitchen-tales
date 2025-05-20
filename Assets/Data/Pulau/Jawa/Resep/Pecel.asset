@@ -17,14 +17,26 @@ MonoBehaviour:
   storyData: {fileID: 11400000, guid: b593216b48e4ddb409471a0d6df52be0, type: 2}
   estimasiDurasi: 0
   langkahMasak:
-  - deskripsi: KUPAS WOI
-    jenisStep: 3
+  - deskripsi: Flip the thing
+    step: {fileID: 0}
+    jenisStep: 7
     ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
-    bahanDiperlukan: []
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 93af5fb76c9653041a8d75c8888082d4, type: 3}
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: ed5b62ceb1fb4944ea0ec07027a807fe, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: f23c0bf2f2b174a41956f01d0b473eee, type: 3}
     addToExisting: 0
+  - deskripsi: Hold the button
+    step: {fileID: 0}
+    jenisStep: 4
+    ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 93af5fb76c9653041a8d75c8888082d4, type: 3}
+    alatDiperlukan: []
+    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    addToExisting: 1
   - deskripsi: Menyangrai
+    step: {fileID: 0}
     jenisStep: 0
     ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
     bahanDiperlukan:
@@ -38,13 +50,15 @@ MonoBehaviour:
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
   - deskripsi: Spin
+    step: {fileID: 0}
     jenisStep: 5
     ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
     bahanDiperlukan: []
     alatDiperlukan: []
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 1
-  - deskripsi: KONTROLLL
+  - deskripsi: Hold the button
+    step: {fileID: 0}
     jenisStep: 4
     ikonStep: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
     bahanDiperlukan: []

@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &84486601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 637048316}
   - component: {fileID: 637048315}
   m_Layer: 5
-  m_Name: Home
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: -45.575}
+  m_AnchoredPosition: {x: 0, y: 70}
   m_SizeDelta: {x: 91.1502, y: 91.1502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637048315
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 1570266715}
   - component: {fileID: 1570266714}
   m_Layer: 5
-  m_Name: Play
+  m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1233,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: 74}
+  m_AnchoredPosition: {x: 0, y: -45.575}
   m_SizeDelta: {x: 91.1502, y: 91.1502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570266714
@@ -1533,11 +1533,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54e1ea628ef5e84891605687074b228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
   stepParent: {fileID: 1646801931}
   stepText: {fileID: 664583476}
   stepImage: {fileID: 404607894}
   pauseButton: {fileID: 1339646384}
   pauseMenu: {fileID: 84486600}
+  resumeButton: {fileID: 637048315}
+  homeButton: {fileID: 1570266714}
 --- !u!4 &2126160827
 Transform:
   m_ObjectHideFlags: 0

@@ -8,16 +8,20 @@ public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager Instance { get; private set; }
 
+    public bool isPaused = false;
     public Transform stepParent;
     public TextMeshProUGUI stepText;
     public Image stepImage;
     public Button pauseButton;
     public GameObject pauseMenu;
+    public Button resumeButton;
+    public Button homeButton;
+
 
     private ResepDataSO resep;
     private int currentStep = 0;
     public int CurrentStep => currentStep;
-    private List<GameObject> activeHandlers = new List<GameObject>();  
+    private List<GameObject> activeHandlers = new List<GameObject>();
 
 
     void Awake() => Instance = this;
@@ -25,7 +29,7 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         resep = GameData.ResepDipilih;
-        if(resep == null)
+        if (resep == null)
         {
             Debug.LogError("Resep tidak ditemukan!");
             return;
@@ -34,6 +38,21 @@ public class GameplayManager : MonoBehaviour
         {
             LoadStep(currentStep);
         }
+
+        pauseButton.onClick.AddListener(() =>
+        {
+            PauseGame();
+        });
+
+        resumeButton.onClick.AddListener(() =>
+        {
+            ResumeGame();
+        });
+
+        homeButton.onClick.AddListener(() =>
+        {
+            SceneLoader.LoadScene("MainMenu");
+        });
     }
 
     public void NextStep()
@@ -76,9 +95,20 @@ public class GameplayManager : MonoBehaviour
         {
             Debug.LogError("Prefab langkah masak tidak ditemukan!");
         }
-
-
     }
 
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
     
 }

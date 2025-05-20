@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Step_ControlMeterHandler : MonoBehaviour
+[System.Serializable]
+public class Step_ControlMeterHandler : Step
 {
     [Header("UI References")]
     [SerializeField] private Slider controlMeter;

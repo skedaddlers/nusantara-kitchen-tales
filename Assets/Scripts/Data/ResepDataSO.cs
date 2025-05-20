@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+
 [CreateAssetMenu(fileName = "ResepData", menuName = "NusantaraKitchen/Resep")]
 public class ResepDataSO : ScriptableObject
 {
@@ -16,6 +18,10 @@ public class ResepDataSO : ScriptableObject
     public class LangkahMasak
     {
         public string deskripsi;
+
+        [SerializeReference]
+        public Step step;
+        
         public StepType jenisStep;
         public Sprite ikonStep;
         public Bahan[] bahanDiperlukan;

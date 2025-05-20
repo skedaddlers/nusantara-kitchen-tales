@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Step_DragDropHandler : MonoBehaviour
+[System.Serializable]
+public class Step_DragDropHandler : Step
 {
     public int totalItems;
     public int itemsDroppedCorrectly;

@@ -68,7 +68,7 @@ public class MainMenuUI : MonoBehaviour
     {
         // Sementara tampilkan log
         Debug.Log("Settings opened.");
-        // Bisa arahkan ke scene Settings nanti
+        SceneLoader.LoadScene("Settings");
     }
 
     public void QuitGame()

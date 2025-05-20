@@ -1,8 +1,8 @@
 using UnityEngine;
 
 // For peeling potatoes or other vegetables
-
-public class Step_Peel : MonoBehaviour
+[System.Serializable]
+public class Step_Peel : Step
 {
     public RenderTexture renderTexture;
     public Material material;

@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: 
   deskripsiBahan: 
-  gambarBahan: {fileID: 0}
+  gambarBahan: {fileID: -8198852537030395460, guid: 866943c40905a1c4abefa8a36e638868, type: 3}
+  gambarBahanTerbalik: {fileID: -3289532225273606739, guid: 4ffb22c7f25c79442bfcb70aa4466902, type: 3}
+  gambarBahanPound:
+  - {fileID: -3289532225273606739, guid: 4ffb22c7f25c79442bfcb70aa4466902, type: 3}
+  - {fileID: -6191428483532228456, guid: 8d71062c8e384b44f8f816e7f1872f50, type: 3}
+  - {fileID: -5957438265227469390, guid: 600a0c64253287d40b79fbee0ae3fad9, type: 3}
 --- !u!114 &-8833521358537531173
 MonoBehaviour:
   m_ObjectHideFlags: 0

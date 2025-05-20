@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Step_SpinGestureHandler : MonoBehaviour
+[System.Serializable]
+public class Step_SpinGestureHandler : Step
 {
     public Image visualIndicator = null; // UI element to show the spin
     public Sprite spinSprite = null; // sprite for the visual indicator
     public float requiredSpin = 720f; // derajat total
     public float spinProgress = 0f;
-    
+
     private Vector2 lastPos;
     private bool isDragging = false;
 
