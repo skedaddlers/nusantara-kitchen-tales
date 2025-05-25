@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 419402087554472338}
   - component: {fileID: 6533325296926176646}
   - component: {fileID: 2246471790796775075}
-  - component: {fileID: -7043678355589999535}
+  - component: {fileID: 5368762938055748811}
   m_Layer: 0
-  m_Name: Step_Peel
+  m_Name: Step_Slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-7043678355589999535
+--- !u!114 &5368762938055748811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,11 +98,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541002010568996511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c775d21d025766f479f9aa137bdadc05, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e84e87d54b350844b1c1ba1a5520f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bahanDisplay: []
-  bahanSkinImages: []
-  bahanPeelImages: []
-  bahanPeel: {fileID: 0}
-  distancePeel: 100
+  bahanSliceImages: []
+  bahanSlice: {fileID: 0}
+  distanceSlice: 100

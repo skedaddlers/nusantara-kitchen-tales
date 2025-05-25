@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class Step_ControlMeterHandler : Step
@@ -54,6 +55,7 @@ public class Step_ControlMeterHandler : Step
 
     void Update()
     {
+        UpdatePressStatus();
         UpdateControlMeter();
     }
 
@@ -69,8 +71,31 @@ public class Step_ControlMeterHandler : Step
         Debug.Log("Released");
     }
 
+    private void UpdatePressStatus()
+    {
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+
+            // Jika jari sedang menekan dan berada di atas tombol
+            if (touch.press.isPressed && InButtonBounds(controlButton))
+            {
+                isPressed = true;
+            }
+            else
+            {
+                isPressed = false;
+            }
+        }
+    }
+
+
     private void UpdateControlMeter()
     {
+        if (elapsedTime >= targetTime)
+        {
+            return;
+        }
         if (isPressed && InButtonBounds(controlButton))
         {
             controlMeter.value += currentSpeed * Time.deltaTime;
@@ -87,7 +112,6 @@ public class Step_ControlMeterHandler : Step
         if (controlMeter.value >= lowerBound && controlMeter.value <= upperBound)
         {
             elapsedTime += Time.deltaTime;
-
             if (elapsedTime >= targetTime)
             {
                 Debug.Log("Success! Meter stable for required time.");
@@ -96,7 +120,7 @@ public class Step_ControlMeterHandler : Step
         }
         else
         {
-            elapsedTime = 0f;
+            elapsedTime -= Time.deltaTime;
         }
     }
 

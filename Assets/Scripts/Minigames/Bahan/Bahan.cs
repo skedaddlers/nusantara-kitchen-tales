@@ -7,5 +7,8 @@ public class Bahan : MonoBehaviour
     public Sprite gambarBahan;
     public Sprite gambarBahanTerbalik;
     public Sprite[] gambarBahanPound;
+    public Sprite[] gambarBahanSlice;
+    public Sprite[] gambarBahanSkin;
+    public Sprite[] gambarBahanPeel;
     
 }

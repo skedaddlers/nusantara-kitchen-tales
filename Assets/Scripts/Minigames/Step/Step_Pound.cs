@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 // Step that represents the action of pounding an ingredient
 // the player touch and drag on the ingredient image
@@ -22,6 +23,29 @@ public class Step_Pound : Step
     private float elapsedTime = 0f;
     private Tween tween;
     private bool isPounding = false;
+
+    void Update()
+    {
+        UpdatePressStatus();
+    }
+    private void UpdatePressStatus()
+    {
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+            Vector2 touchPos = InputHandler.Instance.GetTouchPosition();
+            if (touch.press.isPressed && InBounds(bahanDisplay.rectTransform, touchPos))
+            {
+                isPounding = true;
+            }
+            else
+            {
+                isPounding = false;
+
+            }
+
+        }
+    }
 
     private void Awake()
     {
@@ -56,10 +80,14 @@ public class Step_Pound : Step
     private void StartPound(Vector2 touchPosition)
     {
         if (isPounding) return;
-
+        Debug.Log(bahanDisplay.rectTransform.position);
+        Debug.Log(bahanDisplay.rectTransform.rect);
+        Debug.Log(bahanDisplay.rectTransform.rect.width);
+        Debug.Log(bahanDisplay.rectTransform.rect.height);
         // Check if the touch is on the ingredient image
-        if (RectTransformUtility.RectangleContainsScreenPoint(bahanDisplay.rectTransform, touchPosition))
+        if (InBounds(bahanDisplay.rectTransform, touchPosition))
         {
+            Debug.Log($"StartPound: {touchPosition}");
             isPounding = true;
             bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
             currentTouchPosition = touchPosition;
@@ -68,13 +96,14 @@ public class Step_Pound : Step
 
     private void ContinuePound(Vector2 touchPosition)
     {
+        Debug.Log($"ContinuePound: {touchPosition}" + $" isPounding: {isPounding}");
         if (!isPounding) return;
 
         // Check if the touch is still on the ingredient image
-        if (RectTransformUtility.RectangleContainsScreenPoint(bahanDisplay.rectTransform, touchPosition))
+        if (InBounds(bahanDisplay.rectTransform, touchPosition))
         {
             float distance = Vector2.Distance(touchPosition, currentTouchPosition);
-            Debug.Log($"Distance: {distance}"); 
+            Debug.Log($"Distance: {distance}");
             if (distance > minDistanceToPound)
             {
                 // Update the current touch position
@@ -111,30 +140,50 @@ public class Step_Pound : Step
             // Check if the total time to pound has been reached
             if (elapsedTime >= timeToPound)
             {
-                GameplayManager.Instance.NextStep();
+                EndPound(touchPosition);
             }
         }
         else
         {
             isPounding = false;
             tween?.Kill();
-            tween = null;            
+            tween = null;
         }
     }
 
     private void EndPound(Vector2 touchPosition)
     {
+        Debug.Log($"EndPound: {touchPosition}");    
         if (!isPounding) return;
         isPounding = false;
         tween?.Kill();
         tween = null;
-        
-        
+
+
         bahanDisplay.rectTransform.localScale = Vector3.one;
-        if(elapsedTime < timeToPound) return;
-        GameplayManager.Instance.NextStep();
+        if (elapsedTime >= timeToPound)
+        {
+            GameplayManager.Instance.NextStep();
+        }
 
     }
+    
+    private bool InBounds(RectTransform rectTransform, Vector2 touchPosition)
+    {
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+        Vector2 touchPos = new Vector2(touchPosition.x - screenWidth / 2, touchPosition.y - screenHeight / 2);
+
+        Vector2 buttonPos = rectTransform.anchoredPosition;
+        Vector2 buttonSize = rectTransform.sizeDelta;
+        Vector2 min = buttonPos - buttonSize / 2;
+        Vector2 max = buttonPos + buttonSize / 2;
+        Debug.Log("Touch Position: " + touchPos);
+        Debug.Log($"Button Position: {buttonPos}, Size: {buttonSize}, Min: {min}, Max: {max}");
+        return touchPos.x >= min.x && touchPos.x <= max.x && touchPos.y >= min.y && touchPos.y <= max.y;
+
+    }
+
 
 
 }

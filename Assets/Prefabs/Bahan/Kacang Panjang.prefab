@@ -60,6 +60,18 @@ MonoBehaviour:
   - {fileID: -3289532225273606739, guid: 4ffb22c7f25c79442bfcb70aa4466902, type: 3}
   - {fileID: -6191428483532228456, guid: 8d71062c8e384b44f8f816e7f1872f50, type: 3}
   - {fileID: -5957438265227469390, guid: 600a0c64253287d40b79fbee0ae3fad9, type: 3}
+  gambarBahanSlice:
+  - {fileID: -6191428483532228456, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  - {fileID: -1789530663, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  - {fileID: 264203750, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  gambarBahanSkin:
+  - {fileID: -6191428483532228456, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  - {fileID: -1789530663, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  - {fileID: 264203750, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
+  gambarBahanPeel:
+  - {fileID: 1921889123, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
+  - {fileID: 318961844, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
+  - {fileID: -552294747, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
 --- !u!114 &-8833521358537531173
 MonoBehaviour:
   m_ObjectHideFlags: 0

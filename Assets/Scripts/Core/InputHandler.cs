@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+
 
 public class InputHandler : MonoBehaviour
 {
@@ -28,11 +30,40 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        if (InputActions.Gameplay.TouchPress.IsPressed())
+        if (Touchscreen.current != null)
         {
-            Vector2 pos = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-            OnTouchMoved?.Invoke(pos);
+            var touch = Touchscreen.current.primaryTouch;
+
+            if (touch.press.isPressed && touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+            {
+                // if (IsPointerOverUI()) return;
+
+                Vector2 pos = touch.position.ReadValue();
+                OnTouchMoved?.Invoke(pos);
+            }
+        } else if (Mouse.current != null)
+        {
+            // Handle mouse input as a fallback
+            if (Mouse.current.leftButton.isPressed)
+            {
+                // if (IsPointerOverUI()) return;
+
+                Vector2 pos = Mouse.current.position.ReadValue();
+                OnTouchMoved?.Invoke(pos);
+            }
         }
+
+
+        // if (InputActions.Gameplay.TouchPress.IsPressed())
+        // {
+        //     // if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        //     // {
+        //     //     return;
+        //     // }
+
+        //     Vector2 pos = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
+        //     OnTouchMoved?.Invoke(pos);
+        // }
 
     }
 
@@ -49,6 +80,7 @@ public class InputHandler : MonoBehaviour
         InputActions.Gameplay.TouchPress.performed += OnTouchPressed;
         InputActions.Gameplay.TouchPress.canceled += OnTouchCancel;
         InputActions.Gameplay.TouchPress.started += OnTouchStart;
+    
     }
 
     private void OnDisable()
