@@ -5,7 +5,6 @@ using TMPro;
 
 public class UIPulauSelect : MonoBehaviour
 {
-    public static UIPulauSelect Instance { get; private set; }
     public RectTransform mapContainer;
 
 
@@ -17,15 +16,6 @@ public class UIPulauSelect : MonoBehaviour
 
     private void Start()
     {
-        // Singleton pattern to ensure only one instance of UIPulauSelect exists
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
         infoPanel.alpha = 0;
         infoPanel.interactable = false;
         infoPanel.blocksRaycasts = false;

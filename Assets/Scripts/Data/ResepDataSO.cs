@@ -9,6 +9,7 @@ public class ResepDataSO : ScriptableObject
     public string namaResep;
     public Sprite ikonResep;
     public StoryDataSO storyData;
+    public Sprite resepText;
 
     // Placeholder: kamu bisa tambah lagi nanti
     public int estimasiDurasi;

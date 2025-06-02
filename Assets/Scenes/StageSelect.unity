@@ -1052,8 +1052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5947, y: -0.00052643}
-  m_SizeDelta: {x: 1916.8, y: 764.14}
+  m_AnchoredPosition: {x: 13.5924, y: -12.157501}
+  m_SizeDelta: {x: 1947.1743, y: 1104.315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038525810
 MonoBehaviour:
@@ -1634,6 +1634,7 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 1c40b1587c364df42b2931d9eb8fef77, type: 2}
   cardContainer: {fileID: 963524349}
   stageCardPrefab: {fileID: 4342239115677159337, guid: 84c880e979e24f241a3db2d5c96980c3, type: 3}
+  backgroundImage: {fileID: 1038525811}
 --- !u!4 &2110832602
 Transform:
   m_ObjectHideFlags: 0

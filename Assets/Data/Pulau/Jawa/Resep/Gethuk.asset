@@ -15,5 +15,6 @@ MonoBehaviour:
   namaResep: Gethuk
   ikonResep: {fileID: -4307632236167514295, guid: f2aafc9d43fba2444b80169a95f0281c, type: 3}
   storyData: {fileID: 11400000, guid: 619f75179745ac643bf7b6e66b8da4ca, type: 2}
+  resepText: {fileID: -8445561939189844025, guid: edcf1b58afe12704091dc554be0ce052, type: 3}
   estimasiDurasi: 0
-  bahan: []
+  langkahMasak: []

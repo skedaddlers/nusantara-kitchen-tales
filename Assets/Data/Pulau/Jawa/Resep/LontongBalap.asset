@@ -15,5 +15,6 @@ MonoBehaviour:
   namaResep: Lontong Balap
   ikonResep: {fileID: -8632645249084310720, guid: c6e6416cff0cc914885396423afa368c, type: 3}
   storyData: {fileID: 11400000, guid: c4aedfa247a7ad64dace664186eb609c, type: 2}
+  resepText: {fileID: -4555805776509422923, guid: 87d3c807196c95a4883e64539f58f960, type: 3}
   estimasiDurasi: 0
-  bahan: []
+  langkahMasak: []

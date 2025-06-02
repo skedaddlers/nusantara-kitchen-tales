@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaAlat: Wajan
   deskripsiAlat: 
-  gambarAlat: {fileID: 234083801023390912, guid: 0588088436bb4e64d80d6c46fd7d8aae, type: 3}
+  gambarAlat: {fileID: -3261859311566790029, guid: 6936bc89431efbe46b44086869c9081a, type: 3}
 --- !u!114 &2068340615807120745
 MonoBehaviour:
   m_ObjectHideFlags: 0

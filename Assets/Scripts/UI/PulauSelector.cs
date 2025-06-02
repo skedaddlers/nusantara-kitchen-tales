@@ -11,6 +11,7 @@ public class PulauSelector : MonoBehaviour
     [TextArea]
     public string deskripsiPulau;
     public Vector3 highlightScale = new Vector3(1.2f, 1.2f, 1f);
+    public UIPulauSelect uiPulauSelect;
 
     private Vector3 originalScale;
 
@@ -25,9 +26,9 @@ public class PulauSelector : MonoBehaviour
         transform.DOScale(highlightScale, 0.3f).SetEase(Ease.OutBack)
             .OnComplete(() => transform.DOScale(originalScale, 0.3f).SetDelay(0.2f));
 
-        UIPulauSelect.Instance.ShowInfoPanel(namaPulau, deskripsiPulau, pulauData);
+        uiPulauSelect.ShowInfoPanel(namaPulau, deskripsiPulau, pulauData);
 
-        UIPulauSelect.Instance.ZoomToPulau(transform.position);
+        uiPulauSelect.ZoomToPulau(transform.position);
 
         // Remove listeners to prevent multiple clicks
         

@@ -8,16 +8,17 @@ public class UIRaycaster : MonoBehaviour
     public GraphicRaycaster raycaster;
     public EventSystem eventSystem;
     private PulauSelector currentPulauSelector = null;
+    public UIPulauSelect uiPulauSelect;
 
     public void RaycastUI(Vector2 screenPosition)
     {
         PointerEventData pointerData = new PointerEventData(eventSystem);
         pointerData.position = screenPosition;
-        
+
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(pointerData, results);
 
-        Debug.Log("Raycasted UI at: " + screenPosition + " with " + results.Count + " results.");   
+        Debug.Log("Raycasted UI at: " + screenPosition + " with " + results.Count + " results.");
         foreach (var result in results)
         {
             Debug.Log("UI Hit: " + result.gameObject.name);
@@ -28,7 +29,7 @@ public class UIRaycaster : MonoBehaviour
                 {
                     selector.OnPulauSelected();
                     currentPulauSelector = selector;
-                }                
+                }
             }
             else if (currentPulauSelector != null)
             {
@@ -37,7 +38,7 @@ public class UIRaycaster : MonoBehaviour
         }
         if (results.Count == 0)
         {
-            UIPulauSelect.Instance.CloseInfoPanel();
+            uiPulauSelect.CloseInfoPanel();
         }
     }
 }

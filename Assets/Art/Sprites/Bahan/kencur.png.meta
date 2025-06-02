@@ -260,7 +260,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kencur_0: -4058043825386622718
+      kencur_1: -7111570012693278920
+      kencur_2: 5747220777299771625
+      kencur_3: -8163248499662723215
+      kencur_4: -7614996549718037360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

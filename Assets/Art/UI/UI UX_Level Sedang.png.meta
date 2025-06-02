@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI UX_Level Sedang_0: -8198852537030395460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

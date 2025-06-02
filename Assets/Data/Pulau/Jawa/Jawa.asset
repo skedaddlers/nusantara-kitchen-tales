@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7edcf5799c09ca45b3c8201bd62127d, type: 2}
   - {fileID: 11400000, guid: 477514d915215154bba680b6c36aa612, type: 2}
   - {fileID: 11400000, guid: f2c4d77065b6328418f5229c2b832617, type: 2}
+  backgroundImage: {fileID: -9028897806990677840, guid: be188c23efba2994fbfdce2615d5f0a2, type: 3}

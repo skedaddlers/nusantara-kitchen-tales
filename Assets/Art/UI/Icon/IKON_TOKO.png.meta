@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IKON_TOKO_0: 5106242550983073674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

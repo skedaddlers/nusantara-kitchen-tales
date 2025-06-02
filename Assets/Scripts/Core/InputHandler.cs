@@ -41,7 +41,8 @@ public class InputHandler : MonoBehaviour
                 Vector2 pos = touch.position.ReadValue();
                 OnTouchMoved?.Invoke(pos);
             }
-        } else if (Mouse.current != null)
+        }
+        else if (Mouse.current != null)
         {
             // Handle mouse input as a fallback
             if (Mouse.current.leftButton.isPressed)

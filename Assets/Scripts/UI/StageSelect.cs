@@ -8,6 +8,7 @@ public class StageSelect : MonoBehaviour
     public PulauDatabase database;
     public Transform cardContainer;
     public GameObject stageCardPrefab;
+    public Image backgroundImage;
 
     private void Start()
     {
@@ -17,6 +18,15 @@ public class StageSelect : MonoBehaviour
         {
             Debug.LogError("Pulau tidak ditemukan di database.");
             return;
+        }
+        if (backgroundImage != null)
+        {
+            backgroundImage.sprite = pulauData.backgroundImage;
+            // backgroundImage.SetNativeSize();
+        }
+        else
+        {
+            Debug.LogWarning("Background image not set in StageSelect.");
         }
 
         GenerateStageCards(pulauData);

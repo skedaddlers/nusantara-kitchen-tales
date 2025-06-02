@@ -15,23 +15,56 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        // Tombol animasi masuk pakai DOTween
-        playButton.transform.DOLocalMoveY(100f, 1f).From().SetEase(Ease.OutBack);
-        customizeButton.transform.DOLocalMoveY(100f, 1f).From().SetDelay(0.2f).SetEase(Ease.OutBack);
-        settingsButton.transform.DOLocalMoveY(0f, 1f).From().SetDelay(0.2f).SetEase(Ease.OutBack);
-        quitButton.transform.DOLocalMoveY(-100f, 1f).From().SetDelay(0.4f).SetEase(Ease.OutBack);
-        recipeButton.transform.DOLocalMoveY(-100f, 1f).From().SetDelay(0.4f).SetEase(Ease.OutBack);
+        Debug.Log("MainMenuUI started.");
+        Animate();
+    }
+
+    public void Reload()
+    {
+        Debug.Log("Reloading MainMenuUI");
+        Animate();
+    }
+
+    private void Animate()
+    {
+        if (playButton == null || settingsButton == null || quitButton == null || customizeButton == null || recipeButton == null)
+        {
+            Debug.LogError("One or more buttons are not assigned in the MainMenuUI script.");
+            return;
+        }
 
         AddButtonEffect(playButton, PlayGame);
         AddButtonEffect(settingsButton, OpenSettings);
         AddButtonEffect(quitButton, QuitGame);
         AddButtonEffect(customizeButton, CustomizeCharacter);
         AddButtonEffect(recipeButton, OpenRecipeBook);
-        
+
+        // Kill previous tweens (important for reloading)
+        DOTween.Kill(playButton.transform);
+        DOTween.Kill(settingsButton.transform);
+        DOTween.Kill(quitButton.transform);
+        DOTween.Kill(customizeButton.transform);
+        DOTween.Kill(recipeButton.transform);
+
+        // Optional: Reset scale and position manually if needed
+        playButton.transform.localScale = Vector3.one;
+        settingsButton.transform.localScale = Vector3.one;
+        quitButton.transform.localScale = Vector3.one;
+        customizeButton.transform.localScale = Vector3.one;
+        recipeButton.transform.localScale = Vector3.one;
+
+        // Re-animate positions
+        playButton.transform.DOLocalMoveY(100f, 1f).From().SetEase(Ease.OutBack);
+        customizeButton.transform.DOLocalMoveY(100f, 1f).From().SetDelay(0.2f).SetEase(Ease.OutBack);
+        settingsButton.transform.DOLocalMoveY(0f, 1f).From().SetDelay(0.2f).SetEase(Ease.OutBack);
+        quitButton.transform.DOLocalMoveY(-100f, 1f).From().SetDelay(0.4f).SetEase(Ease.OutBack);
+        recipeButton.transform.DOLocalMoveY(-100f, 1f).From().SetDelay(0.4f).SetEase(Ease.OutBack);
     }
+
 
     private void AddButtonEffect(Button btn, UnityAction action)
     {
+        btn.onClick.RemoveAllListeners(); // Clear previous listeners to avoid stacking
         btn.onClick.AddListener(() =>
         {
             btn.transform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 10, 1)
@@ -46,6 +79,7 @@ public class MainMenuUI : MonoBehaviour
     {
         // Sementara tampilkan log
         Debug.Log("Customize character opened.");
+        SceneLoader.LoadScene("CUstomization");
         // Bisa arahkan ke scene CustomizeCharacter nanti
     }
 

@@ -15,5 +15,6 @@ MonoBehaviour:
   namaResep: Tahu Gejrot
   ikonResep: {fileID: 6628404196070710950, guid: 850e02224b0678f4497a03fa11d3fc8e, type: 3}
   storyData: {fileID: 11400000, guid: 5f1027193cf16ec4c8f2049ff4df3b25, type: 2}
+  resepText: {fileID: -2214117566966512161, guid: 7535ea54f10f45747b1e4a6b55d54a0d, type: 3}
   estimasiDurasi: 0
-  bahan: []
+  langkahMasak: []

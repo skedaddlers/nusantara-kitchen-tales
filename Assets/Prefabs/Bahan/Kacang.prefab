@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: 
   deskripsiBahan: 
-  gambarBahan: {fileID: 0}
+  gambarBahan: {fileID: 4473531828266243706, guid: 6631c3ebc819d6e4b883f880729bbd0d, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
 --- !u!114 &-6763363041305436617
 MonoBehaviour:
   m_ObjectHideFlags: 0

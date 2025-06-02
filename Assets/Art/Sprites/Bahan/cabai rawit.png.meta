@@ -210,7 +210,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cabai rawit_0: 8764774497078877198
+      cabai rawit_1: 7622818105685329134
+      cabai rawit_2: -2929148817786176797
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

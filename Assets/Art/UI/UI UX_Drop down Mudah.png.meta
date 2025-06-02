@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI UX_Drop down Mudah_0: -1829870216604168481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

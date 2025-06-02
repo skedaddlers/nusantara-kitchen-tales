@@ -4,7 +4,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-    private void awake()
+
+    private void Awake()
     {
         // Singleton pattern to ensure only one instance of UIManager exists
         if (Instance != null && Instance != this)
@@ -15,5 +16,9 @@ public class UIManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    
+
+
+
 
 }

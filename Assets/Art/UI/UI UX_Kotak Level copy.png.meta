@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI UX_Kotak Level copy_0: 5201407055009538060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

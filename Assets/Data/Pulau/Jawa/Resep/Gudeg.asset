@@ -15,5 +15,6 @@ MonoBehaviour:
   namaResep: Gudeg
   ikonResep: {fileID: 3219219685781749312, guid: 261acd60ac6cbff4094d5cc6c92a5e69, type: 3}
   storyData: {fileID: 11400000, guid: 0f0e20fc4f401234ebaf28821ff2bb21, type: 2}
+  resepText: {fileID: 7606688717527869116, guid: 9b73f7de83ac2124f9eace7c9c8293eb, type: 3}
   estimasiDurasi: 0
-  bahan: []
+  langkahMasak: []
