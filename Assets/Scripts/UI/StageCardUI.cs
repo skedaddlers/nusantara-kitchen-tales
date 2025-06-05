@@ -14,6 +14,7 @@ public class StageCardUI : MonoBehaviour
         icon.sprite = resep.ikonResep;
         Debug.Log("Inisialisasi kartu stage: " + resep.namaResep);
         textImage.sprite = resep.resepText;
+        Utilz.SetSizeNormalized(textImage.GetComponent<RectTransform>(), resep.resepText, 350f, 350f);
 
         button.onClick.AddListener(() =>
         {

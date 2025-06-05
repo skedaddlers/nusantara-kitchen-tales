@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Customization.unity
     guid: f291451997dacba4d97fa6fd8803a1a1
+  - enabled: 1
+    path: Assets/Scenes/PulauSelect.unity
+    guid: 37cc40a89572e374ca1ab41ff6fcf3fc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

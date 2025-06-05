@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: Cabai Rawit
   deskripsiBahan: 
-  gambarBahan: {fileID: 7622818105685329134, guid: d1cd469ef28da72468ce0fdad23be9e2, type: 3}
+  gambarBahan: {fileID: 771273754828900472, guid: 50c0ba0411316eb4db1b52d812807e70, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
 --- !u!114 &4319398972018024006
 MonoBehaviour:
   m_ObjectHideFlags: 0

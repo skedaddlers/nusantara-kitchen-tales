@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5793984004075184414}
   - component: {fileID: 5491858519558499118}
-  - component: {fileID: -8833521358537531173}
-  - component: {fileID: 7303722060921593234}
-  - component: {fileID: 8597148914239792569}
-  - component: {fileID: 4058056288892541296}
+  - component: {fileID: 776381716148576285}
+  - component: {fileID: 3385578365509318104}
+  - component: {fileID: 529057649885211216}
+  - component: {fileID: 4080688487630815100}
   m_Layer: 0
   m_Name: Kacang Panjang
   m_TagString: Untagged
@@ -52,27 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e19415feb40a489dc38afbf8f96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namaBahan: 
+  namaBahan: Kencur
   deskripsiBahan: 
-  gambarBahan: {fileID: -8198852537030395460, guid: 866943c40905a1c4abefa8a36e638868, type: 3}
-  gambarBahanTerbalik: {fileID: -3289532225273606739, guid: 4ffb22c7f25c79442bfcb70aa4466902, type: 3}
-  gambarBahanPound:
-  - {fileID: -3289532225273606739, guid: 4ffb22c7f25c79442bfcb70aa4466902, type: 3}
-  - {fileID: -6191428483532228456, guid: 8d71062c8e384b44f8f816e7f1872f50, type: 3}
-  - {fileID: -5957438265227469390, guid: 600a0c64253287d40b79fbee0ae3fad9, type: 3}
-  gambarBahanSlice:
-  - {fileID: -6191428483532228456, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  - {fileID: -1789530663, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  - {fileID: 264203750, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  gambarBahanSkin:
-  - {fileID: -6191428483532228456, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  - {fileID: -1789530663, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  - {fileID: 264203750, guid: 002ab58f2a11e114ab5fe6c41a7b0be5, type: 3}
-  gambarBahanPeel:
-  - {fileID: 1921889123, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
-  - {fileID: 318961844, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
-  - {fileID: -552294747, guid: 6f0c3eac7edef1c43b8e4e4a1220cfee, type: 3}
---- !u!114 &-8833521358537531173
+  gambarBahan: {fileID: 9179721535796383370, guid: ad338382f164c3c44824d34992d94d82, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
+--- !u!114 &776381716148576285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedCorrectly: 0
---- !u!222 &7303722060921593234
+--- !u!222 &3385578365509318104
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +81,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371144873957114690}
   m_CullTransparentMesh: 1
---- !u!114 &8597148914239792569
+--- !u!114 &529057649885211216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +111,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &4058056288892541296
+--- !u!225 &4080688487630815100
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: Kencur
   deskripsiBahan: 
-  gambarBahan: {fileID: -7111570012693278920, guid: ec18102541602dc4893e2a76fc837e84, type: 3}
+  gambarBahan: {fileID: 8797191424007066251, guid: 7321932766b4bd44abba3330ca9b9e74, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
 --- !u!114 &776381716148576285
 MonoBehaviour:
   m_ObjectHideFlags: 0

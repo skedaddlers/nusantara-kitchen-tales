@@ -9,6 +9,7 @@ public class StoryManager : MonoBehaviour
     public Image slideImage;
     public TextMeshProUGUI storyText;
     public Button nextButton;
+    public Button homeButton;
     public StoryDataSO storyData;
     private int currentSlide = 0;
     private Coroutine typingCoroutine;
@@ -16,8 +17,16 @@ public class StoryManager : MonoBehaviour
     void Start()
     {
         storyData = GameData.ResepDipilih.storyData;
-        nextButton.onClick.AddListener(NextSlide);
+        nextButton.onClick.AddListener(() =>
+        {
+            NextSlide();
+        });
         ShowSlide(currentSlide);
+        homeButton.onClick.AddListener(() =>
+        {
+            GameData.ResetData();
+            SceneLoader.LoadScene("MainMenu");
+        });
     }
 
     void ShowSlide(int index)

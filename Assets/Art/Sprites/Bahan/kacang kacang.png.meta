@@ -129,12 +129,12 @@ TextureImporter:
       name: kacang kacang_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1000
-        height: 1000
+        x: 118
+        y: 144
+        width: 1665
+        height: 1666
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2502728f6fa2c6946a8f4b3d2be96551
     internalID: 0
     vertices: []
     indices: 

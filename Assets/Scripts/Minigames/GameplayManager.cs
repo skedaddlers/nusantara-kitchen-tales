@@ -65,6 +65,11 @@ public class GameplayManager : MonoBehaviour
 
         homeButton.onClick.AddListener(() =>
         {
+            // resume time
+            Time.timeScale = 1f;
+            
+            GameData.ResetData();
+            Debug.Log("Kembali ke menu utama");
             SceneLoader.LoadScene("MainMenu");
         });
     }

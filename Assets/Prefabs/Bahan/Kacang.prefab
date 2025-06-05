@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e19415feb40a489dc38afbf8f96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namaBahan: 
+  namaBahan: Kacang
   deskripsiBahan: 
-  gambarBahan: {fileID: 4473531828266243706, guid: 6631c3ebc819d6e4b883f880729bbd0d, type: 3}
+  gambarBahan: {fileID: 4153588108123152196, guid: ee76b850667c22949a89454affc268ef, type: 3}
   gambarBahanTerbalik: {fileID: 0}
   gambarBahanPound: []
   gambarBahanSlice: []

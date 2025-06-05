@@ -9,6 +9,7 @@ public class StageSelect : MonoBehaviour
     public Transform cardContainer;
     public GameObject stageCardPrefab;
     public Image backgroundImage;
+    public Button homeButton;
 
     private void Start()
     {
@@ -28,6 +29,12 @@ public class StageSelect : MonoBehaviour
         {
             Debug.LogWarning("Background image not set in StageSelect.");
         }
+
+        homeButton.onClick.AddListener(() =>
+        {
+            GameData.ResetData();
+            SceneLoader.LoadScene("MainMenu");
+        });
 
         GenerateStageCards(pulauData);
     }

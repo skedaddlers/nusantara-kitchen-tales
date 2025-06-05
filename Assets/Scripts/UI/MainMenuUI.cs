@@ -15,6 +15,11 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
+        playButton = GameObject.Find("Play").GetComponent<Button>();
+        settingsButton = GameObject.Find("Settings").GetComponent<Button>();
+        quitButton = GameObject.Find("Quit").GetComponent<Button>();
+        customizeButton = GameObject.Find("Kostum").GetComponent<Button>();
+        recipeButton = GameObject.Find("Resep").GetComponent<Button>();
         Debug.Log("MainMenuUI started.");
         Animate();
     }
@@ -32,6 +37,8 @@ public class MainMenuUI : MonoBehaviour
             Debug.LogError("One or more buttons are not assigned in the MainMenuUI script.");
             return;
         }
+
+        Debug.Log("Animating MainMenuUI buttons.");
 
         AddButtonEffect(playButton, PlayGame);
         AddButtonEffect(settingsButton, OpenSettings);
@@ -64,16 +71,16 @@ public class MainMenuUI : MonoBehaviour
 
     private void AddButtonEffect(Button btn, UnityAction action)
     {
-        btn.onClick.RemoveAllListeners(); // Clear previous listeners to avoid stacking
+        btn.onClick.RemoveAllListeners();
+
+        Debug.Log("Adding click effect to button: " + btn.name);
         btn.onClick.AddListener(() =>
         {
-            btn.transform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 10, 1)
-                .OnComplete(() =>
-                {
-                    action?.Invoke();
-                });
+            Debug.Log("Button clicked — skipping tween");
+            action?.Invoke();
         });
     }
+
 
     public void CustomizeCharacter()
     {
@@ -94,7 +101,7 @@ public class MainMenuUI : MonoBehaviour
     {
         // Ganti ke scene gameplay
         Debug.Log("PlayPressed");
-        SceneLoader.LoadScene("LevelSelect");
+        SceneLoader.LoadScene("PulauSelect");
 
     }
 

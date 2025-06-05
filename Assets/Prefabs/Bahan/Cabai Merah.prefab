@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: Cabai Merah
   deskripsiBahan: 
-  gambarBahan: {fileID: -8312508186681352146, guid: 3fe5f4c7536a6474d9505b7436b00867, type: 3}
+  gambarBahan: {fileID: -3346087714633653968, guid: 52a4d493e35c0c24b9f0a26a9cbab4ee, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
 --- !u!114 &1553328557096335980
 MonoBehaviour:
   m_ObjectHideFlags: 0

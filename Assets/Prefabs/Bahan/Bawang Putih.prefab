@@ -54,7 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaBahan: Bawang Putih
   deskripsiBahan: 
-  gambarBahan: {fileID: 1346379236048009933, guid: 3032b24fb4257804698b5981104d8fc2, type: 3}
+  gambarBahan: {fileID: 7107655716504502011, guid: 29e23813c47b965429cd225a00dbe003, type: 3}
+  gambarBahanTerbalik: {fileID: 0}
+  gambarBahanPound: []
+  gambarBahanSlice: []
+  gambarBahanSkin: []
+  gambarBahanPeel: []
 --- !u!114 &6515695689365721782
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour
 {
-    private GameInputActions InputActions;
+    public GameInputActions InputActions;
     public static InputHandler Instance { get; private set; }
 
     public event System.Action<Vector2> OnTouchPerformed;
@@ -24,8 +24,11 @@ public class InputHandler : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        InputActions = new GameInputActions();
+        if (InputActions == null)
+            InputActions = new GameInputActions();
+
         InputActions.Enable();
+
     }
 
     private void Update()
@@ -86,6 +89,7 @@ public class InputHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        if (InputActions == null) return;
         InputActions.Gameplay.TouchPress.performed -= OnTouchPressed;
         InputActions.Gameplay.TouchPress.canceled -= OnTouchCancel;
         InputActions.Gameplay.TouchPress.started -= OnTouchStart;
@@ -121,6 +125,7 @@ public class InputHandler : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (InputActions == null) return;
         InputActions.Disable();
     }
 
