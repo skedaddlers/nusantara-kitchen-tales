@@ -13,7 +13,30 @@ MonoBehaviour:
   m_Name: Pecel_Story
   m_EditorClassIdentifier: 
   slides:
-  - image: {fileID: 7204091866225645644, guid: d27b6d6cde009a9438f47bfaf2babc08, type: 3}
-    text: PECEL IKU PANGANAN PALING ENAK SEDUNIA
-  - image: {fileID: 2948551997936671696, guid: 0dd1f27df611a4745a96deebb54dde3e, type: 3}
-    text: NO DEBAT FIX, GK ENEK SING ISO NGALAHNE PECEL
+  - image: {fileID: -7018438993801473805, guid: 6e3fc990144e56e42a05bb09e4a92462, type: 3}
+    text: "Nek, ternyata bikin pecel itu susah-susah gampang, ya... \nTapi rasanya
+      enak banget!"
+  - image: {fileID: 7454907419791644900, guid: 835029c8d82d46d4e994730e8a38e91a, type: 3}
+    text: 'Kamu tahu? Pecel bukan sekadar sayur dan sambal.
+
+      Dulu, waktu nenek
+      muda, pecel ini jadi bekal saat pergi
+
+      ke ladang. Sederhana, tapi penuh
+      cinta.'
+  - image: {fileID: 7454907419791644900, guid: 835029c8d82d46d4e994730e8a38e91a, type: 3}
+    text: "Setiap bahan ada maknanya.Kacang melambangkan\r\nkebersamaan, karena saling
+      menyatu. Daun-daunannya\r\nseperti hidup\u2014beragam, tapi jadi satu dalam
+      rasa."
+  - image: {fileID: -7018438993801473805, guid: 6e3fc990144e56e42a05bb09e4a92462, type: 3}
+    text: 'Berarti, kalau aku bikin pecel untuk orang lain...
+
+      aku juga sedang
+      membagikan cinta, ya?'
+  - image: {fileID: 7454907419791644900, guid: 835029c8d82d46d4e994730e8a38e91a, type: 3}
+    text: 'Iya, Nak. Cinta dan warisan leluhur.
+
+      Ingat baik-baik rasa ini,
+      karena suatu hari...
+
+      kamu yang akan meneruskannya.'
