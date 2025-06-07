@@ -82,7 +82,7 @@ MonoBehaviour:
     - {fileID: 5491858519558499118, guid: 1a1161d95e6892e4e8780eaa55628c74, type: 3}
     - {fileID: 5491858519558499118, guid: 686056ab861501a44aec8150f0806c6e, type: 3}
     alatDiperlukan:
-    - {fileID: 0}
+    - {fileID: 3001705035717412675, guid: bf4de55712faed44f9cb433549740596, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
   - deskripsi: Tahan
@@ -97,8 +97,10 @@ MonoBehaviour:
     step: {fileID: 0}
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: b044b13130b3e2b4c8220fe88f28d6d8, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: bafe08f2ea132d8409f39c727001b203, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
   - deskripsi: Pound sambal

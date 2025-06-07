@@ -33,6 +33,7 @@ public class GameplayManager : MonoBehaviour
     private int currentStep = 0;
     public int CurrentStep => currentStep;
     private List<GameObject> activeHandlers = new List<GameObject>();
+    private Step currentStepHandler;
     private Coroutine typingCoroutine;
 
 
@@ -108,14 +109,6 @@ public class GameplayManager : MonoBehaviour
 
         SetMaskotImage("Happy");
         var step = resep.langkahMasak[index];
-        Debug.Log("Memuat langkah: " + step.deskripsi + " ke indeks " + index);
-        if(typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
-        typingCoroutine = StartCoroutine(TypeText(step.deskripsi));
-        stepImage.sprite = step.ikonStep;
-
         if (!step.addToExisting)
         {
             foreach (var handler in activeHandlers)
@@ -124,12 +117,27 @@ public class GameplayManager : MonoBehaviour
             }
             activeHandlers.Clear();
         }
+        else
+        {
+            currentStepHandler.DisableStep();
+        }
+
+        Debug.Log("Memuat langkah: " + step.deskripsi + " ke indeks " + index);
+        if(typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeText(step.deskripsi));
+        stepImage.sprite = step.ikonStep;
+
+        
 
         if (step.prefabStep != null)
         {
             GameObject handler = Instantiate(step.prefabStep, stepParent);
             activeHandlers.Add(handler);
             handler.transform.localPosition = Vector3.zero;
+            currentStepHandler = handler.GetComponent<Step>();
         }
         else
         {

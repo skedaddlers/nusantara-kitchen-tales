@@ -24,8 +24,10 @@ public class Step_ControlMeterHandler : Step
     private bool isPressed = false;
     private float currentSpeed;
 
+
     void Start()
     {
+        isActive = true;
         if (controlMeter == null || controlButton == null)
         {
             Debug.LogError("Control Meter or Button is not assigned!");
@@ -37,6 +39,16 @@ public class Step_ControlMeterHandler : Step
         controlMeter.value = 0.5f;
 
         currentSpeed = cookingSpeed;
+    }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        controlMeter.value = 0f;
+        elapsedTime = 0f;
+        currentSpeed = cookingSpeed;
+        isPressed = false;
+        Debug.Log("Step disabled");
     }
 
     void OnEnable()
@@ -55,6 +67,7 @@ public class Step_ControlMeterHandler : Step
 
     void Update()
     {
+        if (!isActive) return;
         UpdatePressStatus();
         UpdateControlMeter();
     }

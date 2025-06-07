@@ -129,12 +129,12 @@ TextureImporter:
       name: daun jeruk_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 13
-        width: 1182
-        height: 1180
+        x: 219
+        y: 362
+        width: 1504
+        height: 1365
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9c4ac343aa41cb747a1bffb72365786d
     internalID: 0
     vertices: []
     indices: 

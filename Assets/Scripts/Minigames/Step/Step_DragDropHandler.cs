@@ -29,11 +29,28 @@ public class Step_DragDropHandler : Step
     // Load bahan yang diperlukan untuk langkah ini
     private void Start()
     {
+        isActive = true;
         LoadBahan();
         LoadAlat();
     }
 
-    private void LoadBahan()
+    public override void DisableStep()
+    {
+        isActive = false;
+        itemsDroppedCorrectly = 0;
+        currentStep = 0;
+        Debug.Log("Step disabled");
+
+        // Disable all draggable items
+        foreach (var item in GetComponentsInChildren<DraggableItem>())
+        {
+            item.DisableDraggable();
+            Debug.Log("Draggable item disabled: " + item.name);
+        }
+        
+    }
+
+    public virtual void LoadBahan()
     {
         float spacing = 300f;
         float startX = -((bahanDragDrop.Length - 1) * spacing) / 2f;
@@ -51,7 +68,7 @@ public class Step_DragDropHandler : Step
         }
     }
 
-    private void LoadAlat()
+    public virtual void LoadAlat()
     {
         // Ambil semua alat yang diperlukan untuk langkah ini
         var alatDiperlukan = resep.langkahMasak[currentStep].alatDiperlukan;
@@ -75,6 +92,7 @@ public class Step_DragDropHandler : Step
 
     public void NotifyCorrectDrop()
     {
+        if (!isActive) return;
         itemsDroppedCorrectly++;
         if (itemsDroppedCorrectly >= totalItems)
         {

@@ -15,6 +15,7 @@ public class Step_Slice : Step
 
     private void Awake()
     {
+        isActive = true; // Set the step as active
         int currentStep = GameplayManager.Instance.CurrentStep;
         if (GameData.ResepDipilih.langkahMasak[currentStep].addToExisting)
         {
@@ -26,6 +27,13 @@ public class Step_Slice : Step
         bahanDisplay = new Image[bahanSliceImages.Length];
         CreateBahan();
         PositionBahan();
+    }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        currentTouchPosition = Vector2.zero;
+        slicesCount = 0;
     }
 
     private void PositionBahan()
@@ -109,6 +117,7 @@ public class Step_Slice : Step
     }
     private void Slice()
     {
+        if (!isActive) return; // Ensure step is active
         if (slicesCount < totalSlices)
         {
 

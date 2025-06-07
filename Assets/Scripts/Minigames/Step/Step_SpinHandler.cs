@@ -14,6 +14,7 @@ public class Step_SpinGestureHandler : Step
 
     private void Awake()
     {
+        isActive = true;
         if (visualIndicator == null)
         {
             Debug.LogError("Visual Indicator tidak di-set!");
@@ -28,6 +29,16 @@ public class Step_SpinGestureHandler : Step
         {
             Debug.LogError("Spin Sprite tidak di-set!");
         }
+    }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        isDragging = false;
+        spinProgress = 0f; // Reset progress
+        lastPos = Vector2.zero; // Reset last position
+
+        Debug.Log("Step spin disabled");
     }
 
     void OnEnable()
@@ -47,6 +58,7 @@ public class Step_SpinGestureHandler : Step
 
     private void StartDrag(Vector2 position)
     {
+        if (!isActive) return; // Ensure step is active
         // Debug.Log("Drag started at: " + position);
         isDragging = true;
         lastPos = position;
@@ -54,6 +66,7 @@ public class Step_SpinGestureHandler : Step
 
     private void EndDrag(Vector2 position)
     {
+        if (!isDragging) return;
         // Debug.Log("Drag ended at: " + position);
         isDragging = false;
         spinProgress = 0f; // Reset progress after drag ends
@@ -62,6 +75,7 @@ public class Step_SpinGestureHandler : Step
     private void ContinueDrag(Vector2 position)
     {
         if (!isDragging) return;
+        if (!isActive) return; // Ensure step is active
 
         // Debug.Log("Dragging at: " + position);
 
@@ -88,6 +102,7 @@ public class Step_SpinGestureHandler : Step
         if (Mathf.Abs(spinProgress) >= requiredSpin)
         {
             // Debug.Log("Spin selesai!");
+            DisableStep(); // Disable step after completing the spin
             GameplayManager.Instance.NextStep();
             EndDrag(position);
         }

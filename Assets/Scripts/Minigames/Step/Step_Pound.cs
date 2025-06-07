@@ -24,9 +24,27 @@ public class Step_Pound : Step
     private Tween tween;
     private bool isPounding = false;
 
+    void Start()
+    {
+        isActive = true;
+    }
+
     void Update()
     {
         UpdatePressStatus();
+    }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        isPounding = false;
+        elapsedTime = 0f;
+        currentImageIndex = 0;
+        bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+        bahanDisplay.rectTransform.localScale = Vector3.one;
+        tween?.Kill();
+        tween = null;
+        Debug.Log("Step disabled");
     }
     private void UpdatePressStatus()
     {

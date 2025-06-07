@@ -14,10 +14,32 @@ public class Step_Flip : Step
 
     private void Awake()
     {
+        isActive = true;
         int currentStep = GameplayManager.Instance.CurrentStep;
         bahan = GameData.ResepDipilih.langkahMasak[currentStep].bahanDiperlukan[0];
         bahanImage.sprite = bahan.gambarBahan;
 
+    }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        isFlipped = false;
+        startTouchPosition = Vector2.zero;
+
+        // Reset image to original state
+        // if (bahanImage != null)
+        // {
+        //     bahanImage.sprite = bahan.gambarBahan;
+        //     bahanImage.rectTransform.localScale = new Vector3(1, 1, 1);
+        //     bahanImage.transform.rotation = Quaternion.identity;
+        // }
+        // else
+        // {
+        //     Debug.LogError("Bahan Image tidak di-set!");
+        // }
+
+        Debug.Log("Step disabled");
     }
 
     void OnEnable()

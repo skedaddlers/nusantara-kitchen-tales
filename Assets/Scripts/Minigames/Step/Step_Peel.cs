@@ -21,6 +21,7 @@ public class Step_Peel : Step
 
     private void Awake()
     {
+        isActive = true; // Set the step as active
         int currentStep = GameplayManager.Instance.CurrentStep;
         if (GameData.ResepDipilih.langkahMasak[currentStep].addToExisting)
         {
@@ -39,6 +40,17 @@ public class Step_Peel : Step
         CreateBahan();
         PositionBahan();
     }
+
+    public override void DisableStep()
+    {
+        isActive = false;
+        currentTouchPosition = Vector2.zero;
+        peelsCount = 0;
+        currentPeelIndex = 0;
+
+    }
+
+
 
     private void PositionBahan()
     {
@@ -121,6 +133,7 @@ public class Step_Peel : Step
 
     private void ContinueDrag(Vector2 pos)
     {
+        if (!isActive) return; // Ensure step is active
         Debug.Log("Continue Drag at: " + pos + " for peel index: " + currentPeelIndex);
 
             // Debug.Log("Dragging within the peel area: " + currentPeelIndex);
