@@ -4,31 +4,60 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Step_SpinGestureHandler : Step
 {
-    public Image visualIndicator = null; // UI element to show the spin
+    // public Image visualIndicator = null; // UI element to show the spin
     public Sprite spinSprite = null; // sprite for the visual indicator
     public float requiredSpin = 720f; // derajat total
     public float spinProgress = 0f;
 
     private Vector2 lastPos;
     private bool isDragging = false;
+    public GameObject alatPrefab; // Prefab untuk alat yang akan di-instantiate
+    private ResepDataSO resep { get; set; }
 
     private void Awake()
     {
         isActive = true;
-        if (visualIndicator == null)
+
+        resep = GameData.ResepDipilih;
+        var alatDiperlukan = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan;
+        if (alatDiperlukan == null)
         {
-            Debug.LogError("Visual Indicator tidak di-set!");
+            Debug.LogError("Alat tidak ditemukan untuk langkah ini!");
             return;
         }
+        foreach (var alat in alatDiperlukan)
+        {
+            if (alat == null)
+            {
+                Debug.LogError("Alat tidak ditemukan dalam resep!");
+                return;
+            }
+            // Instantiate alat
+            Alat item = Instantiate(alat, transform);
+            item.name = alat.namaAlat;
+            item.GetComponent<Image>().sprite = alat.gambarAlat;
+            Utilz.SetSizeNormalized(item.GetComponent<RectTransform>(), alat.gambarAlat, 500f, 500f);
+            // Set posisi alat
+            float posisiAlat = Screen.width / (alatDiperlukan.Length + 1);
+            item.transform.localPosition = new Vector3(-100f, -100f, 0);
+            alatPrefab = item.gameObject; // Set alatPrefab untuk digunakan nanti
+        }
+        
 
-        if (spinSprite != null)
-        {
-            visualIndicator.sprite = spinSprite;
-        }
-        else
-        {
-            Debug.LogError("Spin Sprite tidak di-set!");
-        }
+        // if (visualIndicator == null)
+        // {
+        //     Debug.LogError("Visual Indicator tidak di-set!");
+        //     return;
+        // }
+
+        // if (spinSprite != null)
+        // {
+        //     visualIndicator.sprite = spinSprite;
+        // }
+        // else
+        // {
+        //     Debug.LogError("Spin Sprite tidak di-set!");
+        // }
     }
 
     public override void DisableStep()
@@ -95,7 +124,7 @@ public class Step_SpinGestureHandler : Step
         lastPos = position;
 
         // Rotate the visual indicator
-        visualIndicator.transform.Rotate(0, 0, angle); // negative if you want clockwise
+        // visualIndicator.transform.Rotate(0, 0, angle); // negative if you want clockwise
 
         // Debug.Log("Spin progress: " + spinProgress);
 
@@ -106,7 +135,31 @@ public class Step_SpinGestureHandler : Step
             GameplayManager.Instance.NextStep();
             EndDrag(position);
         }
+
+        MoveAlat(angle); // Move the alat based on the spin angle
     }
+
+    private float alatAngle = 0f; // Keep track of cumulative angle for circular movement
+    private float radius = 150f;  // Radius of circular motion, adjust as needed
+    private Vector2 circleCenter; // Center of circular path
+
+    private void MoveAlat(float angle)
+    {
+        if (alatPrefab == null) return; // Ensure alatPrefab is set
+
+        // Update the circle center to the current position of the visual indicator
+        circleCenter = new Vector2(transform.position.x, transform.position.y); // Adjust Y offset as needed
+        // Update the cumulative angle
+        alatAngle += angle;
+
+        // Calculate new position for the alat based on circular motion
+        float x = circleCenter.x + radius * Mathf.Cos(alatAngle * Mathf.Deg2Rad);
+        float y = circleCenter.y + radius * Mathf.Sin(alatAngle * Mathf.Deg2Rad);
+
+        // Set the new position of the alat
+        alatPrefab.transform.position = new Vector2(x, y);
+    }
+
 
 
 

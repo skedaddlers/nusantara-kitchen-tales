@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sumatra
   m_EditorClassIdentifier: 
   namaPulau: Sumatra
-  deskripsiPulau: Sumatra adalah suma + tra
-  ikonResep: []
-  daftarResep: []
+  deskripsiPulau: Nikmati cita rasa khas rendang dan gulai dari tanah Sumatra yang
+    kaya rempah dan tradisi Minang.
+  resepList: []
+  backgroundImage: {fileID: 0}

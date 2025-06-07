@@ -18,6 +18,25 @@ MonoBehaviour:
   resepText: {fileID: 2435682782950637673, guid: 907d912ac9e46414495615d7739ace68, type: 3}
   estimasiDurasi: 0
   langkahMasak:
+  - deskripsi: Air ke sambal
+    step: {fileID: 0}
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: b044b13130b3e2b4c8220fe88f28d6d8, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 2a4b2d169ac9757408fb234c2cc02fdc, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
+    addToExisting: 0
+  - deskripsi: Pound sambal
+    step: {fileID: 0}
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 4e8e398ee48d2e849b886d7271e030a1, type: 3}
+    alatDiperlukan: []
+    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    addToExisting: 0
   - deskripsi: Menyangrai
     step: {fileID: 0}
     jenisStep: 5
@@ -25,6 +44,7 @@ MonoBehaviour:
     bahanDiperlukan:
     - {fileID: 5491858519558499118, guid: bd18debd94d6fcb40b93635fd280a7b0, type: 3}
     alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: cd4f1da014250b64ab49a73d550dd7d1, type: 3}
     - {fileID: 3001705035717412675, guid: 1a5fc3abdbf8ce14d95e1acba662785e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
@@ -33,7 +53,8 @@ MonoBehaviour:
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
-    alatDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 9c6a66fd1683c4d44b75bcf76bf13c53, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 1
   - deskripsi: Tahan Kompor
@@ -41,7 +62,8 @@ MonoBehaviour:
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
-    alatDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
   - deskripsi: Menyangrai Sayuran
@@ -63,7 +85,8 @@ MonoBehaviour:
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
-    alatDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 9c6a66fd1683c4d44b75bcf76bf13c53, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 1
   - deskripsi: Tahan Kompor
@@ -71,7 +94,8 @@ MonoBehaviour:
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
-    alatDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
   - deskripsi: Memblender Bahan Sambal
@@ -90,27 +114,11 @@ MonoBehaviour:
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
-    alatDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
+    - {fileID: 3001705035717412675, guid: b245278890eeae848b3cbecd71edc3bf, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
-  - deskripsi: Air ke sambal
-    step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan:
-    - {fileID: 5491858519558499118, guid: b044b13130b3e2b4c8220fe88f28d6d8, type: 3}
-    alatDiperlukan:
-    - {fileID: 3001705035717412675, guid: bafe08f2ea132d8409f39c727001b203, type: 3}
-    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
-    addToExisting: 0
-  - deskripsi: Pound sambal
-    step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
-    addToExisting: 0
   - deskripsi: Cuci Sawi
     step: {fileID: 0}
     jenisStep: 5
@@ -139,17 +147,19 @@ MonoBehaviour:
     step: {fileID: 0}
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: c2423b4412d7bdf4490cc97c88cafe24, type: 3}
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
     addToExisting: 0
   - deskripsi: Potong Daun SIngkong
     step: {fileID: 0}
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: f54f6e5b4ac36694196eff852f73f0ea, type: 3}
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
     addToExisting: 0
   - deskripsi: Potong Kacang Panjang
     step: {fileID: 0}
@@ -157,7 +167,7 @@ MonoBehaviour:
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
     addToExisting: 0
   - deskripsi: Rebus Sayuran
     step: {fileID: 0}
@@ -165,7 +175,15 @@ MonoBehaviour:
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
+    addToExisting: 0
+  - deskripsi: Assembly
+    step: {fileID: 0}
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan: []
+    alatDiperlukan: []
+    prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 0
   - deskripsi: Assembly
     step: {fileID: 0}

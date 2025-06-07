@@ -8,6 +8,7 @@ public class Step_ControlMeterHandler : Step
     [Header("UI References")]
     [SerializeField] private Slider controlMeter;
     [SerializeField] private Button controlButton; // visual only (optional)
+    [SerializeField] private Slider progressBar; // optional, for visual feedback
 
     [Header("Meter Settings")]
     [SerializeField] private float cookingSpeed = 0.1f;
@@ -23,10 +24,16 @@ public class Step_ControlMeterHandler : Step
     private float elapsedTime = 0f;
     private bool isPressed = false;
     private float currentSpeed;
+    private ResepDataSO resep { get; set; }
 
 
     void Start()
     {
+        resep = GameData.ResepDipilih;
+        Alat tombol = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan[0];
+
+        controlButton.GetComponent<Image>().sprite = tombol.gambarAlat;
+
         isActive = true;
         if (controlMeter == null || controlButton == null)
         {
@@ -34,11 +41,35 @@ public class Step_ControlMeterHandler : Step
             return;
         }
 
+        if (progressBar != null)
+        {
+            progressBar.minValue = 0f;
+            progressBar.maxValue = targetTime;
+            progressBar.value = 0f;
+        }
+
         controlMeter.minValue = 0f;
         controlMeter.maxValue = 1f;
         controlMeter.value = 0.5f;
 
         currentSpeed = cookingSpeed;
+
+        if(resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan.Length > 1)
+        {
+            InstantiateTutupBlender();
+        }
+    }
+
+    private void InstantiateTutupBlender()
+    {
+        Alat tutupBlender = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan[1];
+        GameObject tutupBlenderObj = Instantiate(tutupBlender,transform).gameObject;
+        tutupBlenderObj.name = tutupBlender.namaAlat;
+        tutupBlenderObj.GetComponent<Image>().sprite = tutupBlender.gambarAlat;
+        Utilz.SetSizeNormalized(tutupBlenderObj.GetComponent<RectTransform>(), tutupBlender.gambarAlat, 500f, 500f);
+        RectTransform rectTransform = tutupBlenderObj.GetComponent<RectTransform>();
+        // Set the position of the tutup blender to be above the control button
+        rectTransform.localPosition = new Vector3(0, 0, 0); // Adjust Y position as needed
     }
 
     public override void DisableStep()
@@ -125,6 +156,10 @@ public class Step_ControlMeterHandler : Step
         if (controlMeter.value >= lowerBound && controlMeter.value <= upperBound)
         {
             elapsedTime += Time.deltaTime;
+            if (progressBar != null)
+            {
+                progressBar.value = elapsedTime;
+            }
             if (elapsedTime >= targetTime)
             {
                 Debug.Log("Success! Meter stable for required time.");
@@ -134,6 +169,14 @@ public class Step_ControlMeterHandler : Step
         else
         {
             elapsedTime -= Time.deltaTime;
+            if(elapsedTime < 0f)
+            {
+                elapsedTime = 0f; // Reset elapsed time if it goes negative
+            }
+            if (progressBar != null)
+            {
+                progressBar.value = elapsedTime;
+            }
         }
     }
 

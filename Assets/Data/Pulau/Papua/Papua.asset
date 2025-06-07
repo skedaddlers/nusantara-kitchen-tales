@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Papua
   m_EditorClassIdentifier: 
   namaPulau: Papua
-  deskripsiPulau: Papua adalah pap + ua
-  ikonResep: []
-  daftarResep: []
+  deskripsiPulau: Coba sensasi sagu bakar dan ikan bakar ala Papua yang otentik dan
+    menyatu dengan alam.
+  resepList: []
+  backgroundImage: {fileID: 0}

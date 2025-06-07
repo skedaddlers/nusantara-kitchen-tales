@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Jawa
   m_EditorClassIdentifier: 
   namaPulau: Jawa
-  deskripsiPulau: Jawa adalah koentji
+  deskripsiPulau: Jelajahi resep legendaris seperti gudeg dan pecel yang mencerminkan
+    kekayaan budaya Jawa.
   resepList:
   - {fileID: 11400000, guid: 9484f9338db4ace419d7e4ddc071b5f3, type: 2}
   - {fileID: 11400000, guid: d97eaea13fe17514896f2d7f11e97be4, type: 2}

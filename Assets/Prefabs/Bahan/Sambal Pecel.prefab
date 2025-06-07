@@ -56,7 +56,9 @@ MonoBehaviour:
   deskripsiBahan: 
   gambarBahan: {fileID: -3637501043115240502, guid: be1fa65e7d952f741a4871b0ff30cbce, type: 3}
   gambarBahanTerbalik: {fileID: 0}
-  gambarBahanPound: []
+  gambarBahanPound:
+  - {fileID: -3637501043115240502, guid: be1fa65e7d952f741a4871b0ff30cbce, type: 3}
+  - {fileID: 399905880208801669, guid: b2269f409d2797e47980543134d1d320, type: 3}
   gambarBahanSlice: []
   gambarBahanSkin: []
   gambarBahanPeel: []

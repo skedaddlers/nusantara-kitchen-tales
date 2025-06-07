@@ -78,6 +78,8 @@ public class Step_Pound : Step
         bahanPound = GameData.ResepDipilih.langkahMasak[currentStep].bahanDiperlukan[0];
         bahanPoundImages = bahanPound.gambarBahanPound;
         bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+        Utilz.SetSizeNormalized(bahanDisplay.rectTransform, bahanPound.gambarBahanPound[0], 500f, 500f);
+
 
     }
     void OnEnable()
@@ -147,12 +149,11 @@ public class Step_Pound : Step
             // Change the image based on the elapsed time
             if (elapsedTime >= timeForImageChange)
             {
-                currentImageIndex++;
-
                 if (currentImageIndex < bahanPoundImages.Length)
                 {
                     bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
                 }
+                currentImageIndex++;
             }
 
             // Check if the total time to pound has been reached

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sulawesi
   m_EditorClassIdentifier: 
   namaPulau: Sulawesi
-  deskripsiPulau: Sulawesi adalah sula + wesi
-  ikonResep: []
-  daftarResep: []
+  deskripsiPulau: Rasakan pedasnya cakalang rica dan kuliner laut khas Sulawesi yang
+    menggugah selera.
+  resepList: []
+  backgroundImage: {fileID: 0}

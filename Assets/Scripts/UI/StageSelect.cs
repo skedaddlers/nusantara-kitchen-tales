@@ -10,9 +10,41 @@ public class StageSelect : MonoBehaviour
     public GameObject stageCardPrefab;
     public Image backgroundImage;
     public Button homeButton;
+    public GameObject stagePanel;
+    public Button startButton;
+    public Button closePanelButton;
+    public Image titleImage;
+    public Image resepImage;
+
+    // list of all stage cards
+    private StageCardUI[] stageCards;
 
     private void Start()
     {
+        // add button listeners
+        startButton.onClick.AddListener(() =>
+        {
+            // Animasi efek klik
+            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
+            {
+                // Simpan nama stage, dan Load scene gameplay
+                if (GameData.ResepDipilih != null)
+                {
+                    SceneLoader.LoadScene("Story");
+                }
+                else
+                {
+                    Debug.LogError("Resep tidak dipilih sebelum memulai stage.");
+                }
+            });
+        });
+
+        closePanelButton.onClick.AddListener(() =>
+        {
+            stagePanel.SetActive(false);
+            GameData.ResepDipilih = null; // reset selected recipe
+        });
+
         var pulauData = GameData.PulauDipilih;
         Debug.Log("Memuat Pulau: " + pulauData.namaPulau);
         if (pulauData == null)
@@ -33,14 +65,18 @@ public class StageSelect : MonoBehaviour
         homeButton.onClick.AddListener(() =>
         {
             GameData.ResetData();
-            SceneLoader.LoadScene("MainMenu");
+            SceneLoader.LoadScene("PulauSelect");
         });
+
+
 
         GenerateStageCards(pulauData);
     }
 
     void GenerateStageCards(PulauDataSO pulau)
     {
+
+        stageCards = new StageCardUI[pulau.resepList.Length];
         for (int i = 0; i < pulau.resepList.Length; i++)
         {
             var card = Instantiate(stageCardPrefab, cardContainer);
@@ -57,7 +93,40 @@ public class StageSelect : MonoBehaviour
             // Animasi masuk: fade + scale-up
             canvasGroup.DOFade(1f, 0.4f).SetDelay(i * 0.05f);
             rect.DOScale(1f, 0.4f).SetDelay(i * 0.05f).SetEase(Ease.OutBack);
+
+            stageCards[i] = ui;
+
         }
-        
+
+        // set scroll to the leftmost position
+        var scrollRect = cardContainer.GetComponentInParent<ScrollRect>();
+        if (scrollRect != null)
+        {
+            scrollRect.horizontalNormalizedPosition = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("ScrollRect not found in parent of cardContainer.");
+        }
+
+
+    }
+    
+    public void ShowPanel(ResepDataSO resep)
+    {
+        Debug.Log("Menampilkan panel untuk resep: " + resep.namaResep);
+        if (resep == null)
+        {
+            Debug.LogError("Resep tidak boleh null saat menampilkan panel.");
+            return;
+        }
+
+        stagePanel.SetActive(true);
+        titleImage.sprite = resep.resepText;
+        resepImage.sprite = resep.ikonResep;
+
+        // Set ukuran gambar resep
+        Utilz.SetSizeNormalized(resepImage.GetComponent<RectTransform>(), resep.ikonResep, 350f, 350f);
+        Utilz.SetSizeNormalized(titleImage.GetComponent<RectTransform>(), resep.resepText, 350f, 350f);
     }
 }

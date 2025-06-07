@@ -82,6 +82,7 @@ public class GameplayManager : MonoBehaviour
         if (currentStep >= resep.langkahMasak.Length)
         {
             winPanel.gameObject.SetActive(true);
+            winPanel.GetComponent<GIF>().Play();
             Debug.Log("Resep selesai!");
         }
         else

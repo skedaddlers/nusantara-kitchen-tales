@@ -24,7 +24,14 @@ public class StageCardUI : MonoBehaviour
                 // Simpan nama stage, dan Load scene gameplay'
 
                 GameData.ResepDipilih = resep;
-                SceneLoader.LoadScene("Story");
+                // get stage select component
+                var stageSelect = FindObjectOfType<StageSelect>();
+                if (stageSelect == null)
+                {
+                    Debug.LogError("StageSelect component not found in the scene.");
+                    return;
+                }
+                stageSelect.ShowPanel(resep);
             });
         });
     }

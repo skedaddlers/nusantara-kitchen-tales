@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Kalimantan
   m_EditorClassIdentifier: 
   namaPulau: Kalimantan
-  deskripsiPulau: Kalimantan adalah kali + mantan
-  ikonResep: []
-  daftarResep: []
+  deskripsiPulau: Temukan kelezatan unik dari masakan Dayak Kalimantan yang memanfaatkan
+    hasil hutan tropis.
+  resepList: []
+  backgroundImage: {fileID: 0}

@@ -52,7 +52,7 @@ public class Step_DragDropHandler : Step
 
     public virtual void LoadBahan()
     {
-        float spacing = 300f;
+        float spacing = 400f;
         float startX = -((bahanDragDrop.Length - 1) * spacing) / 2f;
 
         for (int i = 0; i < bahanDragDrop.Length; i++)
@@ -74,17 +74,17 @@ public class Step_DragDropHandler : Step
         var alatDiperlukan = resep.langkahMasak[currentStep].alatDiperlukan;
 
         // posisi alat adalah lebar layar dibagi jumlah alat
-        float posisiAlat = Screen.width / (alatDiperlukan.Length + 1);
+        float posisiAlat = Screen.width / 2;
         int index = 0;
         foreach (var alat in alatDiperlukan)
         {
             // Instantiate prefab alat
             Alat item = Instantiate(alat, transform);
-            item.transform.localPosition = new Vector3(posisiAlat * index, 0, 0);
+            item.transform.localPosition = new Vector3(0, 0, 0);
             item.name = alat.namaAlat;
             item.GetComponent<DropTarget>().expectedBahanPrefab = bahanDragDrop;
             item.GetComponent<Image>().sprite = alat.gambarAlat;
-            Utilz.SetSizeNormalized(item.GetComponent<RectTransform>(), alat.gambarAlat);
+            Utilz.SetSizeNormalized(item.GetComponent<RectTransform>(), alat.gambarAlat, 500f, 500f);
             index++;
         }
     }
@@ -96,6 +96,7 @@ public class Step_DragDropHandler : Step
         itemsDroppedCorrectly++;
         if (itemsDroppedCorrectly >= totalItems)
         {
+            
             Debug.Log("Semua item sudah dijatuhkan dengan benar!");
             // Panggil fungsi untuk melanjutkan ke langkah berikutnya
             GameplayManager.Instance.NextStep();
