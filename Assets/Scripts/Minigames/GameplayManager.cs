@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     public bool isPaused = false;
     public Transform stepParent;
     public TextMeshProUGUI stepText;
+    public TextMeshProUGUI pointsText;
     public Sprite[] maskotImages;
     public string[] maskotDescriptions = {
         "Sad",
@@ -27,20 +28,31 @@ public class GameplayManager : MonoBehaviour
     public GameObject pauseMenu;
     public Button resumeButton;
     public Button homeButton;
-
-
+    public Button homeButton2; // Duplicate button for home, if needed
+    public GameObject starPrefab; // Prefab bintang untuk animasi
+    public GameObject starContainer; // Tempat untuk menampung bintang-bintang
+    [SerializeField]
+    private int points = 0;
+    public int Points => points;
     private ResepDataSO resep;
+    [SerializeField]
     private int currentStep = 0;
     public int CurrentStep => currentStep;
     private List<GameObject> activeHandlers = new List<GameObject>();
     private Step currentStepHandler;
+    public Step CurrentStepHandler => currentStepHandler;
+    private Step previousStepHandler;
+    public Step PreviousStepHandler => previousStepHandler;
     private Coroutine typingCoroutine;
+    private bool isFailBefore = false;
+
 
 
     void Awake() => Instance = this;
 
     void Start()
     {
+        pointsText.text = "Score: " + points;
         SetMaskotImage("Happy");
         resep = GameData.ResepDipilih;
         if (resep == null)
@@ -68,9 +80,19 @@ public class GameplayManager : MonoBehaviour
         {
             // resume time
             Time.timeScale = 1f;
-            
+
             GameData.ResetData();
             Debug.Log("Kembali ke menu utama");
+            AudioManager.Instance.PlayMusic("background");
+            SceneLoader.LoadScene("MainMenu");
+        });
+
+        homeButton2.onClick.AddListener(() =>
+        {
+
+            GameData.ResetData();
+            Debug.Log("Kembali ke menu utama");
+            AudioManager.Instance.PlayMusic("background");
             SceneLoader.LoadScene("MainMenu");
         });
     }
@@ -79,16 +101,25 @@ public class GameplayManager : MonoBehaviour
     {
         currentStep++;
         Debug.Log("Langkah berikutnya: " + currentStep);
-        if (currentStep >= resep.langkahMasak.Length)
+        if (!isFailBefore)
         {
-            winPanel.gameObject.SetActive(true);
-            winPanel.GetComponent<GIF>().Play();
-            Debug.Log("Resep selesai!");
+            points += GameData.ResepDipilih.langkahMasak[currentStep - 1].pointsGiven;
         }
         else
         {
-            ShowSuccess();
+            isFailBefore = false; // Reset flag after failing
+        }
+        
+
+        pointsText.text = "Score: " + points;
+        if (currentStep >= resep.langkahMasak.Length)
+        {
+            Win();
+        }
+        else
+        {
             StartCoroutine(NextStepRoutine());
+            GameplayTimer.Instance.PauseTimer();
         }
     }
 
@@ -103,9 +134,21 @@ public class GameplayManager : MonoBehaviour
         LoadStep(currentStep);
     }
 
+    private IEnumerator FailStepRoutine()
+    {
+        ShowSad();
+
+        yield return new WaitForSeconds(2.5f);
+
+        LoadStep(currentStep, true); // Muat ulang langkah saat gagal
+
+    }
 
 
-    void LoadStep(int index)
+
+
+
+    void LoadStep(int index, bool isRetry = false)
     {
 
         SetMaskotImage("Happy");
@@ -118,20 +161,24 @@ public class GameplayManager : MonoBehaviour
             }
             activeHandlers.Clear();
         }
+        if (currentStepHandler != null)
+        {
+            previousStepHandler = currentStepHandler;
+            previousStepHandler.DisableStep();
+        }
         else
         {
-            currentStepHandler.DisableStep();
+            previousStepHandler = null;
         }
 
         Debug.Log("Memuat langkah: " + step.deskripsi + " ke indeks " + index);
-        if(typingCoroutine != null)
+        if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
         }
         typingCoroutine = StartCoroutine(TypeText(step.deskripsi));
         stepImage.sprite = step.ikonStep;
 
-        
 
         if (step.prefabStep != null)
         {
@@ -139,11 +186,23 @@ public class GameplayManager : MonoBehaviour
             activeHandlers.Add(handler);
             handler.transform.localPosition = Vector3.zero;
             currentStepHandler = handler.GetComponent<Step>();
+            if (isRetry)
+            {
+                // destroy previous step handler if it exists
+                if (previousStepHandler != null)
+                {
+                    Destroy(previousStepHandler.gameObject);
+                }
+            }
         }
         else
         {
             Debug.LogError("Prefab langkah masak tidak ditemukan!");
         }
+
+        GameplayTimer.Instance.ResetTimer();
+        GameplayTimer.Instance.StartTimer();
+
     }
 
     private IEnumerator TypeText(string fullText)
@@ -172,7 +231,7 @@ public class GameplayManager : MonoBehaviour
 
     private void SetMaskotImage(string maskotName)
     {
-        for(int i = 0; i < maskotDescriptions.Length; i++)
+        for (int i = 0; i < maskotDescriptions.Length; i++)
         {
             if (maskotDescriptions[i].Equals(maskotName, System.StringComparison.OrdinalIgnoreCase))
             {
@@ -183,17 +242,82 @@ public class GameplayManager : MonoBehaviour
         Debug.LogError("Maskot tidak ditemukan: " + maskotName);
     }
 
+    private void ShowSad()
+    {
+        // Show sad animation or message
+        Debug.Log("Langkah gagal!");
+        SetMaskotImage("Sad");
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeText("Coba lagi! tapi kamu tidak dapat poin :("));
+        maskotImage.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.5f);
+    }
+
     private void ShowSuccess()
     {
         // Show success animation or message
         Debug.Log("Langkah berhasil!");
         SetMaskotImage("Amazed");
-        if(typingCoroutine != null)
+        if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
         }
-        typingCoroutine = StartCoroutine(TypeText("KAMU JAGO BGT BG"));
+        typingCoroutine = StartCoroutine(TypeText("Yayyy! Kamu berhasil!"));
         maskotImage.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.5f);
     }
+
+    public void OnTimerEnd()
+    {
+        // Handle timer end logic
+        Debug.Log("Waktu habis!");
+        StartCoroutine(FailStepRoutine());
+        isFailBefore = true;
+    }
+
+    private void Win()
+    {
+        GameplayTimer.Instance.ResetTimer();
+        winPanel.gameObject.SetActive(true);
+        winPanel.GetComponent<GIF>().Play();
+        Debug.Log("Resep selesai!");
+        // SetMaskotImage("Delicious");
+        AnimateStars();
+    }
+
+    private void AnimateStars()
+    {
+        int maxPoints = 0;
+        foreach (var step in resep.langkahMasak)
+        {
+            maxPoints += step.pointsGiven;
+        }
+        int count;
+        float pointsPercentage = (float)points / maxPoints;
+        if (pointsPercentage >= 0.8f)
+        {
+            count = 3;
+        }
+        else if (pointsPercentage >= 0.6f)
+        {
+            count = 2;
+        }
+        else
+        {
+            count = 1;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            Debug.Log("Animasi bintang ke-" + (i + 1));
+            GameObject star = Instantiate(starPrefab, starContainer.transform);
+            star.transform.localScale = Vector3.zero;
+            star.transform.localPosition = new Vector3(-300 + (i*300), 20, 0f); // Adjust position based on count
+            star.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack).SetDelay(i * 0.2f);
+            star.transform.DOLocalMoveY(50f, 0.5f).SetEase(Ease.OutBack).SetDelay(i * 0.2f);
+        }
+    }
+    
     
 }

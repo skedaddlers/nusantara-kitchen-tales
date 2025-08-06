@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      step2_SINGKONG_0: 180407528672460731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

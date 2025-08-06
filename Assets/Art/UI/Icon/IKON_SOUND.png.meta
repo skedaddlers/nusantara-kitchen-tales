@@ -138,12 +138,12 @@ TextureImporter:
       name: IKON_SOUND_0
       rect:
         serializedVersion: 2
-        x: 1716
+        x: 1715
         y: 1834
-        width: 597
+        width: 1070
         height: 832
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -156,77 +156,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: IKON_SOUND_1
-      rect:
-        serializedVersion: 2
-        x: 2365
-        y: 2045
-        width: 128
-        height: 410
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a40337a8a63590e0800000000000000
-      internalID: -2263843139696261983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IKON_SOUND_2
-      rect:
-        serializedVersion: 2
-        x: 2474
-        y: 1935
-        width: 171
-        height: 627
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25126c22479937fc0800000000000000
-      internalID: -3498283761458077358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IKON_SOUND_3
-      rect:
-        serializedVersion: 2
-        x: 2574
-        y: 1836
-        width: 210
-        height: 827
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1c903645db9f9210800000000000000
-      internalID: 1341962554287627295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 25a69b44194a6864293194ee407a969e
     internalID: 0
     vertices: []
     indices: 
@@ -237,9 +171,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       IKON_SOUND_0: 9038800690287345725
-      IKON_SOUND_1: -2263843139696261983
-      IKON_SOUND_2: -3498283761458077358
-      IKON_SOUND_3: 1341962554287627295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -39,10 +39,10 @@ public class Step_SpinGestureHandler : Step
             Utilz.SetSizeNormalized(item.GetComponent<RectTransform>(), alat.gambarAlat, 500f, 500f);
             // Set posisi alat
             float posisiAlat = Screen.width / (alatDiperlukan.Length + 1);
-            item.transform.localPosition = new Vector3(-100f, -100f, 0);
+            item.transform.localPosition = new Vector3(-150, -150, 0);
             alatPrefab = item.gameObject; // Set alatPrefab untuk digunakan nanti
         }
-        
+
 
         // if (visualIndicator == null)
         // {
@@ -88,7 +88,7 @@ public class Step_SpinGestureHandler : Step
     private void StartDrag(Vector2 position)
     {
         if (!isActive) return; // Ensure step is active
-        // Debug.Log("Drag started at: " + position);
+        Debug.Log("Drag started at: " + position);
         isDragging = true;
         lastPos = position;
     }
@@ -96,7 +96,7 @@ public class Step_SpinGestureHandler : Step
     private void EndDrag(Vector2 position)
     {
         if (!isDragging) return;
-        // Debug.Log("Drag ended at: " + position);
+        Debug.Log("Drag ended at: " + position);
         isDragging = false;
         spinProgress = 0f; // Reset progress after drag ends
     }
@@ -106,7 +106,7 @@ public class Step_SpinGestureHandler : Step
         if (!isDragging) return;
         if (!isActive) return; // Ensure step is active
 
-        // Debug.Log("Dragging at: " + position);
+        Debug.Log("Dragging at: " + position);
 
         float centerX = Screen.width / 2;
         float centerY = Screen.height / 2;
@@ -135,12 +135,18 @@ public class Step_SpinGestureHandler : Step
             GameplayManager.Instance.NextStep();
             EndDrag(position);
         }
-
-        MoveAlat(angle); // Move the alat based on the spin angle
+        if (alatPrefab == null)
+        {
+            RotateBahan(angle); // Rotate the alat based on the spin angle
+        }
+        else
+        {
+            MoveAlat(angle); // Rotate the alat based on the spin angle
+        }
     }
 
     private float alatAngle = 0f; // Keep track of cumulative angle for circular movement
-    private float radius = 150f;  // Radius of circular motion, adjust as needed
+    private float radius = 100f;  // Radius of circular motion, adjust as needed
     private Vector2 circleCenter; // Center of circular path
 
     private void MoveAlat(float angle)
@@ -148,7 +154,7 @@ public class Step_SpinGestureHandler : Step
         if (alatPrefab == null) return; // Ensure alatPrefab is set
 
         // Update the circle center to the current position of the visual indicator
-        circleCenter = new Vector2(transform.position.x, transform.position.y); // Adjust Y offset as needed
+        circleCenter = new Vector2(transform.position.x - 150, transform.position.y -200); // Adjust Y offset as needed
         // Update the cumulative angle
         alatAngle += angle;
 
@@ -158,6 +164,22 @@ public class Step_SpinGestureHandler : Step
 
         // Set the new position of the alat
         alatPrefab.transform.position = new Vector2(x, y);
+    }
+
+    private void RotateBahan(float angle)
+    {
+        // get the sibling game object of the Step_SpinGestureHandler, and then get the bahan inside it
+        Transform sibling = transform.parent.GetChild(0);
+        if (sibling == null) return; // Ensure sibling exists
+
+        // find child with component Bahan
+        Transform bahan = sibling.Find("Bahan");
+
+
+        if (bahan == null) return; // Ensure bahan exists
+                                   // Rotate the bahan based on the angle
+        bahan.Rotate(0, 0, angle); // Rotate the bahan based on the spin angle
+
     }
 
 

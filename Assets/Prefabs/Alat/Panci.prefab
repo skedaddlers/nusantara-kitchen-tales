@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namaAlat: Panci
   deskripsiAlat: 
-  gambarAlat: {fileID: -5367298618639593854, guid: 93b5f224ca8a8ce46bbd6c72d4d14b2f, type: 3}
+  gambarAlat: {fileID: 1603294274454284189, guid: 902a556eea0e10e48af66974997422e7, type: 3}
 --- !u!114 &2068340615807120745
 MonoBehaviour:
   m_ObjectHideFlags: 0

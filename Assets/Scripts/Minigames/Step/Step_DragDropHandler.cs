@@ -30,8 +30,8 @@ public class Step_DragDropHandler : Step
     private void Start()
     {
         isActive = true;
-        LoadBahan();
         LoadAlat();
+        LoadBahan();
     }
 
     public override void DisableStep()
@@ -54,6 +54,11 @@ public class Step_DragDropHandler : Step
     {
         float spacing = 400f;
         float startX = -((bahanDragDrop.Length - 1) * spacing) / 2f;
+        // jika lebih dari 5, startx harus diubah
+        if (bahanDragDrop.Length > 5)
+        {
+            startX = -((4 * spacing) / 2f);
+        }
 
         for (int i = 0; i < bahanDragDrop.Length; i++)
         {
@@ -65,6 +70,16 @@ public class Step_DragDropHandler : Step
             item.name = prefab.namaBahan;
             item.GetComponent<Image>().sprite = prefab.gambarBahan;
             Utilz.SetSizeNormalized(rt, prefab.gambarBahan);
+
+            // jika i lebih dari 5, atur posisi Y ke -100
+            if (i == 5)
+            {
+                rt.anchoredPosition = new Vector2(startX + spacing * 4, 250f - 1 * 300f);
+            }
+            if (i == 6)
+            {
+                rt.anchoredPosition = new Vector2(startX, 250f - 1 * 300f);
+            }
         }
     }
 
@@ -80,7 +95,7 @@ public class Step_DragDropHandler : Step
         {
             // Instantiate prefab alat
             Alat item = Instantiate(alat, transform);
-            item.transform.localPosition = new Vector3(0, 0, 0);
+            item.transform.localPosition = new Vector3(0, -100f, 0);
             item.name = alat.namaAlat;
             item.GetComponent<DropTarget>().expectedBahanPrefab = bahanDragDrop;
             item.GetComponent<Image>().sprite = alat.gambarAlat;

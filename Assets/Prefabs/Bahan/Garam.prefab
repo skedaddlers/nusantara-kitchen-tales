@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5793984004075184414}
   - component: {fileID: 5491858519558499118}
-  - component: {fileID: 776381716148576285}
   - component: {fileID: 3385578365509318104}
   - component: {fileID: 529057649885211216}
   - component: {fileID: 4080688487630815100}
+  - component: {fileID: -3712721440108186558}
   m_Layer: 0
   m_Name: Garam
   m_TagString: Untagged
@@ -32,7 +32,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5879624530967346232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e19415feb40a489dc38afbf8f96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namaBahan: Kencur
+  namaBahan: Garam
   deskripsiBahan: 
   gambarBahan: {fileID: 5245034180503776670, guid: 286265fc77ca04348b757f8d361f7063, type: 3}
   gambarBahanTerbalik: {fileID: 0}
@@ -60,19 +61,6 @@ MonoBehaviour:
   gambarBahanSlice: []
   gambarBahanSkin: []
   gambarBahanPeel: []
---- !u!114 &776381716148576285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371144873957114690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab225e62578e0b74a9e2f56d0d789c87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droppedCorrectly: 0
 --- !u!222 &3385578365509318104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -123,3 +111,95 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-3712721440108186558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371144873957114690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989a79c548d8d284c93c58e325c07219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedCorrectly: 0
+  staticContainer: {fileID: 5793984004075184414}
+  movingContent: {fileID: 5879624530967346232}
+  contentSprite: {fileID: -6096871671303223924, guid: 651bcf6a6c5952144a6d3a6044b0c1e6, type: 3}
+  contentImage: {fileID: 7080907059339429368}
+--- !u!1 &5417006700069776670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5879624530967346232}
+  - component: {fileID: 6909273282159264910}
+  - component: {fileID: 7080907059339429368}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5879624530967346232
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417006700069776670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5793984004075184414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6909273282159264910
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417006700069776670}
+  m_CullTransparentMesh: 1
+--- !u!114 &7080907059339429368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417006700069776670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

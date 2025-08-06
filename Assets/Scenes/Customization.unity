@@ -337,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &692218784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -821,13 +821,11 @@ MonoBehaviour:
   characterNameText: {fileID: 987691318}
   characterSprites:
   - {fileID: -7844746364560016450, guid: 27c49bcb139c15346833145a390eb505, type: 3}
-  - {fileID: -1031974008098002013, guid: ca33c32dee2395b419d4a1ebd63ac117, type: 3}
   - {fileID: 8293334286276218510, guid: 991277df505d044419f0567cbee6aa31, type: 3}
   - {fileID: 4199998476198638902, guid: df11b932c30f617418af411610565a3a, type: 3}
   - {fileID: 7006285354004025495, guid: cccac2d63058d5447a4c5829c06172bc, type: 3}
   characterNames:
   - Pakaian Utama
-  - Nenek
   - Jawa Timur
   - Jawa Barat
   - D.I Yogyakarta
@@ -1496,12 +1494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1980, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

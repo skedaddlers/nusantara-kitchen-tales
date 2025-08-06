@@ -52,12 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e19415feb40a489dc38afbf8f96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namaBahan: Kencur
+  namaBahan: Bahan
   deskripsiBahan: 
   gambarBahan: {fileID: 1781114166209294810, guid: 2d32b413281d1c64d8fcd49e49c481c9, type: 3}
   gambarBahanTerbalik: {fileID: 0}
   gambarBahanPound: []
-  gambarBahanSlice: []
+  gambarBahanSlice:
+  - {fileID: -653924576, guid: 8ce4128e1ac1e9f4e934d4241bcbb154, type: 3}
+  - {fileID: 677403703, guid: 8ce4128e1ac1e9f4e934d4241bcbb154, type: 3}
+  - {fileID: 324452949, guid: 8ce4128e1ac1e9f4e934d4241bcbb154, type: 3}
   gambarBahanSkin: []
   gambarBahanPeel: []
 --- !u!114 &776381716148576285

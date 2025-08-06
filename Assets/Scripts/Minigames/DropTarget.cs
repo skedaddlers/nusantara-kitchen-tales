@@ -28,8 +28,18 @@ public class DropTarget : MonoBehaviour, IDropHandler
                 Debug.Log("Item dropped: " + item.gameObject.name);
                 Debug.Log("Expected item: " + expectedBahanPrefab[i].name);
                 item.droppedCorrectly = true;
-                item.transform.SetParent(transform);
-                item.transform.localPosition = Vector3.zero;
+                // if static, dont set parent
+                if (item is DraggableStaticItem staticItem)
+                {
+                    staticItem.staticContainer.anchoredPosition = Vector2.zero; // Reset position
+                    staticItem.staticContainer.rotation = Quaternion.identity; // Reset rotation
+                    // staticItem.contentImage.enabled = true; // Show the content image when dropped correctly
+                }
+                else
+                {
+                    item.transform.SetParent(transform);
+                    item.transform.localPosition = Vector3.zero;
+                }
                 stepHandler.NotifyCorrectDrop();
                 break;
             }

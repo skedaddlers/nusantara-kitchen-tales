@@ -129,12 +129,12 @@ TextureImporter:
       name: step2_SAWI PUTIH_0
       rect:
         serializedVersion: 2
-        x: 1213
-        y: 292
-        width: 2288
-        height: 3869
+        x: 292
+        y: 996
+        width: 3955
+        height: 2291
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f1438f24a780a2645b110cb05871bcda
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      step2_SAWI PUTIH_0: 1781114166209294810
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

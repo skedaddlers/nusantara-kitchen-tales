@@ -11,8 +11,15 @@ public class StageSelect : MonoBehaviour
     public Image backgroundImage;
     public Button homeButton;
     public GameObject stagePanel;
+    public GameObject notAvailablePanel;
+    public Button notAvailableButton;
     public Button startButton;
     public Button closePanelButton;
+    public Button quiz;
+    public Button test;
+    public Button practice;
+    public GameObject comingSoonPanel;
+    public Button comingSoonButton;
     public Image titleImage;
     public Image resepImage;
 
@@ -27,15 +34,59 @@ public class StageSelect : MonoBehaviour
             // Animasi efek klik
             transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
-                // Simpan nama stage, dan Load scene gameplay
-                if (GameData.ResepDipilih != null)
+                // Simpan nama stage, dan Load scene gameplay, tapi hanya pecel saja yang sudah ada
+                if (GameData.ResepDipilih.namaResep == "Nasi Pecel")
                 {
+                    AudioManager.Instance.PlayMusic("gameplay");
                     SceneLoader.LoadScene("Story");
                 }
                 else
                 {
-                    Debug.LogError("Resep tidak dipilih sebelum memulai stage.");
+                    notAvailablePanel.SetActive(true);
+                    notAvailableButton.onClick.AddListener(() =>
+                    {
+                        // Close not available panel
+                        notAvailablePanel.SetActive(false);
+                        // Reset selected recipe
+                        GameData.ResepDipilih = null;
+                        // Hide stage panel
+                    });
+                    stagePanel.SetActive(false);
+                    // animate not available panel
+                    notAvailablePanel.transform.localScale = Vector3.zero;
+                    notAvailablePanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                    
                 }
+            });
+        });
+
+        quiz.onClick.AddListener(() =>
+        {
+            Debug.Log("Quiz button clicked, but not implemented yet.");
+            comingSoonPanel.SetActive(true);
+            comingSoonButton.onClick.AddListener(() =>
+            {
+                comingSoonPanel.SetActive(false);
+            });
+        });
+
+        test.onClick.AddListener(() =>
+        {
+            Debug.Log("Test button clicked, but not implemented yet.");
+            comingSoonPanel.SetActive(true);
+            comingSoonButton.onClick.AddListener(() =>
+            {
+                comingSoonPanel.SetActive(false);
+            });
+        });
+
+        practice.onClick.AddListener(() =>
+        {
+            Debug.Log("Practice button clicked, but not implemented yet.");
+            comingSoonPanel.SetActive(true);
+            comingSoonButton.onClick.AddListener(() =>
+            {
+                comingSoonPanel.SetActive(false);
             });
         });
 

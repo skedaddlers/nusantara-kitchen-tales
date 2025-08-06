@@ -16,6 +16,8 @@ public class ButtonPulauManager : MonoBehaviour
     public Button sulawesiButton;
     public Button papuaButton;
     public GameObject pulauInfoPanel;
+    public GameObject notAvailablePanel;
+    public Button notAvailableButton;
     public TextMeshProUGUI namaPulauText;
     public TextMeshProUGUI deskripsiText;
     public Button tombolSilang;
@@ -43,7 +45,26 @@ public class ButtonPulauManager : MonoBehaviour
         {
             GameData.PulauDipilih = pulauData;
             pulauInfoPanel.SetActive(false);
-            SceneLoader.LoadScene("StageSelect");
+            // karena cuman jawa yang baru didevelop, yang lain nampilkan pesan belum tersedia
+            if (pulauData.namaPulau == "Jawa")
+            {
+                SceneLoader.LoadScene("StageSelect");
+            }
+            else
+            {
+                notAvailablePanel.SetActive(true);
+                notAvailableButton.onClick.AddListener(() =>
+                {
+                    notAvailablePanel.SetActive(false);
+                    EnableAllButtons();
+                });
+                pulauInfoPanel.SetActive(false);
+
+                // animate not available panel
+                notAvailablePanel.transform.localScale = Vector3.zero;
+                notAvailablePanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+
+            }
         });
         homeButton.onClick.AddListener(() =>
         {

@@ -12,6 +12,11 @@ public class MainMenuUI : MonoBehaviour
     public Button quitButton;
     public Button customizeButton;
     public Button recipeButton;
+    public GameObject settingsPanel;
+    public Button backButton;
+    public Slider audioSlider;
+    public GameObject notAvailablePanel;
+    public Button notAvailableButton;
 
     void Start()
     {
@@ -22,6 +27,25 @@ public class MainMenuUI : MonoBehaviour
         recipeButton = GameObject.Find("Resep").GetComponent<Button>();
         Debug.Log("MainMenuUI started.");
         Animate();
+
+        backButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Back button pressed, closing settings panel.");
+            settingsPanel.SetActive(false);
+        });
+        notAvailableButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Not available button pressed, closing not available panel.");
+            notAvailablePanel.SetActive(false);
+        });
+
+        audioSlider.value = AudioManager.Instance.GetVolume();
+
+        audioSlider.onValueChanged.AddListener((value) =>
+        {
+            Debug.Log("Audio slider value changed: " + value);
+            AudioManager.Instance.SetVolume(value);
+        });
     }
 
     public void Reload()
@@ -94,7 +118,7 @@ public class MainMenuUI : MonoBehaviour
     {
         // Sementara tampilkan log
         Debug.Log("Recipe book opened.");
-        // Bisa arahkan ke scene RecipeBook nanti
+        notAvailablePanel.SetActive(true);
     }
 
     public void PlayGame()
@@ -109,7 +133,7 @@ public class MainMenuUI : MonoBehaviour
     {
         // Sementara tampilkan log
         Debug.Log("Settings opened.");
-        SceneLoader.LoadScene("Settings");
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
 
     public void QuitGame()

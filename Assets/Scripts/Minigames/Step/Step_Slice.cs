@@ -71,6 +71,12 @@ public class Step_Slice : Step
             img.sprite = bahanSliceImages[i];
             // img.SetNativeSize(); // Optional: size to match the sprite
             bahanDisplay[i] = img;
+
+            // Set the size of the image to match the sprite size
+            RectTransform rt = imgObj.GetComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(bahanSliceImages[i].rect.width, bahanSliceImages[i].rect.height);
+            Utilz.SetSizeNormalized(rt, bahanSliceImages[i], 500f, 500f);
+            
         }
     }
 
@@ -120,16 +126,18 @@ public class Step_Slice : Step
         if (!isActive) return; // Ensure step is active
         if (slicesCount < totalSlices)
         {
-
+            float dispositionFactor = totalSlices * 100f; // Adjust this factor to control the distance between slices
             // move the sliced image to the to the right smoothly
-            Vector2 targetPosition = new Vector2(bahanDisplay[totalSlices - slicesCount].transform.position.x + 100, bahanDisplay[totalSlices - slicesCount].transform.position.y);
+            Vector2 targetPosition = new Vector2(bahanDisplay[totalSlices - slicesCount].transform.position.x + dispositionFactor, bahanDisplay[totalSlices - slicesCount].transform.position.y);
+            // factor in the index of the slice to determine the target position
+            targetPosition.x -= slicesCount * 100; // Adjust the x position based on the slice index
+
             bahanDisplay[totalSlices - slicesCount].transform.DOMove(targetPosition, 0.5f).SetEase(Ease.OutBack);
             // Check if all slices are done
             slicesCount++;
             if (slicesCount >= totalSlices)
             {
-                Invoke("SliceComplete", 2f); // Wait for 2 seconds before calling SliceComplete
-                // All slices are done, trigger the next step
+                Invoke("SliceComplete", 0.3f); // 
             }
         }
     }

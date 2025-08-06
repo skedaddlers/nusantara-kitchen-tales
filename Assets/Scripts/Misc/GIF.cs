@@ -5,7 +5,7 @@ public class GIF : MonoBehaviour
 {
     public Sprite[] gifFrames;
     public float frameRate = 1f; // Time in seconds between frames
-    private Image imageComponent;
+    public Image imageComponent;
     private int currentFrame = 0;
     private float timer = 0f;
     private bool isPlaying = false;
@@ -36,6 +36,7 @@ public class GIF : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= frameRate)
             {
+                Debug.Log("GIF frame: " + currentFrame);
                 timer = 0f;
                 currentFrame = (currentFrame + 1) % gifFrames.Length;
                 imageComponent.sprite = gifFrames[currentFrame];

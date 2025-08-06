@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DraggableStaticItem : DraggableItem
 {
@@ -26,6 +27,7 @@ public class DraggableStaticItem : DraggableItem
         }
 
         containerStartPos = staticContainer.anchoredPosition;
+        Debug.Log("DraggableStaticItem: containerStartPos set to " + containerStartPos);
     }
 
     public override void OnBeginDrag(PointerEventData eventData)
@@ -54,10 +56,18 @@ public class DraggableStaticItem : DraggableItem
         }
         if (droppedCorrectly && movingContent != null)
         {
-            // return the container to the staticContainer position
-            staticContainer.anchoredPosition = containerStartPos;
+            // rotate the static container to simulate pouring
+            staticContainer.DORotate(new Vector3(0, 0, -45f), 0.5f).SetEase(Ease.OutBack)
+                .OnComplete(() =>
+                {
+                    // After rotation, reset the position
+                    staticContainer.anchoredPosition = containerStartPos;
+                    staticContainer.rotation = Quaternion.identity; // Reset rotation
+                });
+            
 
-            contentImage.enabled = true; // Show the content image when dropped correctly
+
+            // contentImage.enabled = true; // Show the content image when dropped correctly
 
         }
     }

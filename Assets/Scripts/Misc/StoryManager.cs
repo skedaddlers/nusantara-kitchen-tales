@@ -25,6 +25,7 @@ public class StoryManager : MonoBehaviour
         homeButton.onClick.AddListener(() =>
         {
             GameData.ResetData();
+            AudioManager.Instance.PlayMusic("background");
             SceneLoader.LoadScene("MainMenu");
         });
     }

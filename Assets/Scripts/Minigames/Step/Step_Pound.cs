@@ -109,7 +109,7 @@ public class Step_Pound : Step
         {
             Debug.Log($"StartPound: {touchPosition}");
             isPounding = true;
-            bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+            // bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
             currentTouchPosition = touchPosition;
         }
     }
@@ -182,6 +182,7 @@ public class Step_Pound : Step
         bahanDisplay.rectTransform.localScale = Vector3.one;
         if (elapsedTime >= timeToPound)
         {
+            elapsedTime = 0f;
             GameplayManager.Instance.NextStep();
         }
 

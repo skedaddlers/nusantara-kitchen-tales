@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e19415feb40a489dc38afbf8f96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namaBahan: Kencur
+  namaBahan: Kacang Panjang
   deskripsiBahan: 
-  gambarBahan: {fileID: 9179721535796383370, guid: ad338382f164c3c44824d34992d94d82, type: 3}
+  gambarBahan: {fileID: -6275947350040477649, guid: 80fca36829f906042aee045bfb787e87, type: 3}
   gambarBahanTerbalik: {fileID: 0}
   gambarBahanPound: []
   gambarBahanSlice: []

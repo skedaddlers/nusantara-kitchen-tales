@@ -18,27 +18,10 @@ MonoBehaviour:
   resepText: {fileID: 2435682782950637673, guid: 907d912ac9e46414495615d7739ace68, type: 3}
   estimasiDurasi: 0
   langkahMasak:
-  - deskripsi: Air ke sambal
+  - deskripsi: Yuk, goreng kacangnya tanpa minyak sampai wangi keluar! Ini namanya
+      disangrai.
     step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan:
-    - {fileID: 5491858519558499118, guid: b044b13130b3e2b4c8220fe88f28d6d8, type: 3}
-    alatDiperlukan:
-    - {fileID: 3001705035717412675, guid: 2a4b2d169ac9757408fb234c2cc02fdc, type: 3}
-    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
-    addToExisting: 0
-  - deskripsi: Pound sambal
-    step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan:
-    - {fileID: 5491858519558499118, guid: 4e8e398ee48d2e849b886d7271e030a1, type: 3}
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
-    addToExisting: 0
-  - deskripsi: Menyangrai
-    step: {fileID: 0}
+    pointsGiven: 100
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan:
@@ -48,8 +31,9 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: 1a5fc3abdbf8ce14d95e1acba662785e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
-  - deskripsi: Aduk
+  - deskripsi: Aduk pelan-pelan bahan di dalam wajan biar matang merata!
     step: {fileID: 0}
+    pointsGiven: 120
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
@@ -57,8 +41,10 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: 9c6a66fd1683c4d44b75bcf76bf13c53, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 1
-  - deskripsi: Tahan Kompor
+  - deskripsi: Tekan dan tahan kompor agar api tetap menyala dan stabil pas kamu
+      memasak.
     step: {fileID: 0}
+    pointsGiven: 150
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
@@ -66,8 +52,9 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
-  - deskripsi: Menyangrai Sayuran
+  - deskripsi: Waktunya panggang rempah sebentar, biar rasanya lebih sedap.
     step: {fileID: 0}
+    pointsGiven: 100
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan:
@@ -80,8 +67,9 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: 1a5fc3abdbf8ce14d95e1acba662785e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
-  - deskripsi: Aduk
+  - deskripsi: Aduk pelan-pelan bahan di dalam wajan biar matang merata!
     step: {fileID: 0}
+    pointsGiven: 120
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
@@ -89,8 +77,10 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: 9c6a66fd1683c4d44b75bcf76bf13c53, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
     addToExisting: 1
-  - deskripsi: Tahan Kompor
+  - deskripsi: Tekan dan tahan kompor agar api tetap menyala dan stabil pas kamu
+      memasak.
     step: {fileID: 0}
+    pointsGiven: 150
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
@@ -98,19 +88,25 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
-  - deskripsi: Memblender Bahan Sambal
+  - deskripsi: Ayo blender semua bumbu sambal jadi halus dan siap seduh!
     step: {fileID: 0}
+    pointsGiven: 100
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan:
     - {fileID: 5491858519558499118, guid: 1a1161d95e6892e4e8780eaa55628c74, type: 3}
+    - {fileID: 5491858519558499118, guid: f1002229c2ac5884d9ea1e896750777a, type: 3}
+    - {fileID: 5491858519558499118, guid: e8b4577ee11248740a7e983b0d983ae8, type: 3}
+    - {fileID: 5491858519558499118, guid: aa1895864687e1e45985f2865d367b6f, type: 3}
+    - {fileID: 5491858519558499118, guid: 98d6cc12300662a4a96d6fff92c8eadc, type: 3}
     - {fileID: 5491858519558499118, guid: 686056ab861501a44aec8150f0806c6e, type: 3}
     alatDiperlukan:
     - {fileID: 3001705035717412675, guid: bf4de55712faed44f9cb433549740596, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0
-  - deskripsi: Tahan
+  - deskripsi: Tekan dan tahan blender agar bahannya dapat tercampur dengan baik!
     step: {fileID: 0}
+    pointsGiven: 150
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
@@ -119,32 +115,30 @@ MonoBehaviour:
     - {fileID: 3001705035717412675, guid: b245278890eeae848b3cbecd71edc3bf, type: 3}
     prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
     addToExisting: 1
-  - deskripsi: Cuci Sawi
+  - deskripsi: Tuangkan air hangat ke sambal agar lebih encer dan siap dinikmati.
     step: {fileID: 0}
+    pointsGiven: 80
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: b044b13130b3e2b4c8220fe88f28d6d8, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 2a4b2d169ac9757408fb234c2cc02fdc, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
+    addToExisting: 0
+  - deskripsi: Tumbuk sambalnya, jangan sampai ada yang belum halus!
+    step: {fileID: 0}
+    pointsGiven: 130
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 4e8e398ee48d2e849b886d7271e030a1, type: 3}
     alatDiperlukan: []
     prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
     addToExisting: 0
-  - deskripsi: Cuci Daun Singkong
+  - deskripsi: Potong-potong sawi jadi kecil-kecil biar gampang dimasak.
     step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
-    addToExisting: 0
-  - deskripsi: Cuci Kacang Panjang
-    step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
-    addToExisting: 0
-  - deskripsi: Potong Sawi
-    step: {fileID: 0}
+    pointsGiven: 130
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan:
@@ -152,8 +146,9 @@ MonoBehaviour:
     alatDiperlukan: []
     prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
     addToExisting: 0
-  - deskripsi: Potong Daun SIngkong
+  - deskripsi: Daun singkongnya dipotong jadi bagian-bagian kecil dulu, yuk!
     step: {fileID: 0}
+    pointsGiven: 130
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan:
@@ -161,35 +156,101 @@ MonoBehaviour:
     alatDiperlukan: []
     prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
     addToExisting: 0
-  - deskripsi: Potong Kacang Panjang
+  - deskripsi: Cuci bersih sawi agar tidak ada kotoran atau sisa tanah.
     step: {fileID: 0}
+    pointsGiven: 50
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 365661acf0453b24d85324e79e835868, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: c2423b4412d7bdf4490cc97c88cafe24, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 4aa666b7ad7e2e04ba8b3e47286acd28, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: bbdbd9361e4a7b64a81936f05407f551, type: 3}
     addToExisting: 0
-  - deskripsi: Rebus Sayuran
+  - deskripsi: Putar-putar bahan di air supaya bersihnya maksimal!
     step: {fileID: 0}
-    jenisStep: 5
-    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
-    bahanDiperlukan: []
-    alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
-    addToExisting: 0
-  - deskripsi: Assembly
-    step: {fileID: 0}
+    pointsGiven: 120
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
     alatDiperlukan: []
     prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
-    addToExisting: 0
-  - deskripsi: Assembly
+    addToExisting: 1
+  - deskripsi: Cuci bersih daun singkong, jangan sampai ada yang kotor!
     step: {fileID: 0}
+    pointsGiven: 50
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: f54f6e5b4ac36694196eff852f73f0ea, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 4aa666b7ad7e2e04ba8b3e47286acd28, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: bbdbd9361e4a7b64a81936f05407f551, type: 3}
+    addToExisting: 0
+  - deskripsi: Kita putar lagi! Biar semua bahan benar-benar bersih.
+    step: {fileID: 0}
+    pointsGiven: 120
     jenisStep: 5
     ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
     bahanDiperlukan: []
     alatDiperlukan: []
-    prefabStep: {fileID: 1541002010568996511, guid: 3a0cd9085d3d12949a7dc22446c4f619, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
+    addToExisting: 1
+  - deskripsi: Kacang panjang juga harus dicuci dulu, ya. Yuk kita bersihkan!
+    step: {fileID: 0}
+    pointsGiven: 50
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: caf5a74327f7e6f40a0b49fd40063a7f, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 4aa666b7ad7e2e04ba8b3e47286acd28, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: bbdbd9361e4a7b64a81936f05407f551, type: 3}
+    addToExisting: 0
+  - deskripsi: Satu kali putaran cuci terakhir. Hebat kamu!
+    step: {fileID: 0}
+    pointsGiven: 120
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan: []
+    alatDiperlukan: []
+    prefabStep: {fileID: 1541002010568996511, guid: 6564771e1178b2f409434da195f83767, type: 3}
+    addToExisting: 1
+  - deskripsi: Rebus semua sayur sampai matang. Jangan terlalu lama, biar tetap segar.
+    step: {fileID: 0}
+    pointsGiven: 100
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 543ee72f836fa9f47a2c520853bdcfd1, type: 3}
+    - {fileID: 5491858519558499118, guid: 22ce02bdf1f67064c93068cef478b848, type: 3}
+    - {fileID: 5491858519558499118, guid: b2e72caf46265f14f934891125bb74a5, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: cd4f1da014250b64ab49a73d550dd7d1, type: 3}
+    - {fileID: 3001705035717412675, guid: bafe08f2ea132d8409f39c727001b203, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
+    addToExisting: 0
+  - deskripsi: Tahan kompor tetap nyala pas sayuran direbus. Dikontrol, ya!
+    step: {fileID: 0}
+    pointsGiven: 150
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan: []
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: c4c7d988064595a45ae9abbfdf3b6c6e, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: 0d3d1fbf17db9674cac043aa7374ab11, type: 3}
+    addToExisting: 1
+  - deskripsi: Semua bahan sudah siap! Yuk kita tata cantik di piring jadi seporsi
+      nasi pecel!
+    step: {fileID: 0}
+    pointsGiven: 100
+    jenisStep: 5
+    ikonStep: {fileID: -2564951412667303878, guid: 210f6672b0fc29848b7c8fed2e0f54f3, type: 3}
+    bahanDiperlukan:
+    - {fileID: 5491858519558499118, guid: 2366f9e0e936ba34eaf95ea235f35715, type: 3}
+    - {fileID: 5491858519558499118, guid: 2819c018f6708c747a12cc35b0fa6c0a, type: 3}
+    - {fileID: 5491858519558499118, guid: 300b09f101be1b143a7d029760e61c36, type: 3}
+    alatDiperlukan:
+    - {fileID: 3001705035717412675, guid: 29fd6075896dba744b9445a8faf7630e, type: 3}
+    prefabStep: {fileID: 1541002010568996511, guid: b2ab9cd0611256e4ca6d3c8b23e17709, type: 3}
     addToExisting: 0

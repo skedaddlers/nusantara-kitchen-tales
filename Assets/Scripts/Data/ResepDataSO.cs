@@ -11,6 +11,7 @@ public class ResepDataSO : ScriptableObject
     public StoryDataSO storyData;
     public Sprite resepText;
 
+
     // Placeholder: kamu bisa tambah lagi nanti
     public int estimasiDurasi;
     public LangkahMasak[] langkahMasak;
@@ -22,7 +23,7 @@ public class ResepDataSO : ScriptableObject
 
         [SerializeReference]
         public Step step;
-        
+        public int pointsGiven = 10; // Poin yang diberikan untuk langkah ini
         public StepType jenisStep;
         public Sprite ikonStep;
         public Bahan[] bahanDiperlukan;
