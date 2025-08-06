@@ -23,6 +23,10 @@ public class StageSelect : MonoBehaviour
     public Image titleImage;
     public Image resepImage;
 
+    [Header("Panel Progres")]
+    public Image[] normalModeStars; // Masukkan 3 GameObject Image bintang untuk mode Normal
+    public Image[] skillTestStars; // Masukkan 3 GameObject Image bintang untuk Uji Kemampuan
+
     // list of all stage cards
     private StageCardUI[] stageCards;
 
@@ -34,6 +38,7 @@ public class StageSelect : MonoBehaviour
             // Animasi efek klik
             transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
+                GameData.GameType = GameType.Normal; 
                 // Simpan nama stage, dan Load scene gameplay, tapi hanya pecel saja yang sudah ada
                 if (GameData.ResepDipilih.namaResep == "Nasi Pecel")
                 {
@@ -55,7 +60,7 @@ public class StageSelect : MonoBehaviour
                     // animate not available panel
                     notAvailablePanel.transform.localScale = Vector3.zero;
                     notAvailablePanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-                    
+
                 }
             });
         });
@@ -73,21 +78,75 @@ public class StageSelect : MonoBehaviour
 
         test.onClick.AddListener(() =>
         {
-            Debug.Log("Test button clicked, but not implemented yet.");
-            comingSoonPanel.SetActive(true);
-            comingSoonButton.onClick.AddListener(() =>
+            // Debug.Log("Test button clicked, but not implemented yet.");
+            // comingSoonPanel.SetActive(true);
+            // comingSoonButton.onClick.AddListener(() =>
+            // {
+            //     comingSoonPanel.SetActive(false);
+            // });
+            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
-                comingSoonPanel.SetActive(false);
+                // Simpan nama stage, dan Load scene gameplay, tapi hanya pecel saja yang sudah ada
+                if (GameData.ResepDipilih.namaResep == "Nasi Pecel")
+                {
+                    AudioManager.Instance.PlayMusic("gameplay");
+                    GameData.GameType = GameType.SkillTest; // Set game type to SkillTest
+                    SceneLoader.LoadScene("Story");
+                }
+                else
+                {
+                    notAvailablePanel.SetActive(true);
+                    notAvailableButton.onClick.AddListener(() =>
+                    {
+                        // Close not available panel
+                        notAvailablePanel.SetActive(false);
+                        // Reset selected recipe
+                        GameData.ResepDipilih = null;
+                        // Hide stage panel
+                    });
+                    stagePanel.SetActive(false);
+                    // animate not available panel
+                    notAvailablePanel.transform.localScale = Vector3.zero;
+                    notAvailablePanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+
+                }
             });
         });
 
         practice.onClick.AddListener(() =>
         {
-            Debug.Log("Practice button clicked, but not implemented yet.");
-            comingSoonPanel.SetActive(true);
-            comingSoonButton.onClick.AddListener(() =>
+            // Debug.Log("Practice button clicked, but not implemented yet.");
+            // comingSoonPanel.SetActive(true);
+            // comingSoonButton.onClick.AddListener(() =>
+            // {
+            //     comingSoonPanel.SetActive(false);
+            // });
+            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1).OnComplete(() =>
             {
-                comingSoonPanel.SetActive(false);
+                // Simpan nama stage, dan Load scene gameplay, tapi hanya pecel saja yang sudah ada
+                if (GameData.ResepDipilih.namaResep == "Nasi Pecel")
+                {
+                    AudioManager.Instance.PlayMusic("gameplay");
+                    GameData.GameType = GameType.Practice; // Set game type to Practice
+                    SceneLoader.LoadScene("Story");
+                }
+                else
+                {
+                    notAvailablePanel.SetActive(true);
+                    notAvailableButton.onClick.AddListener(() =>
+                    {
+                        // Close not available panel
+                        notAvailablePanel.SetActive(false);
+                        // Reset selected recipe
+                        GameData.ResepDipilih = null;
+                        // Hide stage panel
+                    });
+                    stagePanel.SetActive(false);
+                    // animate not available panel
+                    notAvailablePanel.transform.localScale = Vector3.zero;
+                    notAvailablePanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+
+                }
             });
         });
 
@@ -163,7 +222,7 @@ public class StageSelect : MonoBehaviour
 
 
     }
-    
+
     public void ShowPanel(ResepDataSO resep)
     {
         Debug.Log("Menampilkan panel untuk resep: " + resep.namaResep);
@@ -173,6 +232,8 @@ public class StageSelect : MonoBehaviour
             return;
         }
 
+        GameData.ResepDipilih = resep;
+
         stagePanel.SetActive(true);
         titleImage.sprite = resep.resepText;
         resepImage.sprite = resep.ikonResep;
@@ -180,5 +241,41 @@ public class StageSelect : MonoBehaviour
         // Set ukuran gambar resep
         Utilz.SetSizeNormalized(resepImage.GetComponent<RectTransform>(), resep.ikonResep, 350f, 350f);
         Utilz.SetSizeNormalized(titleImage.GetComponent<RectTransform>(), resep.resepText, 350f, 350f);
+
+        int normalStars = ProgressManager.LoadStars(resep, GameType.Normal);
+        int skillTestStarsCount = ProgressManager.LoadStars(resep, GameType.SkillTest);
+
+        // 2. Perbarui tampilan bintang
+        UpdateStarUI(normalModeStars, normalStars);
+        UpdateStarUI(skillTestStars, skillTestStarsCount);
+
+        // 3. Terapkan logika unlock untuk tombol
+        // Tombol Uji Kemampuan (test) aktif jika mode Normal dapat 3 bintang.
+        test.interactable = (normalStars == 3);
+
+        // Tombol Uji Pemahaman (quiz) aktif jika mode Normal pernah selesai (minimal 1 bintang).
+        quiz.interactable = (normalStars > 0);
+    }
+    
+    private void UpdateStarUI(Image[] starImages, int activeCount)
+    {
+        for (int i = 0; i < starImages.Length; i++)
+        {
+            // Buat warna baru dari warna asli bintang
+            Color starColor = starImages[i].color;
+
+            if (i < activeCount)
+            {
+                // Jika bintang ini didapat, buat terlihat penuh (alpha = 1)
+                starColor.a = 1f;
+            }
+            else
+            {
+                // Jika bintang ini belum didapat, buat redup (alpha = 0.3)
+                starColor.a = 0.3f;
+            }
+
+            starImages[i].color = starColor;
+        }
     }
 }

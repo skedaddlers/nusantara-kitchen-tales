@@ -100,8 +100,8 @@ public class QuizManager : MonoBehaviour
         QuestionSO currentQuestion = questions[currentQuestionIndex];
         Debug.Log("Speech recognized: " + recognizedText);
         // Kita bisa buat perbandingan yang lebih 'pintar' (misal: ignore case, hapus spasi)
-        bool isCorrect = recognizedText.Equals(currentQuestion.correctAnswerPhrase, System.StringComparison.OrdinalIgnoreCase);
-
+        bool isCorrect = string.Equals(recognizedText.Trim(), currentQuestion.correctAnswerPhrase.Trim(), System.StringComparison.OrdinalIgnoreCase);
+        Debug.Log("Comparing: " + recognizedText + " with: " + currentQuestion.correctAnswerPhrase);
         if (isCorrect)
         {
             ShowFeedback("Benar! Kamu mengucapkan: " + recognizedText, true);

@@ -57,7 +57,18 @@ public class StoryManager : MonoBehaviour
         if (currentSlide >= storyData.slides.Length)
         {
             // Cerita selesai, masuk ke gameplay
-            SceneLoader.LoadScene("Gameplay"); // ganti sesuai scene kamu
+            if(GameData.GameType == GameType.Practice)
+            {
+                SceneLoader.LoadScene("Latihan");
+            }
+            else if (GameData.GameType == GameType.Normal)
+            {
+                SceneLoader.LoadScene("Gameplay");
+            }
+            else if (GameData.GameType == GameType.SkillTest)
+            {
+                SceneLoader.LoadScene("SkillTest");
+            }
         }
         else
         {

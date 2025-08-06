@@ -7,6 +7,7 @@ public class GameplayTimer : MonoBehaviour
     public static GameplayTimer Instance { get; private set; }
 
     public float timeLimit = 20f; // Total time limit in seconds
+    public GameObject stopwatchImage; // Image to represent the stopwatch
     public Image stopwatchNeedle; // Image to represent the stopwatch needle
     private float timeRemaining;
     private bool isRunning = false;
@@ -34,8 +35,19 @@ public class GameplayTimer : MonoBehaviour
         UpdateStopwatchImage();
     }
 
+    public void SetTimerVisibility(bool visible)
+    {
+        if (stopwatchNeedle != null)
+        {
+            // Cara paling sederhana adalah mengaktifkan/menonaktifkan GameObject dari gambar jarum.
+            // Jika Anda memiliki parent object untuk semua UI timer, itu lebih baik.
+            stopwatchImage.SetActive(visible);
+        }
+    }
+
     public void StartTimer()
     {
+        if (!gameObject.activeInHierarchy || !stopwatchNeedle.gameObject.activeSelf) return;
         if (!isRunning)
         {
             isRunning = true;
