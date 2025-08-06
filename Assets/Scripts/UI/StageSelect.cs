@@ -62,12 +62,13 @@ public class StageSelect : MonoBehaviour
 
         quiz.onClick.AddListener(() =>
         {
-            Debug.Log("Quiz button clicked, but not implemented yet.");
-            comingSoonPanel.SetActive(true);
-            comingSoonButton.onClick.AddListener(() =>
-            {
-                comingSoonPanel.SetActive(false);
-            });
+            SceneLoader.LoadScene("Quiz");
+            // Debug.Log("Quiz button clicked, but not implemented yet.");
+            // comingSoonPanel.SetActive(true);
+            // comingSoonButton.onClick.AddListener(() =>
+            // {
+            //     comingSoonPanel.SetActive(false);
+            // });
         });
 
         test.onClick.AddListener(() =>

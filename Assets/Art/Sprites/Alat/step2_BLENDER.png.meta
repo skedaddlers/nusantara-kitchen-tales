@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      step2_BLENDER_0: -946596832137506337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

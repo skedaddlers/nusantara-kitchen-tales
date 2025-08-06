@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PCEL PIRING_0: 3174014824317319924
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

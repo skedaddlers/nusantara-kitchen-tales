@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      step2_TUTUP BLENDER_0: 8254810538410457755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

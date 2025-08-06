@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sawi potong_0: 2271949355891685625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

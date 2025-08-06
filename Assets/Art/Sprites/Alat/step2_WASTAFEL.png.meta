@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      step2_WASTAFEL_0: 7975791609635344790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

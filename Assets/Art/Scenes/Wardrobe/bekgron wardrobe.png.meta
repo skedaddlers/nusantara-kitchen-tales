@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bekgron wardrobe_0: -3065812080396114483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
