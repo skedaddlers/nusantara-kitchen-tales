@@ -98,6 +98,7 @@ public class QuizManager : MonoBehaviour
     public void OnSpeechResultReceived(string recognizedText)
     {
         QuestionSO currentQuestion = questions[currentQuestionIndex];
+        Debug.Log("Speech recognized: " + recognizedText);
         // Kita bisa buat perbandingan yang lebih 'pintar' (misal: ignore case, hapus spasi)
         bool isCorrect = recognizedText.Equals(currentQuestion.correctAnswerPhrase, System.StringComparison.OrdinalIgnoreCase);
 

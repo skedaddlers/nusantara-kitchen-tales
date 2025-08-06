@@ -4,7 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.IO;
 
-public class SpeechRecognitionController : MonoBehaviour {
+public class SpeechRecognitionController : MonoBehaviour
+{
     [SerializeField] private UnityEvent onStartRecording;
     [SerializeField] private UnityEvent onSendRecording;
     [SerializeField] public UnityEvent<string> onResponse;
@@ -18,11 +19,19 @@ public class SpeechRecognitionController : MonoBehaviour {
     private byte[] m_bytes;
     private bool m_recording;
 
-    private void Awake() {
+    private void Awake()
+    {
         // Select the microphone device (by default the first one) but
         // also populate the dropdown with all available devices
-        m_deviceName = Microphone.devices[0];
-        foreach (var device in Microphone.devices) {
+
+        if (m_deviceDropdown == null)
+        {
+            m_deviceName = Microphone.devices[0];
+            // Debug.LogError("Device Dropdown is not assigned!");
+            return;
+        }
+        foreach (var device in Microphone.devices)
+        {
             m_deviceDropdown.options.Add(new TMP_Dropdown.OptionData(device));
         }
         m_deviceDropdown.value = 0;
@@ -31,6 +40,11 @@ public class SpeechRecognitionController : MonoBehaviour {
     private void Start()
     {
         runWhisper.Initialize();
+
+        if (runWhisper != null)
+        {
+            runWhisper.OnTranscriptionCompleted += HandleTranscriptionResult;
+        }
     }
 
     /// <summary>
@@ -45,10 +59,14 @@ public class SpeechRecognitionController : MonoBehaviour {
     /// <summary>
     /// This method is called when the user clicks the button
     /// </summary>
-    public void Click() {
-        if (!m_recording) {
+    public void Click()
+    {
+        if (!m_recording)
+        {
             StartRecording();
-        } else {
+        }
+        else
+        {
             StopRecording();
         }
     }
@@ -56,7 +74,8 @@ public class SpeechRecognitionController : MonoBehaviour {
     /// <summary>
     /// Start recording the user's voice
     /// </summary>
-    private void StartRecording() {
+    private void StartRecording()
+    {
         m_clip = Microphone.Start(m_deviceName, false, 10, 16000);
         m_recording = true;
         onStartRecording.Invoke();
@@ -65,7 +84,8 @@ public class SpeechRecognitionController : MonoBehaviour {
     /// <summary>
     /// Stop recording the user's voice and send the audio to the Whisper Model
     /// </summary>
-    private void StopRecording() {
+    private void StopRecording()
+    {
         var position = Microphone.GetPosition(m_deviceName);
         Microphone.End(m_deviceName);
         m_recording = false;
@@ -82,15 +102,36 @@ public class SpeechRecognitionController : MonoBehaviour {
         runWhisper.Transcribe();
     }
 
-    private void Update() {
-        if (!m_recording) {
+    private void HandleTranscriptionResult(string resultText)
+    {
+        Debug.Log("SpeechController received: " + resultText);
+        // Teruskan hasilnya ke event onResponse, yang didengarkan oleh QuizManager
+        onResponse.Invoke(resultText);
+    }
+
+    private void Update()
+    {
+        if (!m_recording)
+        {
             return;
         }
+        if (m_progress != null)
+        {
+            m_progress.fillAmount = (float)Microphone.GetPosition(m_deviceName) / m_clip.samples;
+        }
 
-        m_progress.fillAmount = (float)Microphone.GetPosition(m_deviceName) / m_clip.samples;
-
-        if (Microphone.GetPosition(m_deviceName) >= m_clip.samples) {
+        if (Microphone.GetPosition(m_deviceName) >= m_clip.samples)
+        {
             StopRecording();
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        // Hapus pendaftaran event saat objek dihancurkan untuk mencegah error
+        if (runWhisper != null)
+        {
+            runWhisper.OnTranscriptionCompleted -= HandleTranscriptionResult;
         }
     }
 }

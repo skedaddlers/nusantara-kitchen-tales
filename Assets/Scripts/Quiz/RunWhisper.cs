@@ -4,12 +4,14 @@ using Unity.InferenceEngine;
 using System.Text;
 using Unity.Collections;
 using UnityEngine.UI;
+using System;
 using TMPro;
 using Newtonsoft.Json;
 
 public class RunWhisper : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI m_transcriptionText;
+    // [SerializeField] private TextMeshProUGUI m_transcriptionText;
+    public Action<string> OnTranscriptionCompleted;
     Worker decoder1, decoder2, encoder, spectrogram;
     Worker argmax;
 
@@ -42,6 +44,7 @@ public class RunWhisper : MonoBehaviour
     Tensor<float> encodedAudio;
 
     bool transcribe = false;
+    bool hasFinished = false;
     string outputString = "";
 
     // Maximum size of audioClip (30s at 16kHz)
@@ -128,12 +131,12 @@ public class RunWhisper : MonoBehaviour
     {
         LoadAudio();
         EncodeAudio();
-
+        hasFinished = false;
         transcribe = true;
         tokenCount = 3;
 
         outputTokens[0] = START_OF_TRANSCRIPT;
-        outputTokens[1] = ENGLISH;
+        outputTokens[1] = INDONESIAN;
         outputTokens[2] = TRANSCRIBE;
 
         tokensTensor.Reshape(new TensorShape(1, tokenCount));
@@ -148,9 +151,13 @@ public class RunWhisper : MonoBehaviour
         {
             await InferenceStep();
         }
+        hasFinished = true;
+
 
         Debug.Log("Final transcript: " + outputString);
-        m_transcriptionText.text = outputString;
+        // m_transcriptionText.text = outputString;
+
+        OnTranscriptionCompleted?.Invoke(outputString);
 
         // Optionally trigger UnityEvent here if needed
         // onResponse.Invoke(outputString); // Add this UnityEvent<string> if needed
