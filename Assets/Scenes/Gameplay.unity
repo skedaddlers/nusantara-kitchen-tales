@@ -2527,7 +2527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  gameType: 1
+  gameType: 2
   stepParent: {fileID: 1646801931}
   instructionsPanel: {fileID: 1626161557}
   stepText: {fileID: 664583476}

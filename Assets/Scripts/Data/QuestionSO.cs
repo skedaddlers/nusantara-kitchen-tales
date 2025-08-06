@@ -15,7 +15,7 @@ public class QuestionSO : ScriptableObject
 
     // -- Opsi untuk Pengenalan Suara --
     [Header("Speech Recognition Option")]
-    public string correctAnswerPhrase; // Frasa yang benar untuk diucapkan
+    public string[] correctAnswerPhrases;
 }
 
 public enum QuestionType

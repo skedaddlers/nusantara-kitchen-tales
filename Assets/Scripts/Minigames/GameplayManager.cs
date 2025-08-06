@@ -180,6 +180,10 @@ public class GameplayManager : MonoBehaviour
 
     void LoadStep(int index, bool isRetry = false)
     {
+        if(!ShowInstructions)
+        {
+            instructionsPanel.SetActive(false);
+        }
 
         SetMaskotImage("Happy");
         var step = resep.langkahMasak[index];
@@ -284,11 +288,20 @@ public class GameplayManager : MonoBehaviour
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(TypeText("Coba lagi! tapi kamu tidak dapat poin :("));
         }
+        else
+        {
+            instructionsPanel.SetActive(true);
+            typingCoroutine = StartCoroutine(TypeText("Coba lagi!"));
+        }
         maskotImage.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.5f);
     }
 
     private void ShowSuccess()
     {
+        if (!ShowInstructions)
+        {
+            instructionsPanel.SetActive(true);
+        }
         // Show success animation or message
         Debug.Log("Langkah berhasil!");
         SetMaskotImage("Amazed");

@@ -72,3 +72,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore ONNX model files
+Assets/StreamlineAssets/*.onnx
+Assets/StreamlineAssets/*.onnx.meta
+
+# Optional: Ignore Unity performance test results
+Assets/Resources/PerformanceTestRun*.json
+Assets/Resources/PerformanceTestRun*.json.meta

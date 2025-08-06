@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c951a96e269ca8641a3e0a3c33cc4555, type: 3}
-  m_Name: Pecel_2
+  m_Name: Pecel_4
   m_EditorClassIdentifier: 
-  questionText: Sebelum sambal pecel ditumbuk, harus dituangkan _ terlebih dahulu
+  questionText: Pecel Madiun biasa dikonsumsi pada waktu
   questionType: 1
   options:
   - Jawa Timur
@@ -21,8 +21,8 @@ MonoBehaviour:
   - Jawa Tengah
   correctOptionIndex: 0
   correctAnswerPhrases:
-  - Air
-  - Hangat
-  - Dingin
-  - Cairan
-  - Cair
+  - Pagi
+  - Siang
+  - Malam
+  - Makan
+  - Sarapan

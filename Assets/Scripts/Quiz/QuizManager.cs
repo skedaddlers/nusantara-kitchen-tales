@@ -98,10 +98,27 @@ public class QuizManager : MonoBehaviour
     public void OnSpeechResultReceived(string recognizedText)
     {
         QuestionSO currentQuestion = questions[currentQuestionIndex];
-        Debug.Log("Speech recognized: " + recognizedText);
+        // Debug.Log("Speech recognized: " + recognizedText);
         // Kita bisa buat perbandingan yang lebih 'pintar' (misal: ignore case, hapus spasi)
-        bool isCorrect = string.Equals(recognizedText.Trim(), currentQuestion.correctAnswerPhrase.Trim(), System.StringComparison.OrdinalIgnoreCase);
-        Debug.Log("Comparing: " + recognizedText + " with: " + currentQuestion.correctAnswerPhrase);
+        // bool isCorrect = string.Equals(recognizedText.Trim(), currentQuestion.correctAnswerPhrase.Trim(), System.StringComparison.OrdinalIgnoreCase);
+        // Debug.Log("Comparing: " + recognizedText + " with: " + currentQuestion.correctAnswerPhrase);
+        string[] correctPhrases = currentQuestion.correctAnswerPhrases;
+        bool isCorrect = false;
+        // split recognizedText into phrases and compare each one
+        string[] recognizedPhrases = recognizedText.Split(new char[] { ' ', ',', '.' }, System.StringSplitOptions.RemoveEmptyEntries);
+        foreach (var phrase in correctPhrases)
+        {
+            foreach (var recognizedPhrase in recognizedPhrases)
+            {
+                Debug.Log("Comparing: " + recognizedPhrase + " with: " + phrase);
+                if (string.Equals(recognizedPhrase.Trim(), phrase.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                {
+                    isCorrect = true;
+                    break;
+                }
+            }
+            if (isCorrect) break; // Stop checking if we found a match
+        }
         if (isCorrect)
         {
             ShowFeedback("Benar! Kamu mengucapkan: " + recognizedText, true);

@@ -91,7 +91,7 @@ public class StageSelect : MonoBehaviour
                 {
                     AudioManager.Instance.PlayMusic("gameplay");
                     GameData.GameType = GameType.SkillTest; // Set game type to SkillTest
-                    SceneLoader.LoadScene("Story");
+                    SceneLoader.LoadScene("SkillTest");
                 }
                 else
                 {

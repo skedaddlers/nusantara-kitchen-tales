@@ -100,10 +100,10 @@ public class Step_Pound : Step
     private void StartPound(Vector2 touchPosition)
     {
         if (isPounding) return;
-        Debug.Log(bahanDisplay.rectTransform.position);
-        Debug.Log(bahanDisplay.rectTransform.rect);
-        Debug.Log(bahanDisplay.rectTransform.rect.width);
-        Debug.Log(bahanDisplay.rectTransform.rect.height);
+        // Debug.Log(bahanDisplay.rectTransform.position);
+        // Debug.Log(bahanDisplay.rectTransform.rect);
+        // Debug.Log(bahanDisplay.rectTransform.rect.width);
+        // Debug.Log(bahanDisplay.rectTransform.rect.height);
         // Check if the touch is on the ingredient image
         if (InBounds(bahanDisplay.rectTransform, touchPosition))
         {
@@ -120,54 +120,54 @@ public class Step_Pound : Step
         if (!isPounding) return;
 
         // Check if the touch is still on the ingredient image
-        if (InBounds(bahanDisplay.rectTransform, touchPosition))
+        // if (InBounds(bahanDisplay.rectTransform, touchPosition))
+        // {
+        float distance = Vector2.Distance(touchPosition, currentTouchPosition);
+        Debug.Log($"Distance: {distance}");
+        if (distance > minDistanceToPound)
         {
-            float distance = Vector2.Distance(touchPosition, currentTouchPosition);
-            Debug.Log($"Distance: {distance}");
-            if (distance > minDistanceToPound)
-            {
-                // Update the current touch position
-                currentTouchPosition = touchPosition;
-            }
-            else
-            {
-                // If the touch is too far from the last position, stop pounding
-                // isPounding = false;
-                return;
-            }
-
-            elapsedTime += Time.deltaTime;
-
-            // Animate the ingredient image to show the pounding effect
-            if (tween == null || !tween.IsActive())
-            {
-                tween = bahanDisplay.rectTransform.DOScale(new Vector3(0.9f, 1.1f, 1f), 0.15f)
-                .SetLoops(-1, LoopType.Yoyo)
-                .SetEase(Ease.InOutSine);
-            }
-
-            // Change the image based on the elapsed time
-            if (elapsedTime >= timeForImageChange)
-            {
-                if (currentImageIndex < bahanPoundImages.Length)
-                {
-                    bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
-                }
-                currentImageIndex++;
-            }
-
-            // Check if the total time to pound has been reached
-            if (elapsedTime >= timeToPound)
-            {
-                EndPound(touchPosition);
-            }
+            // Update the current touch position
+            currentTouchPosition = touchPosition;
         }
         else
         {
-            isPounding = false;
-            tween?.Kill();
-            tween = null;
+            // If the touch is too far from the last position, stop pounding
+            // isPounding = false;
+            return;
         }
+
+        elapsedTime += Time.deltaTime;
+
+        // Animate the ingredient image to show the pounding effect
+        if (tween == null || !tween.IsActive())
+        {
+            tween = bahanDisplay.rectTransform.DOScale(new Vector3(0.9f, 1.1f, 1f), 0.15f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine);
+        }
+
+        // Change the image based on the elapsed time
+        if (elapsedTime >= timeForImageChange)
+        {
+            if (currentImageIndex < bahanPoundImages.Length)
+            {
+                bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+            }
+            currentImageIndex++;
+        }
+
+        // Check if the total time to pound has been reached
+        if (elapsedTime >= timeToPound)
+        {
+            EndPound(touchPosition);
+        }
+        // }
+        // else
+        // {
+        //     isPounding = false;
+        //     tween?.Kill();
+        //     tween = null;
+        // }
     }
 
     private void EndPound(Vector2 touchPosition)

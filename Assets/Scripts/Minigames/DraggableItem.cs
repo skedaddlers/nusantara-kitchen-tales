@@ -40,6 +40,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         else
         {
+            rectTransform.localScale = new Vector3(0.8f, 0.8f, 1f); // kecilin item
             DisableDraggable(); // disable item jika sudah dropped correctly
         }
     }
