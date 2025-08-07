@@ -8,36 +8,36 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: e7c12176d699ad04a86242037d786094
   - enabled: 0
     path: Assets/Scenes/LevelSelect.unity
     guid: 02ba5438cac84cc478c472cbdb9591c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StageSelect.unity
     guid: 5b5810549573c7f4ba16f84347d96916
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Story.unity
     guid: 216ee4861fa9d2b40bdd38ac9075fec3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gameplay.unity
     guid: ab0d2e4a91620d541aaec71c0a3e8dd9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Customization.unity
     guid: f291451997dacba4d97fa6fd8803a1a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PulauSelect.unity
     guid: 37cc40a89572e374ca1ab41ff6fcf3fc
   - enabled: 1
     path: Assets/Scenes/Quiz.unity
     guid: 9ac36583de314dc4597d232d9dea2634
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Latihan.unity
-    guid: 7d672e7a32c89154c84301670f29423c
-  - enabled: 1
+    guid: c280a4eb56bc8564bb60cf4486f8fdf1
+  - enabled: 0
     path: Assets/Scenes/SkillTest.unity
-    guid: 8b0b16f335e40934592df3dc2087b06a
+    guid: 8ce6908f3f916b64bb32af950c72afa3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

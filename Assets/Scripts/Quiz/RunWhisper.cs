@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 public class RunWhisper : MonoBehaviour
 {
-    // [SerializeField] private TextMeshProUGUI m_transcriptionText;
+    [SerializeField] private TextMeshProUGUI m_transcriptionText;
     public Action<string> OnTranscriptionCompleted;
     Worker decoder1, decoder2, encoder, spectrogram;
     Worker argmax;
@@ -155,7 +155,7 @@ public class RunWhisper : MonoBehaviour
 
 
         Debug.Log("Final transcript: " + outputString);
-        // m_transcriptionText.text = outputString;
+        m_transcriptionText.text = outputString;
 
         OnTranscriptionCompleted?.Invoke(outputString);
 
