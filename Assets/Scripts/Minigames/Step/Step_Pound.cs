@@ -1,13 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.InputSystem;
-
-// Step that represents the action of pounding an ingredient
-// the player touch and drag on the ingredient image
-// and the ingredient will be pounded 
-// after some time the image will be replaced with the images in the array as the ingredient is pounded
-
 
 public class Step_Pound : Step
 {
@@ -16,22 +9,55 @@ public class Step_Pound : Step
     public Bahan bahanPound;
     public float timeToPound = 10f;
     public float timeForImageChange = 5f;
-    public float minDistanceToPound = 0.1f; // Minimum distance to consider as a pound action
+    public float minDistanceToPound = 10f; // Minimum pixel distance for valid pound
 
-    private Vector2 currentTouchPosition;
+    private Vector2 lastTouchPosition;
     private int currentImageIndex = 0;
     private float elapsedTime = 0f;
+    private float imageChangeTimer = 0f;
     private Tween tween;
     private bool isPounding = false;
+    private RectTransform bahanRect;
+    private Canvas canvas;
+    private Camera uiCamera;
 
     void Start()
     {
         isActive = true;
+        bahanRect = bahanDisplay.GetComponent<RectTransform>();
+        
+        // Get canvas and camera for proper coordinate conversion
+        canvas = GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            uiCamera = canvas.worldCamera;
+        }
     }
 
     void Update()
     {
-        UpdatePressStatus();
+        if (!isActive) return;
+        
+        // Update pounding progress if actively pounding
+        if (isPounding)
+        {
+            elapsedTime += Time.deltaTime;
+            imageChangeTimer += Time.deltaTime;
+            
+            // Change image based on progress
+            if (imageChangeTimer >= timeForImageChange && currentImageIndex < bahanPoundImages.Length - 1)
+            {
+                currentImageIndex++;
+                bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+                imageChangeTimer = 0f;
+            }
+            
+            // Check if pounding is complete
+            if (elapsedTime >= timeToPound)
+            {
+                CompletePounding();
+            }
+        }
     }
 
     public override void DisableStep()
@@ -39,30 +65,13 @@ public class Step_Pound : Step
         isActive = false;
         isPounding = false;
         elapsedTime = 0f;
+        imageChangeTimer = 0f;
         currentImageIndex = 0;
-        bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
+        bahanDisplay.sprite = bahanPoundImages[0];
         bahanDisplay.rectTransform.localScale = Vector3.one;
         tween?.Kill();
         tween = null;
         Debug.Log("Step disabled");
-    }
-    private void UpdatePressStatus()
-    {
-        if (Touchscreen.current != null)
-        {
-            var touch = Touchscreen.current.primaryTouch;
-            Vector2 touchPos = InputHandler.Instance.GetTouchPosition();
-            if (touch.press.isPressed && InBounds(bahanDisplay.rectTransform, touchPos))
-            {
-                isPounding = true;
-            }
-            else
-            {
-                isPounding = false;
-
-            }
-
-        }
     }
 
     private void Awake()
@@ -72,138 +81,120 @@ public class Step_Pound : Step
         {
             bahanPound = GameData.ResepDipilih.langkahMasak[currentStep - 1].bahanDiperlukan[0];
             bahanPoundImages = GameData.ResepDipilih.langkahMasak[currentStep - 1].bahanDiperlukan[0].gambarBahanPound;
-            bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
-            return;
         }
-        bahanPound = GameData.ResepDipilih.langkahMasak[currentStep].bahanDiperlukan[0];
-        bahanPoundImages = bahanPound.gambarBahanPound;
-        bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
-        Utilz.SetSizeNormalized(bahanDisplay.rectTransform, bahanPound.gambarBahanPound[0], 500f, 500f);
-
-
+        else
+        {
+            bahanPound = GameData.ResepDipilih.langkahMasak[currentStep].bahanDiperlukan[0];
+            bahanPoundImages = bahanPound.gambarBahanPound;
+        }
+        
+        bahanDisplay.sprite = bahanPoundImages[0];
+        Utilz.SetSizeNormalized(bahanDisplay.rectTransform, bahanPoundImages[0], 500f, 500f);
     }
+
     void OnEnable()
     {
-        InputHandler.Instance.OnTouchStarted += StartPound;
-        InputHandler.Instance.OnTouchMoved += ContinuePound;
-        InputHandler.Instance.OnTouchCanceled += EndPound;
+        InputHandler.Instance.OnTouchStarted += OnTouchStart;
+        InputHandler.Instance.OnTouchMoved += OnTouchMove;
+        InputHandler.Instance.OnTouchCanceled += OnTouchEnd;
     }
 
     void OnDisable()
     {
         if (InputHandler.Instance == null) return;
-        InputHandler.Instance.OnTouchStarted -= StartPound;
-        InputHandler.Instance.OnTouchMoved -= ContinuePound;
-        InputHandler.Instance.OnTouchCanceled -= EndPound;
+        InputHandler.Instance.OnTouchStarted -= OnTouchStart;
+        InputHandler.Instance.OnTouchMoved -= OnTouchMove;
+        InputHandler.Instance.OnTouchCanceled -= OnTouchEnd;
     }
 
-    private void StartPound(Vector2 touchPosition)
+    private void OnTouchStart(Vector2 touchPosition)
     {
-        if (isPounding) return;
-        // Debug.Log(bahanDisplay.rectTransform.position);
-        // Debug.Log(bahanDisplay.rectTransform.rect);
-        // Debug.Log(bahanDisplay.rectTransform.rect.width);
-        // Debug.Log(bahanDisplay.rectTransform.rect.height);
-        // Check if the touch is on the ingredient image
-        if (InBounds(bahanDisplay.rectTransform, touchPosition))
+        if (!isActive || isPounding) return;
+        
+        // Check if touch is on the bahan
+        if (IsPointOverBahan(touchPosition))
         {
-            Debug.Log($"StartPound: {touchPosition}");
-            isPounding = true;
-            // bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
-            currentTouchPosition = touchPosition;
+            StartPounding(touchPosition);
         }
     }
 
-    private void ContinuePound(Vector2 touchPosition)
+    private void OnTouchMove(Vector2 touchPosition)
     {
-        Debug.Log($"ContinuePound: {touchPosition}" + $" isPounding: {isPounding}");
-        if (!isPounding) return;
-
-        // Check if the touch is still on the ingredient image
-        // if (InBounds(bahanDisplay.rectTransform, touchPosition))
+        if (!isActive || !isPounding) return;
+        
+        // Check if still over bahan
+        // if (!IsPointOverBahan(touchPosition))
         // {
-        float distance = Vector2.Distance(touchPosition, currentTouchPosition);
-        Debug.Log($"Distance: {distance}");
-        if (distance > minDistanceToPound)
+        //     StopPounding();
+        //     return;
+        // }
+        
+        // Check if movement is significant enough (pounding motion)
+        float distance = Vector2.Distance(touchPosition, lastTouchPosition);
+        if (distance >= minDistanceToPound)
         {
-            // Update the current touch position
-            currentTouchPosition = touchPosition;
+            // Valid pounding motion detected
+            lastTouchPosition = touchPosition;
+            
+            // Restart or continue the pounding animation
+            if (tween == null || !tween.IsActive())
+            {
+                tween = bahanDisplay.rectTransform.DOScale(new Vector3(0.9f, 1.1f, 1f), 0.15f)
+                    .SetLoops(-1, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine);
+            }
         }
-        else
-        {
-            // If the touch is too far from the last position, stop pounding
-            // isPounding = false;
-            return;
-        }
+    }
 
-        elapsedTime += Time.deltaTime;
+    private void OnTouchEnd(Vector2 touchPosition)
+    {
+        if (!isActive) return;
+        StopPounding();
+    }
 
-        // Animate the ingredient image to show the pounding effect
+    private void StartPounding(Vector2 position)
+    {
+        Debug.Log($"Start pounding at: {position}");
+        isPounding = true;
+        lastTouchPosition = position;
+        
+        // Start animation
         if (tween == null || !tween.IsActive())
         {
             tween = bahanDisplay.rectTransform.DOScale(new Vector3(0.9f, 1.1f, 1f), 0.15f)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine);
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
         }
-
-        // Change the image based on the elapsed time
-        if (elapsedTime >= timeForImageChange)
-        {
-            if (currentImageIndex < bahanPoundImages.Length)
-            {
-                bahanDisplay.sprite = bahanPoundImages[currentImageIndex];
-            }
-            currentImageIndex++;
-        }
-
-        // Check if the total time to pound has been reached
-        if (elapsedTime >= timeToPound)
-        {
-            EndPound(touchPosition);
-        }
-        // }
-        // else
-        // {
-        //     isPounding = false;
-        //     tween?.Kill();
-        //     tween = null;
-        // }
     }
 
-    private void EndPound(Vector2 touchPosition)
+    private void StopPounding()
     {
-        Debug.Log($"EndPound: {touchPosition}");    
         if (!isPounding) return;
+        
+        Debug.Log("Stop pounding");
         isPounding = false;
+        
+        // Stop animation
         tween?.Kill();
         tween = null;
-
-
         bahanDisplay.rectTransform.localScale = Vector3.one;
-        if (elapsedTime >= timeToPound)
-        {
-            elapsedTime = 0f;
-            GameplayManager.Instance.NextStep();
-        }
-
     }
-    
-    private bool InBounds(RectTransform rectTransform, Vector2 touchPosition)
+
+    private void CompletePounding()
     {
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
-        Vector2 touchPos = new Vector2(touchPosition.x - screenWidth / 2, touchPosition.y - screenHeight / 2);
-
-        Vector2 buttonPos = rectTransform.anchoredPosition;
-        Vector2 buttonSize = rectTransform.sizeDelta;
-        Vector2 min = buttonPos - buttonSize / 2;
-        Vector2 max = buttonPos + buttonSize / 2;
-        Debug.Log("Touch Position: " + touchPos);
-        Debug.Log($"Button Position: {buttonPos}, Size: {buttonSize}, Min: {min}, Max: {max}");
-        return touchPos.x >= min.x && touchPos.x <= max.x && touchPos.y >= min.y && touchPos.y <= max.y;
-
+        Debug.Log("Pounding complete!");
+        StopPounding();
+        DisableStep();
+        GameplayManager.Instance.NextStep();
     }
 
-
-
+    private bool IsPointOverBahan(Vector2 screenPosition)
+    {
+        // Use RectTransformUtility for accurate UI hit testing
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            bahanRect,
+            screenPosition,
+            uiCamera
+        );
+    }
 }

@@ -4,27 +4,35 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Step_SpinGestureHandler : Step
 {
-    // public Image visualIndicator = null; // UI element to show the spin
-    public Sprite spinSprite = null; // sprite for the visual indicator
-    public float requiredSpin = 720f; // derajat total
+    public Sprite spinSprite = null;
+    public float requiredSpin = 720f; // Total degrees required
     public float spinProgress = 0f;
 
     private Vector2 lastPos;
     private bool isDragging = false;
-    public GameObject alatPrefab; // Prefab untuk alat yang akan di-instantiate
+    private GameObject alatPrefab;
     private ResepDataSO resep { get; set; }
+    
+    // For circular motion
+    private float alatAngle = 0f;
+    private float radius = 100f;
+    private Vector2 circleCenter;
+    private RectTransform canvasRect;
 
     private void Awake()
     {
         isActive = true;
+        canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
         resep = GameData.ResepDipilih;
         var alatDiperlukan = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan;
+        
         if (alatDiperlukan == null)
         {
             Debug.LogError("Alat tidak ditemukan untuk langkah ini!");
             return;
         }
+        
         foreach (var alat in alatDiperlukan)
         {
             if (alat == null)
@@ -32,41 +40,28 @@ public class Step_SpinGestureHandler : Step
                 Debug.LogError("Alat tidak ditemukan dalam resep!");
                 return;
             }
+            
             // Instantiate alat
             Alat item = Instantiate(alat, transform);
             item.name = alat.namaAlat;
             item.GetComponent<Image>().sprite = alat.gambarAlat;
             Utilz.SetSizeNormalized(item.GetComponent<RectTransform>(), alat.gambarAlat, 500f, 500f);
-            // Set posisi alat
-            float posisiAlat = Screen.width / (alatDiperlukan.Length + 1);
+            
+            // Set initial position
             item.transform.localPosition = new Vector3(-150, -150, 0);
-            alatPrefab = item.gameObject; // Set alatPrefab untuk digunakan nanti
+            alatPrefab = item.gameObject;
         }
-
-
-        // if (visualIndicator == null)
-        // {
-        //     Debug.LogError("Visual Indicator tidak di-set!");
-        //     return;
-        // }
-
-        // if (spinSprite != null)
-        // {
-        //     visualIndicator.sprite = spinSprite;
-        // }
-        // else
-        // {
-        //     Debug.LogError("Spin Sprite tidak di-set!");
-        // }
+        
+        // Set circle center for rotation
+        circleCenter = transform.position;
     }
 
     public override void DisableStep()
     {
         isActive = false;
         isDragging = false;
-        spinProgress = 0f; // Reset progress
-        lastPos = Vector2.zero; // Reset last position
-
+        spinProgress = 0f;
+        lastPos = Vector2.zero;
         Debug.Log("Step spin disabled");
     }
 
@@ -87,102 +82,94 @@ public class Step_SpinGestureHandler : Step
 
     private void StartDrag(Vector2 position)
     {
-        if (!isActive) return; // Ensure step is active
-        Debug.Log("Drag started at: " + position);
+        if (!isActive) return;
+        
+        // Check if touch is within reasonable bounds (optional)
         isDragging = true;
         lastPos = position;
+        Debug.Log("Spin started at: " + position);
     }
 
     private void EndDrag(Vector2 position)
     {
         if (!isDragging) return;
-        Debug.Log("Drag ended at: " + position);
+        
+        Debug.Log("Spin ended at: " + position);
         isDragging = false;
-        spinProgress = 0f; // Reset progress after drag ends
+        // Don't reset progress here - keep it accumulated
     }
 
     private void ContinueDrag(Vector2 position)
     {
-        if (!isDragging) return;
-        if (!isActive) return; // Ensure step is active
+        if (!isDragging || !isActive) return;
 
-        Debug.Log("Dragging at: " + position);
-
-        float centerX = Screen.width / 2;
-        float centerY = Screen.height / 2;
-
-        Vector2 center = new Vector2(centerX, centerY);
-        // Get previous and current direction from center to touch position
-        Vector2 prevDir = lastPos - center;
-        Vector2 currDir = position - center;
-
-        // Calculate signed angle between the two directions
+        // Get center of screen
+        Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        
+        // Calculate angle between last position and current position relative to center
+        Vector2 prevDir = (lastPos - center).normalized;
+        Vector2 currDir = (position - center).normalized;
+        
+        // Calculate signed angle
         float angle = Vector2.SignedAngle(prevDir, currDir);
-
+        
+        // Filter out noise (very small movements)
+        if (Mathf.Abs(angle) < 0.1f) return;
+        
         // Add to spin progress
         spinProgress += angle;
         lastPos = position;
-
-        // Rotate the visual indicator
-        // visualIndicator.transform.Rotate(0, 0, angle); // negative if you want clockwise
-
-        // Debug.Log("Spin progress: " + spinProgress);
-
-        if (Mathf.Abs(spinProgress) >= requiredSpin)
+        
+        Debug.Log($"Spin angle: {angle:F2}, Total progress: {spinProgress:F2}/{requiredSpin}");
+        
+        // Move or rotate based on whether we have alat
+        if (alatPrefab != null)
         {
-            // Debug.Log("Spin selesai!");
-            DisableStep(); // Disable step after completing the spin
-            GameplayManager.Instance.NextStep();
-            EndDrag(position);
-        }
-        if (alatPrefab == null)
-        {
-            RotateBahan(angle); // Rotate the alat based on the spin angle
+            MoveAlat(angle);
         }
         else
         {
-            MoveAlat(angle); // Rotate the alat based on the spin angle
+            RotateBahan(angle);
+        }
+        
+        // Check if spin is complete
+        if (Mathf.Abs(spinProgress) >= requiredSpin)
+        {
+            Debug.Log("Spin completed!");
+            DisableStep();
+            GameplayManager.Instance.NextStep();
         }
     }
 
-    private float alatAngle = 0f; // Keep track of cumulative angle for circular movement
-    private float radius = 100f;  // Radius of circular motion, adjust as needed
-    private Vector2 circleCenter; // Center of circular path
-
     private void MoveAlat(float angle)
     {
-        if (alatPrefab == null) return; // Ensure alatPrefab is set
-
-        // Update the circle center to the current position of the visual indicator
-        circleCenter = new Vector2(transform.position.x - 150, transform.position.y -200); // Adjust Y offset as needed
-        // Update the cumulative angle
+        if (alatPrefab == null) return;
+        
+        // Update cumulative angle
         alatAngle += angle;
-
-        // Calculate new position for the alat based on circular motion
-        float x = circleCenter.x + radius * Mathf.Cos(alatAngle * Mathf.Deg2Rad);
-        float y = circleCenter.y + radius * Mathf.Sin(alatAngle * Mathf.Deg2Rad);
-
-        // Set the new position of the alat
-        alatPrefab.transform.position = new Vector2(x, y);
+        
+        // Calculate position on circle
+        float radians = alatAngle * Mathf.Deg2Rad;
+        float x = radius * Mathf.Cos(radians);
+        float y = radius * Mathf.Sin(radians);
+        
+        // Set local position relative to parent
+        alatPrefab.transform.localPosition = new Vector3(x - 150, y - 150, 0);
+        
+        // Optional: Rotate the tool itself as it moves
+        // alatPrefab.transform.localRotation = Quaternion.Euler(0, 0, -alatAngle);
     }
 
     private void RotateBahan(float angle)
     {
-        // get the sibling game object of the Step_SpinGestureHandler, and then get the bahan inside it
+        // Find bahan in sibling
         Transform sibling = transform.parent.GetChild(0);
-        if (sibling == null) return; // Ensure sibling exists
-
-        // find child with component Bahan
+        if (sibling == null) return;
+        
         Transform bahan = sibling.Find("Bahan");
-
-
-        if (bahan == null) return; // Ensure bahan exists
-                                   // Rotate the bahan based on the angle
-        bahan.Rotate(0, 0, angle); // Rotate the bahan based on the spin angle
-
+        if (bahan == null) return;
+        
+        // Rotate the bahan
+        bahan.Rotate(0, 0, angle);
     }
-
-
-
-
 }

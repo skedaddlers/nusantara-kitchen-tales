@@ -149,11 +149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_transcriptionText: {fileID: 307945315}
-  audioClip: {fileID: 0}
-  audioDecoder1: {fileID: 5022602860645237092, guid: 3dff3cab861bdab49b7da4033c0bbd5b, type: 3}
-  audioDecoder2: {fileID: 5022602860645237092, guid: 2ce0a481efc34f143b12d5d80fc60f3a, type: 3}
-  audioEncoder: {fileID: 5022602860645237092, guid: ccea2f1825d65ec479e3ccb5fc5b9f5c, type: 3}
-  logMelSpectro: {fileID: 5022602860645237092, guid: cc4f9ae97307fb0499d956804535fd9e, type: 3}
+  audioClip: {fileID: 8300000, guid: 07165eeed1c80774493e7ff1149fee31, type: 3}
+  audioDecoder1: {fileID: 5022602860645237092, guid: f6be7d7e9e124bf468394fc4e446bfe4, type: 3}
+  audioDecoder2: {fileID: 5022602860645237092, guid: 407a8432e7b4d9449adf206a43b77ddb, type: 3}
+  audioEncoder: {fileID: 5022602860645237092, guid: a2dd6dd0b17dd204bb4daad65c379406, type: 3}
+  logMelSpectro: {fileID: 5022602860645237092, guid: 73031a6d87b54eb4b830e95b2a4ca0b8, type: 3}
   vocabAsset: {fileID: 4900000, guid: 63d66dc2a21a3a445bc0e2f67e6efd23, type: 3}
 --- !u!4 &10148581
 Transform:

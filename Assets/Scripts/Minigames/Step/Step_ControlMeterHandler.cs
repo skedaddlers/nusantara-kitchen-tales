@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class Step_ControlMeterHandler : Step
 {
     [Header("UI References")]
     [SerializeField] private Slider controlMeter;
-    [SerializeField] private Button controlButton; // visual only (optional)
-    [SerializeField] private Slider progressBar; // optional, for visual feedback
+    [SerializeField] private Button controlButton;
+    [SerializeField] private Slider progressBar;
 
     [Header("Meter Settings")]
     [SerializeField] private float cookingSpeed = 0.1f;
@@ -25,7 +25,9 @@ public class Step_ControlMeterHandler : Step
     private bool isPressed = false;
     private float currentSpeed;
     private ResepDataSO resep { get; set; }
-
+    private RectTransform buttonRect;
+    private Canvas canvas;
+    private Camera uiCamera;
 
     void Start()
     {
@@ -33,8 +35,17 @@ public class Step_ControlMeterHandler : Step
         Alat tombol = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan[0];
 
         controlButton.GetComponent<Image>().sprite = tombol.gambarAlat;
+        buttonRect = controlButton.GetComponent<RectTransform>();
+        
+        // Get canvas and camera for proper coordinate conversion
+        canvas = GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            uiCamera = canvas.worldCamera; // Might be null for Screen Space - Overlay
+        }
 
         isActive = true;
+        
         if (controlMeter == null || controlButton == null)
         {
             Debug.LogError("Control Meter or Button is not assigned!");
@@ -63,13 +74,12 @@ public class Step_ControlMeterHandler : Step
     private void InstantiateTutupBlender()
     {
         Alat tutupBlender = resep.langkahMasak[GameplayManager.Instance.CurrentStep].alatDiperlukan[1];
-        GameObject tutupBlenderObj = Instantiate(tutupBlender,transform).gameObject;
+        GameObject tutupBlenderObj = Instantiate(tutupBlender, transform).gameObject;
         tutupBlenderObj.name = tutupBlender.namaAlat;
         tutupBlenderObj.GetComponent<Image>().sprite = tutupBlender.gambarAlat;
         Utilz.SetSizeNormalized(tutupBlenderObj.GetComponent<RectTransform>(), tutupBlender.gambarAlat, 500f, 500f);
         RectTransform rectTransform = tutupBlenderObj.GetComponent<RectTransform>();
-        // Set the position of the tutup blender to be above the control button
-        rectTransform.localPosition = new Vector3(0, 0, 0); // Adjust Y position as needed
+        rectTransform.localPosition = new Vector3(0, 0, 0);
     }
 
     public override void DisableStep()
@@ -84,55 +94,74 @@ public class Step_ControlMeterHandler : Step
 
     void OnEnable()
     {
-        InputHandler.Instance.OnTouchStarted += StartPress;
-        InputHandler.Instance.OnTouchCanceled += StopPress;
+        InputHandler.Instance.OnTouchStarted += OnTouchStart;
+        InputHandler.Instance.OnTouchCanceled += OnTouchEnd;
     }
 
     void OnDisable()
     {
         if (InputHandler.Instance == null) return;
-
-        InputHandler.Instance.OnTouchStarted -= StartPress;
-        InputHandler.Instance.OnTouchCanceled -= StopPress;
+        InputHandler.Instance.OnTouchStarted -= OnTouchStart;
+        InputHandler.Instance.OnTouchCanceled -= OnTouchEnd;
     }
 
     void Update()
     {
         if (!isActive) return;
-        UpdatePressStatus();
+        
+        // Check if still pressing and update button state
+        UpdateButtonPress();
+        
+        // Update the meter based on press state
         UpdateControlMeter();
     }
 
-    private void StartPress(Vector2 pos)
+    private void OnTouchStart(Vector2 screenPos)
     {
-        isPressed = true;
-        Debug.Log("Pressed down");
+        if (!isActive) return;
+        
+        if (IsPointOverButton(screenPos))
+        {
+            isPressed = true;
+            Debug.Log("Button pressed");
+        }
     }
 
-    private void StopPress(Vector2 pos)
+    private void OnTouchEnd(Vector2 screenPos)
     {
         isPressed = false;
-        Debug.Log("Released");
+        Debug.Log("Button released");
     }
 
-    private void UpdatePressStatus()
+    private void UpdateButtonPress()
     {
-        if (Touchscreen.current != null)
+        // Check if we're still touching and still over the button
+        if (isPressed && InputHandler.Instance != null)
         {
-            var touch = Touchscreen.current.primaryTouch;
-
-            // Jika jari sedang menekan dan berada di atas tombol
-            if (touch.press.isPressed && InButtonBounds(controlButton))
+            if (InputHandler.Instance.IsTouching())
             {
-                isPressed = true;
+                Vector2 currentPos = InputHandler.Instance.GetTouchPosition();
+                if (!IsPointOverButton(currentPos))
+                {
+                    isPressed = false; // Moved off button
+                }
             }
             else
             {
-                isPressed = false;
+                isPressed = false; // No longer touching
             }
         }
     }
 
+    private bool IsPointOverButton(Vector2 screenPosition)
+    {
+        // Use RectTransformUtility for accurate UI hit testing
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            buttonRect, 
+            screenPosition, 
+            uiCamera
+        );
+    }
 
     private void UpdateControlMeter()
     {
@@ -140,7 +169,9 @@ public class Step_ControlMeterHandler : Step
         {
             return;
         }
-        if (isPressed && InButtonBounds(controlButton))
+
+        // Update meter value based on press state
+        if (isPressed)
         {
             controlMeter.value += currentSpeed * Time.deltaTime;
             currentSpeed = Mathf.Min(currentSpeed + speedIncrement * Time.deltaTime, maxCookingSpeed);
@@ -153,6 +184,7 @@ public class Step_ControlMeterHandler : Step
 
         controlMeter.value = Mathf.Clamp(controlMeter.value, 0f, 1f);
 
+        // Check if meter is in target range
         if (controlMeter.value >= lowerBound && controlMeter.value <= upperBound)
         {
             elapsedTime += Time.deltaTime;
@@ -160,40 +192,22 @@ public class Step_ControlMeterHandler : Step
             {
                 progressBar.value = elapsedTime;
             }
+            
             if (elapsedTime >= targetTime)
             {
                 Debug.Log("Success! Meter stable for required time.");
+                DisableStep();
                 GameplayManager.Instance.NextStep();
             }
         }
         else
         {
-            elapsedTime -= Time.deltaTime;
-            if(elapsedTime < 0f)
-            {
-                elapsedTime = 0f; // Reset elapsed time if it goes negative
-            }
+            // Decrease progress when out of range
+            elapsedTime = Mathf.Max(0f, elapsedTime - Time.deltaTime);
             if (progressBar != null)
             {
                 progressBar.value = elapsedTime;
             }
         }
-    }
-
-    private bool InButtonBounds(Button button)
-    {
-        Vector2 position = InputHandler.Instance.GetTouchPosition();
-        RectTransform rectTransform = button.GetComponent<RectTransform>();
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
-        Vector2 touchPos = new Vector2(position.x - screenWidth / 2, position.y - screenHeight / 2);
-
-        Vector2 buttonPos = rectTransform.anchoredPosition;
-        Vector2 buttonSize = rectTransform.sizeDelta;
-        Vector2 min = buttonPos - buttonSize / 2;
-        Vector2 max = buttonPos + buttonSize / 2;
-        Debug.Log("Touch Position: " + touchPos);
-        Debug.Log($"Button Position: {buttonPos}, Size: {buttonSize}, Min: {min}, Max: {max}");
-        return touchPos.x >= min.x && touchPos.x <= max.x && touchPos.y >= min.y && touchPos.y <= max.y;
     }
 }

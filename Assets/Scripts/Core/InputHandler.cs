@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-
 public class InputHandler : MonoBehaviour
 {
     public GameInputActions InputActions;
@@ -12,6 +11,9 @@ public class InputHandler : MonoBehaviour
     public event System.Action<Vector2> OnTouchStarted;
     public event System.Action<Vector2> OnTouchCanceled;
     public event System.Action<Vector2> OnTouchMoved;
+
+    private bool isTouching = false;
+    private Vector2 lastTouchPosition;
 
     private void Awake()
     {
@@ -28,105 +30,92 @@ public class InputHandler : MonoBehaviour
             InputActions = new GameInputActions();
 
         InputActions.Enable();
-
     }
 
     private void Update()
     {
+        // Unified touch/mouse handling
+        Vector2? currentPosition = null;
+        bool isPressed = false;
+
+        // Check for touch input first (for mobile)
         if (Touchscreen.current != null)
         {
             var touch = Touchscreen.current.primaryTouch;
-
-            if (touch.press.isPressed && touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+            if (touch.press.isPressed)
             {
-                // if (IsPointerOverUI()) return;
-
-                Vector2 pos = touch.position.ReadValue();
-                OnTouchMoved?.Invoke(pos);
+                currentPosition = touch.position.ReadValue();
+                isPressed = true;
             }
         }
+        // Fallback to mouse input (for editor/PC)
         else if (Mouse.current != null)
         {
-            // Handle mouse input as a fallback
             if (Mouse.current.leftButton.isPressed)
             {
-                // if (IsPointerOverUI()) return;
-
-                Vector2 pos = Mouse.current.position.ReadValue();
-                OnTouchMoved?.Invoke(pos);
+                currentPosition = Mouse.current.position.ReadValue();
+                isPressed = true;
             }
         }
 
-
-        // if (InputActions.Gameplay.TouchPress.IsPressed())
-        // {
-        //     // if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        //     // {
-        //     //     return;
-        //     // }
-
-        //     Vector2 pos = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        //     OnTouchMoved?.Invoke(pos);
-        // }
-
+        // Handle input state changes
+        if (isPressed && currentPosition.HasValue)
+        {
+            if (!isTouching)
+            {
+                // Touch just started
+                isTouching = true;
+                lastTouchPosition = currentPosition.Value;
+                OnTouchStarted?.Invoke(lastTouchPosition);
+            }
+            else if (Vector2.Distance(currentPosition.Value, lastTouchPosition) > 0.1f)
+            {
+                // Touch moved
+                lastTouchPosition = currentPosition.Value;
+                OnTouchMoved?.Invoke(lastTouchPosition);
+            }
+        }
+        else if (isTouching && !isPressed)
+        {
+            // Touch just ended
+            isTouching = false;
+            OnTouchCanceled?.Invoke(lastTouchPosition);
+        }
     }
 
     public Vector2 GetTouchPosition()
     {
-        return InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
+        // Priority: Touch > Mouse > Last known position
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+            if (touch.press.isPressed)
+                return touch.position.ReadValue();
+        }
+        
+        if (Mouse.current != null)
+            return Mouse.current.position.ReadValue();
+            
+        return lastTouchPosition;
     }
 
-
+    public bool IsTouching()
+    {
+        return isTouching;
+    }
 
     private void OnEnable()
     {
-        InputActions.Enable();
-        InputActions.Gameplay.TouchPress.performed += OnTouchPressed;
-        InputActions.Gameplay.TouchPress.canceled += OnTouchCancel;
-        InputActions.Gameplay.TouchPress.started += OnTouchStart;
-    
+        InputActions?.Enable();
     }
 
     private void OnDisable()
     {
-        if (InputActions == null) return;
-        InputActions.Gameplay.TouchPress.performed -= OnTouchPressed;
-        InputActions.Gameplay.TouchPress.canceled -= OnTouchCancel;
-        InputActions.Gameplay.TouchPress.started -= OnTouchStart;
-        InputActions.Disable();
-    }
-
-    private void OnTouchStart(InputAction.CallbackContext ctx)
-    {
-        Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        // Debug.Log("Touch started at: " + position);
-        // Misalnya spawn efek atau trigger game event
-
-        OnTouchStarted?.Invoke(position);
-    }
-
-    private void OnTouchCancel(InputAction.CallbackContext ctx)
-    {
-        Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        // Debug.Log("Touch canceled at: " + position);
-        // Misalnya spawn efek atau trigger game event
-
-        OnTouchCanceled?.Invoke(position);
-    }
-
-    private void OnTouchPressed(InputAction.CallbackContext ctx)
-    {
-        Vector2 position = InputActions.Gameplay.TouchPosition.ReadValue<Vector2>();
-        // Debug.Log("Touch at: " + position);
-        // Misalnya spawn efek atau trigger game event
-    
-        OnTouchPerformed?.Invoke(position);
+        InputActions?.Disable();
     }
 
     private void OnDestroy()
     {
-        if (InputActions == null) return;
-        InputActions.Disable();
+        InputActions?.Disable();
     }
-
 }
