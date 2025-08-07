@@ -15,6 +15,10 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private GameObject speechRecognitionPanel;
     [SerializeField] private Button[] optionButtons; // Drag 4 tombol pilihan ganda ke sini
     [SerializeField] private TextMeshProUGUI feedbackTextUI;
+    [SerializeField] private Image normalImage;
+    [SerializeField] private Image correctImage;
+    [SerializeField] private Image wrongImage;
+    [SerializeField] private Button homeButton; // Tombol untuk kembali ke menu utama
 
     [Header("Speech Recognition")]
     [SerializeField] private SpeechRecognitionController speechController; // Drag GameObject yang punya skrip ini
@@ -32,8 +36,13 @@ public class QuizManager : MonoBehaviour
             speechController.onResponse.AddListener(OnSpeechResultReceived);
         }
 
+        normalImage.gameObject.SetActive(true);
+        correctImage.gameObject.SetActive(false);
+        wrongImage.gameObject.SetActive(false);
+
         // Mulai kuis
         ShowQuestion(currentQuestionIndex);
+        homeButton.onClick.AddListener(() => SceneLoader.LoadScene("MainMenu"));
     }
 
     private void ShowQuestion(int index)
@@ -132,6 +141,9 @@ public class QuizManager : MonoBehaviour
 
     private void NextQuestion()
     {
+        normalImage.gameObject.SetActive(true);
+        correctImage.gameObject.SetActive(false);
+        wrongImage.gameObject.SetActive(false);
         currentQuestionIndex++;
         feedbackTextUI.gameObject.SetActive(false);
         ShowQuestion(currentQuestionIndex);
@@ -139,6 +151,9 @@ public class QuizManager : MonoBehaviour
 
     private void ShowFeedback(string message, bool isCorrect)
     {
+        normalImage.gameObject.SetActive(false);
+        correctImage.gameObject.SetActive(isCorrect);
+        wrongImage.gameObject.SetActive(!isCorrect);
         feedbackTextUI.text = message;
         feedbackTextUI.color = isCorrect ? Color.green : Color.red;
         feedbackTextUI.gameObject.SetActive(true);
@@ -146,6 +161,7 @@ public class QuizManager : MonoBehaviour
 
     private void EndQuiz()
     {
+        homeButton.gameObject.SetActive(true);
         questionTextUI.text = "Kuis Selesai!";
         multipleChoicePanel.SetActive(false);
         speechRecognitionPanel.SetActive(false);

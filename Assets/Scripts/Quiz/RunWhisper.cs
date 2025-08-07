@@ -173,6 +173,11 @@ public class RunWhisper : MonoBehaviour
 
     void LoadAudio()
     {
+        if(audioClip == null)
+        {
+            Debug.LogError("AudioClip is not assigned.");
+            return;
+        }
         numSamples = audioClip.samples;
         var data = new float[maxSamples];
         numSamples = maxSamples;
@@ -304,7 +309,10 @@ public class RunWhisper : MonoBehaviour
         encoder.Dispose();
         spectrogram.Dispose();
         argmax.Dispose();
-        audioInput.Dispose();
+        if(audioClip != null)
+        {
+            audioInput.Dispose();
+        }
         lastTokenTensor.Dispose();
         tokensTensor.Dispose();
     }
